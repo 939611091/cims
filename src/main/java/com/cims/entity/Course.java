@@ -19,6 +19,8 @@ public class Course {
 
     private String period;
 
+    private Integer cPeriod;
+
     private String price;
 
     private Integer number;
@@ -35,7 +37,7 @@ public class Course {
 
     private Date updateTime;
 
-    public Course(Integer id, Integer courseCategoryId, Integer teacherId, String cName, String cDescription, String cPhoto, String period, String price, Integer number, Date beginTime, Date overTime, String schoolTime, Integer surplusNumber, Date createTime, Date updateTime) {
+    public Course(Integer id, Integer courseCategoryId, Integer teacherId, String cName, String cDescription, String cPhoto, String period, Integer cPeriod, String price, Integer number, Date beginTime, Date overTime, String schoolTime, Integer surplusNumber, Date createTime, Date updateTime) {
         this.id = id;
         this.courseCategoryId = courseCategoryId;
         this.teacherId = teacherId;
@@ -43,6 +45,7 @@ public class Course {
         this.cDescription = cDescription;
         this.cPhoto = cPhoto;
         this.period = period;
+        this.cPeriod = cPeriod;
         this.price = price;
         this.number = number;
         this.beginTime = beginTime;
@@ -52,6 +55,8 @@ public class Course {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
+
+
 
     public Course() {
         super();
@@ -111,6 +116,14 @@ public class Course {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public Integer getcPeriod() {
+        return cPeriod;
+    }
+
+    public void setcPeriod(Integer cPeriod) {
+        this.cPeriod = cPeriod;
     }
 
     public String getPrice() {
@@ -179,26 +192,23 @@ public class Course {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", courseCategoryId=").append(courseCategoryId);
-        sb.append(", teacherId=").append(teacherId);
-        sb.append(", cName=").append(cName);
-        sb.append(", cDescription=").append(cDescription);
-        sb.append(", cPhoto=").append(cPhoto);
-        sb.append(", period=").append(period);
-        sb.append(", price=").append(price);
-        sb.append(", number=").append(number);
-        sb.append(", beginTime=").append(beginTime);
-        sb.append(", overTime=").append(overTime);
-        sb.append(", schoolTime=").append(schoolTime);
-        sb.append(", surplusNumber=").append(surplusNumber);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append("]");
-        return sb.toString();
+        return "Course{" +
+                "id=" + id +
+                ", courseCategoryId=" + courseCategoryId +
+                ", teacherId=" + teacherId +
+                ", cName='" + cName + '\'' +
+                ", cDescription='" + cDescription + '\'' +
+                ", cPhoto='" + cPhoto + '\'' +
+                ", period='" + period + '\'' +
+                ", cPeriod=" + cPeriod +
+                ", price='" + price + '\'' +
+                ", number=" + number +
+                ", beginTime=" + beginTime +
+                ", overTime=" + overTime +
+                ", schoolTime='" + schoolTime + '\'' +
+                ", surplusNumber=" + surplusNumber +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

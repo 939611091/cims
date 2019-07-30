@@ -93,6 +93,11 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.selectAll();
     }
 
+    @Override
+    public int updateSurplusById(Integer id) {
+        return courseMapper.updateSurplusById(id);
+    }
+
 
     /**
      * Course转换成CourseVo

@@ -10,6 +10,7 @@
       <arg column="c_description" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="c_photo" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="period" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_period" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="begin_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
@@ -21,7 +22,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, course_category_id, teacher_id, c_name, c_description, c_photo, period, price, 
+    id, course_category_id, teacher_id, c_name, c_description, c_photo, period,c_period, price,
     `number`, begin_time, over_time, school_time, surplus_number, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -37,13 +38,13 @@
   <insert id="insert" parameterType="com.cims.entity.Course">
     insert into course (id, course_category_id, teacher_id, 
       c_name, c_description, c_photo, 
-      period, price, `number`,
+      period, c_period,price, `number`,
       begin_time, over_time, school_time, 
       surplus_number, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{courseCategoryId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
       #{cName,jdbcType=VARCHAR}, #{cDescription,jdbcType=VARCHAR}, #{cPhoto,jdbcType=VARCHAR}, 
-      #{period,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER},
+      #{period,jdbcType=VARCHAR}, #{cPeriod,jdbcType=INTEGER},#{price,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER},
       #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, #{schoolTime,jdbcType=VARCHAR}, 
       #{number,jdbcType=INTEGER}, NOW(), #{updateTime,jdbcType=TIMESTAMP}
       )
@@ -201,6 +202,7 @@
       c_description = #{cDescription,jdbcType=VARCHAR},
       c_photo = #{cPhoto,jdbcType=VARCHAR},
       period = #{period,jdbcType=VARCHAR},
+      `c_period` = #{cPeriod,jdbcType=INTEGER},
       price = #{price,jdbcType=VARCHAR},
       `number` = #{number,jdbcType=INTEGER},
       begin_time = #{beginTime,jdbcType=TIMESTAMP},
@@ -232,4 +234,10 @@
     <include refid="Base_Column_List" />
     from `course`
   </select>
+
+  <update id="updateSurplusById" parameterType="com.cims.entity.Course">
+    UPDATE course
+    SET surplus_number = surplus_number- 1
+    WHERE id = #{id,jdbcType=INTEGER};
+  </update>
 </mapper>

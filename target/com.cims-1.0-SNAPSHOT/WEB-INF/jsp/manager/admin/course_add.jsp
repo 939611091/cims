@@ -101,7 +101,7 @@
                                             <select class="form-control select2" style="width: 100%;" name="teacherId">
                                                 <option value="-1" selected="selected" disabled>选择老师</option>
                                                 <c:forEach items="${teacherList}" var="teacher">
-                                                <option value="${teacher.teacherId}">${teacher.name}</option>
+                                                <option value="${teacher.teacherId}">${teacher.name},${teacher.tDescription}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
@@ -112,10 +112,13 @@
                                 </div>
                                 <div class="form-group" id="number">
                                     <label class="col-sm-2 control-label">课程人数</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control" placeholder="课程人数" name="number">
                                     </div>
-                                
+                                    <label class="col-sm-2 control-label">每次上课学时</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" placeholder="每次上课学时" name="cPeriod">
+                                    </div>
                                 </div>
                                 <div class="form-group" id="cDescription">
                                     <label  class="col-sm-2 control-label">课程简介</label>

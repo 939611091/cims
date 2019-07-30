@@ -31,4 +31,6 @@ public interface CourseMapper {
     List<Course> selectByCategoryId(Integer id);
 
     List<Course> selectAll();
+
+    int updateSurplusById(Integer id);
 }

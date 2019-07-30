@@ -93,18 +93,29 @@ public class ApplyController {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：课程ID不能为空！");
             return "redirect:/admin/apply/addApply";
         }
-        //检查报名课时不能为空
-        if (apply_pay.getHour() == null) {
-            redirectAttributes.addFlashAttribute("msgError", "错误提示：报名课时不能为空！");
-            return "redirect:/admin/apply/addApply";
-        }
+//        //检查报名课时不能为空
+//        if (apply_pay.getHour() == null) {
+//            redirectAttributes.addFlashAttribute("msgError", "错误提示：报名课时不能为空！");
+//            return "redirect:/admin/apply/addApply";
+//        }
 
-        //存储数据
-        if(applyService.insert(apply_pay)>0){
-            redirectAttributes.addFlashAttribute("msgSuccess","成功提示：添加成功");
-            return "redirect:/admin/apply/list";
-        }else {
-            redirectAttributes.addFlashAttribute("msgSuccess","失败提示：添加失败");
+        //判断课程剩余人数是否>0，大于则可以报名，否则则报名失败
+        //获取报名的课程ID查到他的剩余学时
+        Course course = courseService.selectByPrimaryKey(apply_pay.getCourseId());
+        if(course.getSurplusNumber() > 0){
+            //存储数据
+            if(applyService.insert(apply_pay)>0){
+                //报名成功后，对应的课程剩余报名人数-1
+                courseService.updateSurplusById(course.getId());
+                redirectAttributes.addFlashAttribute("msgSuccess","成功提示：报名成功");
+                return "redirect:/admin/apply/list";
+            }else {
+                redirectAttributes.addFlashAttribute("msgSuccess","失败提示：报名失败");
+                return "redirect:/admin/apply/list";
+            }
+        }
+        else {
+            redirectAttributes.addFlashAttribute("msgSuccess","失败提示：报名失败，课程满人");
             return "redirect:/admin/apply/list";
         }
     }
@@ -155,11 +166,11 @@ public class ApplyController {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：课程ID不能为空！");
             return "redirect:/admin/apply/addApply";
         }
-        //检查报名课时不能为空
-        if (apply_pay.getHour() == null) {
-            redirectAttributes.addFlashAttribute("msgError", "错误提示：报名课时不能为空！");
-            return "redirect:/admin/apply/addApply";
-        }
+//        //检查报名课时不能为空
+//        if (apply_pay.getHour() == null) {
+//            redirectAttributes.addFlashAttribute("msgError", "错误提示：报名课时不能为空！");
+//            return "redirect:/admin/apply/addApply";
+//        }
         //存储数据
         if(applyService.updateByPrimaryKey(apply_pay)>0){
             redirectAttributes.addFlashAttribute("msgSuccess","成功提示：修改成功");

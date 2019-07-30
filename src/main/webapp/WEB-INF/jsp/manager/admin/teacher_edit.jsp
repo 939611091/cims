@@ -67,7 +67,7 @@
                                 <div class="form-group" id="password">
                                     <label class="col-sm-2 control-label">密码</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="pass" placeholder="若不修改，则无需填写" name="password">
+                                        <input type="password" id="pass" class="form-control" placeholder="密码" name="password">
                                     </div>
                                     <i style="margin-top: 11px;" state="off" class="fa fa-fw fa-eye" id="eye"></i>
                                 </div>

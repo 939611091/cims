@@ -186,10 +186,10 @@ public class ATeacherController {
 //        根据id查该用户的密码赋给password
         String password = aTeacherService.selectPasswordById(teacher.getteacherId());
 
-        if(teacher.getPassword()!=""){
-            teacher.setPassword(teacher.getPassword());
-        }else{
+        if(teacher.getPassword().equals("")){
             teacher.setPassword(password);
+        }else{
+            teacher.setPassword(teacher.getPassword());
         }
         //名字不能为空
         if (teacher.getName().equals("")) {
@@ -200,6 +200,7 @@ public class ATeacherController {
 
         //判断fil是否为空，为空则直接更新用户
         if (fil.getSize() == 0){
+//            teacher.setPassword(password);
             aTeacherService.updateByPrimaryKey(teacher);
             redirectAttributes.addFlashAttribute("msgSuccess","成功提示：修改成功");
             return "redirect:/admin/teacher/list";

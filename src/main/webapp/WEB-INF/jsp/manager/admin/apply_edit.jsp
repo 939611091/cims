@@ -72,7 +72,7 @@
                                         <select class="form-control select2" style="width: 100%;" name="courseId">
                                             <option value="-1" selected="selected" disabled>选择报名课程</option>
                                             <c:forEach items="${courseList}" var="courseList">
-                                                <option value="${courseList.id}" ${courseList.id == apply_pay.courseId?"selected":""}>${courseList.cName}</option>
+                                                <option value="${courseList.id}" ${courseList.id == apply_pay.courseId?"selected":""}>课程名：${courseList.cName},课程学费：${courseList.price},剩余报名名额：${courseList.surplusNumber}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -90,12 +90,12 @@
                                         <input type="date" class="form-control"  placeholder="缴费时间" name="payTime" value="${pay_time }">
                                     </div>
                                 </div>
-                                <div class="form-group" id="hour">
-                                    <label  class="col-sm-2 control-label">报名课时</label>
-                                    <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="购买课时" name="hour" value="${apply_pay.hour }">
-                                    </div>
-                                </div>
+                                <%--<div class="form-group" id="hour">--%>
+                                    <%--<label  class="col-sm-2 control-label">报名课时</label>--%>
+                                    <%--<div class="col-sm-8">--%>
+                                        <%--<input type="tel" class="form-control"  placeholder="购买课时" name="hour" value="${apply_pay.hour }">--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

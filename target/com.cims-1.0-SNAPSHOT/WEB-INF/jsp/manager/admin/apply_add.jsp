@@ -110,7 +110,7 @@
                         <div class="box box-info">
                             <div class="callout callout-info">
                                 <h4>提示！</h4>
-                                <p>学生ID，报名课程，报名课时，报名学生均不能为空</p>
+                                <p>学生ID，报名课程，报名学生均不能为空</p>
                             </div>
                             <div class="box-header with-border">
                                 <h3 class="box-title">录入报名缴费信息</h3>&nbsp;&nbsp;&nbsp;
@@ -137,7 +137,7 @@
                                         <select class="form-control select2" style="width: 100%;" name="courseId">
                                             <option value="-1" selected="selected" disabled>选择报名课程</option>
                                             <c:forEach items="${courseList}" var="courseList">
-                                                <option value="${courseList.id}">${courseList.cName}</option>
+                                                <option value="${courseList.id}">课程名：${courseList.cName},课程学费：${courseList.price},剩余报名名额：${courseList.surplusNumber}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -155,12 +155,12 @@
                                         <input type="date" class="form-control"  placeholder="缴费时间" name="payTime">
                                     </div>
                                 </div>
-                                <div class="form-group" id="hour">
-                                    <label  class="col-sm-2 control-label">报名课时</label>
-                                    <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="购买课时" name="hour">
-                                    </div>
-                                </div>
+                                <%--<div class="form-group" id="hour">--%>
+                                    <%--<label  class="col-sm-2 control-label">报名课时</label>--%>
+                                    <%--<div class="col-sm-8">--%>
+                                        <%--<input type="tel" class="form-control"  placeholder="购买课时" name="hour">--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

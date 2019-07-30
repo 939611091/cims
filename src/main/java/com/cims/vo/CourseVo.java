@@ -24,6 +24,8 @@ public class CourseVo {
 
     private String period;
 
+    private Integer cPeriod;
+
     private String price;
 
     private Integer number;
@@ -39,28 +41,6 @@ public class CourseVo {
     private Date createTime;
 
     private Date updateTime;
-
-
-    @Override
-    public String toString() {
-        return "CourseVo{" +
-                "id=" + id +
-                ", course_category=" + course_category +
-                ", teacher=" + teacher +
-                ", cName='" + cName + '\'' +
-                ", cDescription='" + cDescription + '\'' +
-                ", cPhoto='" + cPhoto + '\'' +
-                ", period='" + period + '\'' +
-                ", price='" + price + '\'' +
-                ", number='" + number + '\'' +
-                ", beginTime=" + beginTime +
-                ", overTime=" + overTime +
-                ", schoolTime='" + schoolTime + '\'' +
-                ", surplusNumber=" + surplusNumber +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
 
     public Integer getId() {
         return id;
@@ -116,6 +96,14 @@ public class CourseVo {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public Integer getcPeriod() {
+        return cPeriod;
+    }
+
+    public void setcPeriod(Integer cPeriod) {
+        this.cPeriod = cPeriod;
     }
 
     public String getPrice() {
@@ -180,5 +168,27 @@ public class CourseVo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseVo{" +
+                "id=" + id +
+                ", course_category=" + course_category +
+                ", teacher=" + teacher +
+                ", cName='" + cName + '\'' +
+                ", cDescription='" + cDescription + '\'' +
+                ", cPhoto='" + cPhoto + '\'' +
+                ", period='" + period + '\'' +
+                ", cPeriod=" + cPeriod +
+                ", price='" + price + '\'' +
+                ", number=" + number +
+                ", beginTime=" + beginTime +
+                ", overTime=" + overTime +
+                ", schoolTime='" + schoolTime + '\'' +
+                ", surplusNumber=" + surplusNumber +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

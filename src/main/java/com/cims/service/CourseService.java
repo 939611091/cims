@@ -31,4 +31,6 @@ public interface CourseService {
 
     //查询所有
     List<Course> selectAll();
+    //报名成功后更新剩余名额
+    int updateSurplusById(Integer id);
 }

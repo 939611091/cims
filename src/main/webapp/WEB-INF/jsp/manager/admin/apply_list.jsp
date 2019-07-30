@@ -78,10 +78,11 @@
                                                 <td>学生ID</td>
                                                 <td>课程名</td>
                                                 <td>学生名</td>
-                                                <td>支付金额</td>
+                                                <td>课程金额</td>
+                                                <td>实付金额</td>
                                                 <td>支付时间</td>
                                                 <td>报名时间</td>
-                                                <td>报名课时</td>
+                                                <td>课程课时</td>
                                                 <td>操作</td>
                                             </tr>
                                             <c:forEach items="${pageResult.list}" var="apply_payVo">
@@ -90,12 +91,13 @@
                                                 <td>${apply_payVo.student.studentId}</td>
                                                 <td>${apply_payVo.course.cName}</td>
                                                 <td>${apply_payVo.payStudent}</td>
+                                                <td>${apply_payVo.course.price}</td>
                                                 <td>${apply_payVo.payAmount}</td>
                                                 <td><fmt:formatDate value="${apply_payVo.payTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
                                                 <td><fmt:formatDate value="${apply_payVo.createTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
-                                                <td>${apply_payVo.hour}</td>
+                                                <td>${apply_payVo.course.period}</td>
                                                 <td class="mailbox-date">
                                                      <div class="btn-group">
                                                          <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/apply/editApply?id=${apply_payVo.id}'">
