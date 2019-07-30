@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cims.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.cims.entity.Course">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_category_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teacher_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="c_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_photo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="period" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="begin_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="over_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="school_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="surplus_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, course_category_id, teacher_id, c_name, c_description, c_photo, period, price, 
+    `number`, begin_time, over_time, school_time, surplus_number, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cims.entity.Course">
+    insert into course (id, course_category_id, teacher_id, 
+      c_name, c_description, c_photo, 
+      period, price, `number`,
+      begin_time, over_time, school_time, 
+      surplus_number, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{courseCategoryId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
+      #{cName,jdbcType=VARCHAR}, #{cDescription,jdbcType=VARCHAR}, #{cPhoto,jdbcType=VARCHAR}, 
+      #{period,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER},
+      #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, #{schoolTime,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, NOW(), #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cims.entity.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseCategoryId != null">
+        course_category_id,
+      </if>
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="cDescription != null">
+        c_description,
+      </if>
+      <if test="cPhoto != null">
+        c_photo,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="schoolTime != null">
+        school_time,
+      </if>
+      <if test="surplusNumber != null">
+        surplus_number,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="courseCategoryId != null">
+        #{courseCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null">
+        #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoto != null">
+        #{cPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="schoolTime != null">
+        #{schoolTime,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusNumber != null">
+        #{surplusNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cims.entity.Course">
+    update course
+    <set>
+      <if test="courseCategoryId != null">
+        course_category_id = #{courseCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null">
+        teacher_id = #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null">
+        c_description = #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoto != null">
+        c_photo = #{cPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="schoolTime != null">
+        school_time = #{schoolTime,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusNumber != null">
+        surplus_number = #{surplusNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cims.entity.Course">
+    update course
+    set course_category_id = #{courseCategoryId,jdbcType=INTEGER},
+      teacher_id = #{teacherId,jdbcType=INTEGER},
+      c_name = #{cName,jdbcType=VARCHAR},
+      c_description = #{cDescription,jdbcType=VARCHAR},
+      c_photo = #{cPhoto,jdbcType=VARCHAR},
+      period = #{period,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      school_time = #{schoolTime,jdbcType=VARCHAR},
+      surplus_number = #{number,jdbcType=INTEGER},
+      update_time = NOW()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `course`
+    where 1=1
+    <if test="keyword != null and keyword.trim() != ''">
+      and `c_name` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+    </if>
+  </select>
+
+  <select id="selectByCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from course
+        where course_category_id = #{id,jdbcType=VARCHAR}
+    </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `course`
+  </select>
+</mapper>

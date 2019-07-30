@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cims.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.cims.entity.Student">
+    <constructor>
+      <idArg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="p_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="p_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="school" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    studentId, username, password, name, p_phone, p_name, school, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where studentId = #{studentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where studentId = #{studentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cims.entity.Student">
+    insert into student (studentId, username, password, 
+      name, p_phone, p_name, 
+      school, create_time, update_time
+      )
+    values (#{studentId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{pPhone,jdbcType=VARCHAR}, #{pName,jdbcType=VARCHAR}, 
+      #{school,jdbcType=VARCHAR}, NOW(), #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cims.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        studentId,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pPhone != null">
+        p_phone,
+      </if>
+      <if test="pName != null">
+        p_name,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pPhone != null">
+        #{pPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null">
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cims.entity.Student">
+    update student
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pPhone != null">
+        p_phone = #{pPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null">
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = NOW(),
+      </if>
+    </set>
+    where studentId = #{studentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cims.entity.Student">
+    update student
+    set
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      p_phone = #{pPhone,jdbcType=VARCHAR},
+      p_name = #{pName,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      update_time = NOW()
+    where studentId = #{studentId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `student`
+    where 1=1
+    <if test="keyword != null and keyword.trim() != ''">
+      and `name` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+    </if>
+  </select>
+
+  <select id="selectByUsername" parameterType="java.lang.String" resultType="java.lang.Integer">
+      select COUNT(studentId)
+      from `student`
+      where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectPasswordById" parameterType="java.lang.Integer"  resultType="java.lang.String">
+        select `password`
+        from `student`
+        where studentId = #{studentId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    from `student`
+    where username = #{username}
+    and password = #{password}
+  </select>
+</mapper>

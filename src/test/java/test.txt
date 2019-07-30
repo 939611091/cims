@@ -1,0 +1,109 @@
+@RequestMapping("/test")
+    public String test(){
+        return "manager/admin/register";
+    }
+
+//    @RequestMapping(value = "/addUser.do")
+//    public String addUser(HttpServletRequest request , User user, MultipartFile photo) throws Exception{
+//
+//        //使用UUID给图片随机重命名，并去掉四个“-”
+//        String name = UUID.randomUUID().toString().replaceAll("-", "");
+//        //获取文件的扩展名
+//        String ext = FilenameUtils.getExtension(photo.getOriginalFilename());
+//        //设置图片上传路径
+//        String url = request.getSession().getServletContext().getRealPath("/imgs");
+//        System.out.println(url);
+//        //以绝对路径保存重名命后的图片
+//        photo.transferTo(new File(url+"/"+name + "." + ext));
+//
+//        //把图片存储路径保存到数据库
+//        user.setPhoto("upload/"+name + "." + ext);
+//
+//        userService.insert(user);
+//        //重定向到查询所有用户的Controller，测试图片回显
+//        return "redirect:/admin/getAll";
+//
+//    }
+
+    //法二测试
+    @RequestMapping("/addUser")
+    public String fileUpLoad(User user,MultipartFile fil,HttpServletRequest req)  {
+
+        /*image/png(文件的类型)---fil(前台的插件名)---QQ浏览器截图20181218210005.png（图片名）---61577*/
+		/*
+		System.out.println(uname+"--"+pwd);
+		System.out.println(fil.getContentType()+"---"+fil.getName()+"---"+fil.getOriginalFilename()+"---"+fil.getSize());
+		*/
+
+        //判断前台上传文件大小
+        if(fil.getSize()>5*1024*1024) {
+            req.setAttribute("msg", "上传图片太大");
+            return "forward:/admin/test";
+        }
+
+
+        //UUID解决文件名称重复的问题
+        //生成一个uuid并用空替换-
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        //文件后缀，getOriginalFilename获取上传文件的名字，截取.后面的判断文件类型
+        String substring = fil.getOriginalFilename().substring(fil.getOriginalFilename().lastIndexOf("."));
+        //指定上传文件的类型.png,.jpg,.gif
+        if(!(".png".equals(substring) || ".jpg".equals(substring) || ".gif".equals(substring))) {
+            req.setAttribute("msg","上传的文件类型不匹配");
+            return "forward:/admin/test";
+        }
+
+        //文件的名称，设置文件的另存为的名称
+        String fileName = uuid+substring;
+
+        //把文件上传到服务器
+        //获取服务器的真实路径    获取图片的路径src="${pageContext.request.contextPath }/imgs/${items.pic }"
+//		String realPath = req.getServletContext().getRealPath("/imgs");   法1
+//		String realPath = "C:/Users/jia/Documents/workspace-sts-3.9.2.RELEASE/kaoshi003/WebContent/imgs/"+fil.getOriginalFilename();
+        /*System.out.println(realPath);*/
+
+        //设置图片上传路径 ${pageContext.request.contextPath }/upload/${items.pic }   法2
+        String url = req.getSession().getServletContext().getRealPath("/imgs");
+        System.out.println(url);
+
+
+
+        //定义一个文件fi来查看真实路径是否存在，如果不存在就创建fi     fi是存放服务器真实路径的
+        File fi = new File(url);
+
+        //解决文件名必须给出，没有则报错,所以判断是否存在
+        if(!fi.exists()) {
+            //没有这个文件夹则创建
+            fi.mkdirs();
+        }
+
+        //file为存到服务器路径的文件，把名为fileName文件，存到真实路径fi中
+        File file = new File(fi,fileName);
+        //实现文件上传
+        try {
+            //把前端fil的文件传给服务器file
+            fil.transferTo(file);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+//		return "redirect:/success.do";
+        //设置图片名xxx.jpg存入数据库pic字段
+        user.setPhoto("imgs/"+fileName);
+        userService.insert(user);
+//        if(insert>0) {
+//            return "redirect:/success.do";
+//        }else {
+//            req.setAttribute("msg2", "添加失败");
+//            return "forward:/add.do";
+//        }
+        return "redirect:/admin/getAll";
+    }
+
+    //查询所有用户
+    @RequestMapping(value = "/getAll")
+    public String getAll(Model model) throws Exception{
+        List<User> userList = userService.selectAll();
+        model.addAttribute("userList",userList);
+        return "manager/admin/userList";
+    }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <!-- 激活 annotation-->
+    <context:annotation-config/>
+
+    <!-- 只管理@Controller -->
+    <context:component-scan base-package="com.cims" >
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 扩展注解 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 静态资源访问 -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!-- 注册拦截器 -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <mvc:exclude-mapping path="/admin/login.do"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            &lt;!&ndash;<bean class="com.cims.interceptor.AdminLoginInterceptor"/>&ndash;&gt;
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/home/cart/**"/>
+            <mvc:mapping path="/home/order/**"/>
+            <mvc:exclude-mapping path="/home/order/alipay_callback.do"/>
+            &lt;!&ndash;<bean class="com.cims.interceptor.UserInterceptor"/>&ndash;&gt;
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+    <!-- 上传文件用的 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="209715200"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+    <!-- view 解决器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>
