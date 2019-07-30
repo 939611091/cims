@@ -25,7 +25,7 @@
   <insert id="insert" parameterType="com.cims.entity.Course_classroom">
     insert into course_classroom (course_id, classroom_id, create_time, 
       update_time)
-    values (#{courseId,jdbcType=INTEGER}, #{classroomId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{courseId,jdbcType=INTEGER}, #{classroomId,jdbcType=INTEGER},NOW(),
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cims.entity.Course_classroom">
@@ -77,8 +77,23 @@
   <update id="updateByPrimaryKey" parameterType="com.cims.entity.Course_classroom">
     update course_classroom
     set classroom_id = #{classroomId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = NOW()
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `course_classroom`
+    where 1=1
+    <if test="keyword != null and keyword.trim() != ''">
+      and `course_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+    </if>
+  </select>
+
+  <select id="selectByCourseId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      select COUNT(course_id)
+      from `course_classroom`
+      where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
 </mapper>

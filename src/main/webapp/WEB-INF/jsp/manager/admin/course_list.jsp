@@ -114,6 +114,7 @@
                                                        
                                                         <ul class="dropdown-menu" role="menu">
                                                              <li><a>查看课程详细</a></li>
+                                                            <li><a href="${contextPath}/admin/plan/addPlan?id=${courseVo.id}">安排教室</a></li>
                                                             <li><a href="${contextPath}/admin/course/delete.do?id=${courseVo.id}" onclick= "return confirm('确认删除？');">删除</a></li>
                                                         </ul>
                                                          

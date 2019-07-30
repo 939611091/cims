@@ -312,4 +312,14 @@ public class CourseController {
         redirectAttributes.addFlashAttribute("msgError","成功提示：删除成功");
         return "redirect:/admin/course/list";
     }
+
+
+    /**
+     * 查看安排列表
+     */
+
+
+    /**
+     * 安排教室
+     */
 }

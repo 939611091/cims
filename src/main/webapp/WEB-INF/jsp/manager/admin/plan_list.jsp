@@ -34,11 +34,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    课程信息管理
+                    课程安排教室信息管理
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">课程信息管理</li>
+                    <li class="active">课程安排教室信息管理</li>
                 </ol>
             </section>
 
@@ -48,19 +48,18 @@
                     <div class="col-md-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title">课程信息列表</h3>&nbsp&nbsp&nbsp&nbsp
-                                <button type="button" class="btn btn-danger" onclick="location.href='${contextPath}/admin/course/addCourse';"><i class="fa fa-fw fa-search"></i>录入课程信息</button>&nbsp&nbsp&nbsp
-                                <h3 class="box-title">${msgSuccess}${msgError}</h3>
+                                <h3 class="box-title">课程教室安排情况列表</h3>&nbsp&nbsp&nbsp&nbsp
+                               <h3 class="box-title">${msgSuccess}${msgError}</h3>
                                 <div class="box-tools pull-right">
-                                    <form action="${contextPath}/admin/course/list" method="post" id="search">
+                                    <form action="${contextPath}/admin/plan/list" method="post" id="search">
                                         <input name="pageNum" value="1" hidden>
                                         <input name="pageSize" value="10" hidden>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="课程名" name="keyword" value="${params.get('keyword')}" >
+                                        <input type="text" class="form-control" placeholder="课程ID" name="keyword" value="${params.get('keyword')}" >
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <button type="button" class="btn btn-default"
-                                                onclick="location.href='${contextPath}/admin/course/list';">
+                                                onclick="location.href='${contextPath}/admin/plan/list';">
                                             <i class="fa fa-fw fa-refresh"></i>查询全部
                                         </button>
                                         <button type="button" class="btn btn-success" onclick="searchArticles({})"><i class="fa fa-fw fa-search"></i>查询
@@ -77,33 +76,27 @@
                                     <table id="example1" class="table table-bordered">
                                         <tbody>
                                             <tr align="center">
-                                                <td>课程id</td>
+                                                <td>课程ID</td>
                                                 <td>课程名</td>
-                                                <td>课程类别</td>
-                                                <td>上课老师</td>
-                                                <td>上课时间</td>
-                                                <td>开课时间</td>
-                                                <td>结课时间</td>
-                                                <td>课程人数</td>
-                                                <td>课程剩余人数(人)</td>
+                                                <td>教室ID</td>
+                                                <td>教室名</td>
+                                                <td>安排时间</td>
+                                                <td>更新时间</td>
                                                 <td>操作</td>
                                             </tr>
-                                            <c:forEach items="${pageResult.list}" var="courseVo">
+                                            <c:forEach items="${pageResult.list}" var="planVo">
                                             <tr align="center">
-                                                <td>${courseVo.id}</td>
-                                                <td>${courseVo.cName}</td>
-                                                <td>${courseVo.course_category.categoryName}</td>
-                                                <td>${courseVo.teacher.name}</td>
-                                                <td>${courseVo.schoolTime}</td>
-                                                <td><fmt:formatDate value="${courseVo.beginTime}"
+                                                <td>${planVo.course.id}</td>
+                                                <td>${planVo.course.cName}</td>
+                                                <td>${planVo.classroom.id}</td>
+                                                <td>${planVo.classroom.classroomName}</td>
+                                                <td><fmt:formatDate value="${planVo.createTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
-                                                <td><fmt:formatDate value="${courseVo.overTime}"
+                                                <td><fmt:formatDate value="${planVo.updateTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
-                                                <td>${courseVo.number}</td>
-                                                <td>${courseVo.surplusNumber}</td>
                                                 <td class="mailbox-date">
                                                      <div class="btn-group">
-                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/course/editCourse?id=${courseVo.id}'">
+                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/plan/editPlan?id=${planVo.course.id}'">
                                                              <i class="fa fa-fw fa-refresh"></i>编辑
                                                          </button>
                                                         <button type="button" class="btn btn-default dropdown-toggle"
@@ -111,13 +104,11 @@
                                                             <span class="caret"></span>
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
-                                                       
+
                                                         <ul class="dropdown-menu" role="menu">
-                                                             <li><a>查看课程详细</a></li>
-                                                            <li><a href="${contextPath}/admin/plan/addPlan?id=${courseVo.id}">安排教室</a></li>
-                                                            <li><a href="${contextPath}/admin/course/delete.do?id=${courseVo.id}" onclick= "return confirm('确认删除？');">删除</a></li>
+                                                            <li><a href="${contextPath}/admin/plan/delete.do?id=${planVo.course.id}" onclick= "return confirm('确认删除？');">删除</a></li>
                                                         </ul>
-                                                         
+
                                                     </div>
                                                 </td>
                                             </tr>

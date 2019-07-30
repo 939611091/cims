@@ -69,15 +69,15 @@
             </li>
 
             <li class="treeview">
-                <a href="#"><i class="fa fa-laptop"></i> <span>安排教室</span>
+                <a href="#"><i class="fa fa-laptop"></i> <span>课程安排上课教室</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <%--${--%>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>安排课程教室</a></li>
-                    </li>
+                    <li><a href="${contextPath}/admin/plan/list"><i class="fa fa-circle-o"></i>课程教室安排情况</a></li>
+                        <li><a href="${contextPath}/admin/plan/addHint"><i class="fa fa-circle-o"></i>安排教室</a></li>
                 </ul>
             </li>
 
