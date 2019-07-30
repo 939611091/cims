@@ -1,6 +1,7 @@
 package com.cims.controller.student;
 
 import com.cims.entity.Student;
+import com.cims.service.AStudentService;
 import com.cims.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/student")
 public class StudentIndexController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private AStudentService aStudentService;
     //跳转登录页面
     @GetMapping("/login")
     public String login() {
@@ -68,5 +72,52 @@ public class StudentIndexController {
             return "redirect:/student/login";
         }
         return "manager/student/index";
+    }
+
+    /**
+     * 修改申请页面
+     *
+     * @author vanh
+     * @date 2019/7/20
+     * @param id
+     * @param map
+     * @return
+     */
+    @GetMapping("/edit")
+    public String editStudent(Integer id, Map<String, Object> map, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("student")==null){
+            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+            return "redirect:/student/login";
+        }
+        Student student = aStudentService.selectByPrimaryKey(id);
+
+        map.put("student",student);
+
+        return "manager/student/student_edit";
+    }
+    /**
+     * 修改API
+     *
+     * @author vanh
+     * @date 2019/7/26
+     */
+    @RequestMapping("/edit.do")
+    public String edit(Student student, RedirectAttributes redirectAttributes) {
+//        根据id查该用户的密码赋给password
+        String password = aStudentService.selectPasswordById(student.getstudentId());
+
+        if(student.getPassword()!=""){
+            student.setPassword(student.getPassword());
+        }else{
+            student.setPassword(password);
+        }
+        if(aStudentService.updateByPrimaryKey(student)>0){
+            redirectAttributes.addFlashAttribute("msgSuccess","成功提示：修改成功");
+        }else {
+            redirectAttributes.addFlashAttribute("msgError","错误提示：修改失败");
+        }
+        return "redirect:/student/edit";
+
+
     }
 }

@@ -38,7 +38,17 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="treeview">
+                <a href="#"><i class="fa fa-laptop"></i> <span>个人中心</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="${contextPath}/student/edit?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>修改个人信息</a>
+                    </li>
+                </ul>
+            </li>
 
 
 

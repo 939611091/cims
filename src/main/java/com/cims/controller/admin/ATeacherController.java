@@ -194,7 +194,7 @@ public class ATeacherController {
         //名字不能为空
         if (teacher.getName().equals("")) {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：真实姓名不能为空！");
-            return "redirect:/admin/teacher/addTeacher";
+            return "redirect:/admin/teacher/editTeacher";
         }
 
 
@@ -210,7 +210,7 @@ public class ATeacherController {
         //判断前台上传文件大小
         if(fil.getSize()>5*1024*1024) {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：上传图片太大");
-            return "redirect:/admin/teacher/addTeacher";
+            return "redirect:/admin/teacher/editTeacher";
         }
         //UUID解决文件名称重复的问题
         //生成一个uuid并用空替换-
@@ -220,7 +220,7 @@ public class ATeacherController {
         //指定上传文件的类型.png,.jpg,.gif
         if(!(".png".equals(substring) || ".jpg".equals(substring) || ".gif".equals(substring))) {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：上传的文件类型不匹配，必须是jpg,png,gif!");
-            return "redirect:/admin/teacher/addTeacher";
+            return "redirect:/admin/teacher/editTeacher";
         }
 
         //文件的名称，设置文件的另存为的名称
