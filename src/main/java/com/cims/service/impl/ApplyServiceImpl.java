@@ -29,11 +29,11 @@ public class ApplyServiceImpl implements ApplyService {
     @Override
     public PageInfo<Apply_payVo> selectByMap(Map<String, Object> map, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        //查出所有课程
+        //查出所有报名缴费
         List<Apply_pay> apply_payList = apply_payMapper.selectByMap(map);
-        //定义课程VO列表
+        //定义报名缴费VO列表
         List<Apply_payVo> apply_payVoList = new LinkedList<>();
-        //把课程逐个转成课程VO
+        //把报名缴费逐个转成报名缴费VO
         for (Apply_pay apply_pay : apply_payList) {
             apply_payVoList.add(assembleApplyVo(apply_pay));
         }

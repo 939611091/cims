@@ -106,12 +106,14 @@
                                 <!-- /.mail-box-messages -->
                         </div>
                         </c:if>
+                    </div>
+                    <div class="callout callout-info">
+                        <h4>提示！</h4>
+                        <p>学生ID，报名课程，报名学生均不能为空</p>
+                    </div>
                         <!-- /.box-header -->
                         <div class="box box-info">
-                            <div class="callout callout-info">
-                                <h4>提示！</h4>
-                                <p>学生ID，报名课程，报名学生均不能为空</p>
-                            </div>
+
                             <div class="box-header with-border">
                                 <h3 class="box-title">录入报名缴费信息</h3>&nbsp;&nbsp;&nbsp;
                                 <h3 class="box-title">${msgError}${msg}</h3>
@@ -171,7 +173,7 @@
                             </div>
                         </div>
 
-                    </div>
+
                 </div>
             </div>
         </section>

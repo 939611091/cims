@@ -26,4 +26,6 @@ public interface Apply_payMapper {
      * @return
      */
     List<Apply_pay> selectByMap(Map<String, Object> map);
+
+    List<Apply_pay> selectByStudentId(Integer id);
 }

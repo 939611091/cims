@@ -148,7 +148,6 @@
       pay_time = #{payTime,jdbcType=TIMESTAMP},
       hour = #{hour,jdbcType=INTEGER},
       surplus_hour = #{surplusHour,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = NOW()
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -161,5 +160,12 @@
     <if test="keyword != null and keyword.trim() != ''">
       and `student_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
     </if>
+  </select>
+
+  <select id="selectByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from apply_pay
+    where student_id = #{studentId,jdbcType=INTEGER}
   </select>
 </mapper>

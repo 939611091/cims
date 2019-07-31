@@ -105,11 +105,11 @@
                                 </div>
                                 <div class="form-group" id="number">
                                     <label class="col-sm-2 control-label">课程人数</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <input type="text" class="form-control" placeholder="课程人数" name="number" value="${course.number }">
                                     </div>
                                     <label class="col-sm-2 control-label">每次上课学时</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <input type="text" class="form-control" placeholder="每次上课学时" name="cPeriod" value="${course.cPeriod }">
                                     </div>
                                 </div>
@@ -141,6 +141,12 @@
                                     <label  class="col-sm-2 control-label">课程图片</label>
                                     <div class="col-sm-8">
                                         <input type="file"     name = "fil" /> <br>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="showPhoto">
+                                    <label  class="col-sm-2 control-label">目前照片</label>
+                                    <div class="col-sm-8">
+                                        <img src="http://localhost:8080/${course.cPhoto}" width="200" height="350" />
                                     </div>
                                 </div>
                             </div>

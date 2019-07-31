@@ -32,7 +32,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>浏览课程剩余学时</a>
+                    <li><a href="${contextPath}/student/course/list?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>浏览课程剩余学时</a>
                     </li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>浏览我的考勤记录</a>
                     </li>
