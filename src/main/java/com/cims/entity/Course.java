@@ -17,7 +17,7 @@ public class Course {
 
     private String cPhoto;
 
-    private String period;
+    private Integer period;
 
     private Integer cPeriod;
 
@@ -37,7 +37,7 @@ public class Course {
 
     private Date updateTime;
 
-    public Course(Integer id, Integer courseCategoryId, Integer teacherId, String cName, String cDescription, String cPhoto, String period, Integer cPeriod, String price, Integer number, Date beginTime, Date overTime, String schoolTime, Integer surplusNumber, Date createTime, Date updateTime) {
+    public Course(Integer id, Integer courseCategoryId, Integer teacherId, String cName, String cDescription, String cPhoto, Integer period, Integer cPeriod, String price, Integer number, Date beginTime, Date overTime, String schoolTime, Integer surplusNumber, Date createTime, Date updateTime) {
         this.id = id;
         this.courseCategoryId = courseCategoryId;
         this.teacherId = teacherId;
@@ -110,11 +110,11 @@ public class Course {
         this.cPhoto = cPhoto;
     }
 
-    public String getPeriod() {
+    public Integer getPeriod() {
         return period;
     }
 
-    public void setPeriod(String period) {
+    public void setPeriod(Integer period) {
         this.period = period;
     }
 

@@ -103,6 +103,7 @@ public class ApplyController {
         //获取报名的课程ID查到他的剩余学时
         Course course = courseService.selectByPrimaryKey(apply_pay.getCourseId());
         if(course.getSurplusNumber() > 0){
+            apply_pay.setSurplusHour(course.getPeriod());
             //存储数据
             if(applyService.insert(apply_pay)>0){
                 //报名成功后，对应的课程剩余报名人数-1

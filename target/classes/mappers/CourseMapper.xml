@@ -9,7 +9,7 @@
       <arg column="c_name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="c_description" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="c_photo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="period" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="period" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="c_period" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -201,7 +201,7 @@
       c_name = #{cName,jdbcType=VARCHAR},
       c_description = #{cDescription,jdbcType=VARCHAR},
       c_photo = #{cPhoto,jdbcType=VARCHAR},
-      period = #{period,jdbcType=VARCHAR},
+      period = #{period,jdbcType=INTEGER},
       `c_period` = #{cPeriod,jdbcType=INTEGER},
       price = #{price,jdbcType=VARCHAR},
       `number` = #{number,jdbcType=INTEGER},

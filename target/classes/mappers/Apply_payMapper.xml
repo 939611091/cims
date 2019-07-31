@@ -32,11 +32,11 @@
   <insert id="insert" parameterType="com.cims.entity.Apply_pay">
     insert into apply_pay (id, student_id, course_id, 
       pay_student, pay_amount, pay_time, 
-      hour, surplus_hour, create_time, 
+      surplus_hour, create_time,
       update_time)
     values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
       #{payStudent,jdbcType=VARCHAR}, #{payAmount,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP},
-      #{hour,jdbcType=INTEGER}, #{hour,jdbcType=INTEGER}, NOW(),
+      #{surplusHour,jdbcType=INTEGER}, NOW(),
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cims.entity.Apply_pay">
