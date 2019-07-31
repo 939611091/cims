@@ -6,15 +6,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-/**
- * 把类别和教师合到一起
- */
-public class CourseVo {
+public class CourseDetailsVo {
     private Integer id;
 
-    private Course_category course_category;
+    private String categoryName;
 
-    private Teacher teacher;
+    private String teacherName;
 
     private String cName;
 
@@ -50,20 +47,20 @@ public class CourseVo {
         this.id = id;
     }
 
-    public Course_category getCourse_category() {
-        return course_category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCourse_category(Course_category course_category) {
-        this.course_category = course_category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public String getcName() {
@@ -172,14 +169,14 @@ public class CourseVo {
 
     @Override
     public String toString() {
-        return "CourseVo{" +
+        return "CourseDetailsVo{" +
                 "id=" + id +
-                ", course_category=" + course_category +
-                ", teacher=" + teacher +
+                ", categoryName='" + categoryName + '\'' +
+                ", teacherName='" + teacherName + '\'' +
                 ", cName='" + cName + '\'' +
                 ", cDescription='" + cDescription + '\'' +
                 ", cPhoto='" + cPhoto + '\'' +
-                ", period='" + period + '\'' +
+                ", period=" + period +
                 ", cPeriod=" + cPeriod +
                 ", price='" + price + '\'' +
                 ", number=" + number +

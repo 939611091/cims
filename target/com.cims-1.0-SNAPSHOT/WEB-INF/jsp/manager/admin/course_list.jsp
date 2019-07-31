@@ -113,7 +113,8 @@
                                                         </button>
                                                        
                                                         <ul class="dropdown-menu" role="menu">
-                                                             <li><a>查看课程详细</a></li>
+                                                             <li><a data-toggle="modal" data-target="#myModal" href="#"
+                                                                    onclick="query(${courseVo.id})">查看课程详细</a></li>
                                                             <li><a href="${contextPath}/admin/plan/addPlan?id=${courseVo.id}">安排教室</a></li>
                                                             <li><a href="${contextPath}/admin/course/delete.do?id=${courseVo.id}" onclick= "return confirm('确认删除？');">删除</a></li>
                                                         </ul>
@@ -168,46 +169,58 @@
 
                                     <!-- 模态框头部 -->
                                     <div class="modal-header">
-                                        <h4 class="modal-title">项目详情</h4>
+                                        <h4 class="modal-title">课程详情</h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
 
                                     <!-- 模态框主体 -->
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="name">课程名</label>
-                                            <input type="text" class="form-control" id="name" readonly value="">
+                                            <label for="cName">课程名</label>
+                                            <input type="text" class="form-control" id="cName" readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="detail">课程简介信息</label>
-                                            <textarea class="form-control" id="detail" readonly></textarea>
+                                            <label for="cDescription">课程简介信息</label>
+                                            <textarea class="form-control" id="cDescription" readonly></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="detail">课程图片</label>
-                                            <textarea class="form-control" id="description" readonly></textarea>
+                                            <label for="cName">课程类别</label>
+                                            <input type="text" class="form-control" id="categoryName"  readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">课程人数</label>
+                                            <label for="cName">上课老师</label>
+                                            <input type="text" class="form-control" id="teacherName"  readonly value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cName">课程人数</label>
                                             <input type="text" class="form-control" id="number" readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">课程开始时间</label>
-                                            <input type="text" class="form-control" id="begin_time" readonly value="">
+                                            <label for="cName">课程价格</label>
+                                            <input type="text" class="form-control" id="price" readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">课程结束时间</label>
-                                            <input type="text" class="form-control" id="deadline" readonly value="">
+                                            <label for="cName">课程课时</label>
+                                            <input type="text" class="form-control" id="period" readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">课程上课时间</label>
+                                            <label for="cName">课程开始时间</label>
+                                            <input type="text" class="form-control" id="beginTime" readonly value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cName">课程结束时间</label>
+                                            <input type="text" class="form-control" id="overTime" readonly value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cName">课程上课时间</label>
                                             <input type="text" class="form-control" id="schoolTime" readonly value="">
                                         </div>
-                                         <div class="form-group">
-                                            <label for="name">课程创建时间</label>
+                                        <div class="form-group">
+                                            <label for="cName">项目创建时间</label>
                                             <input type="text" class="form-control" id="createTime" readonly value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">课程后一次修改时间</label>
+                                            <label for="cName">课程后一次修改时间</label>
                                             <input type="text" class="form-control" id="updateTime" readonly value="">
                                         </div>
                                     </div>
@@ -255,6 +268,42 @@
             }
             $("#search").submit();
         }
+
+        //时间戳转时间
+        function timeTool (value) {  //13位时间戳
+            var date = new Date(value);
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            var D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + ' ';
+            // var h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
+            // var m = (date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()) + ':';
+            // var s = (date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds());+h+m+s
+            return (Y+M+D);
+        }
+        //模态框详情
+        function query(id) {
+            $.ajax({
+                url: "${contextPath}/admin/course/modeDate",
+                async: true,
+                data: {"id": id},
+                type: "POST",
+                success: function (data) {
+                    $("#cName").val(data.cName);
+                    $("#cDescription").val(data.cDescription);
+                    $("#categoryName").val(data.categoryName);
+                    $("#teacherName").val(data.teacherName);
+                    $("#number").val(data.number);
+                    $("#price").val(data.price);
+                    $("#period").val(data.period);
+                    $("#beginTime").val(timeTool(data.beginTime));
+                    $("#overTime").val(timeTool(data.overTime));
+                    $("#schoolTime").val(data.schoolTime);
+                    $("#createTime").val(timeTool(data.createTime));
+                    $("#updateTime").val(timeTool(data.updateTime))
+                }
+            })
+        }
+
     </script>
 </body>
 

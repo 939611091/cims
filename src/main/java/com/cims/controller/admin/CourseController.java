@@ -6,6 +6,7 @@ import com.cims.entity.Teacher;
 import com.cims.service.ATeacherService;
 import com.cims.service.CourseCategoryService;
 import com.cims.service.CourseService;
+import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -315,11 +319,19 @@ public class CourseController {
 
 
     /**
-     * 查看安排列表
+     * 前端模态框数据
      */
+    @PostMapping("/modeDate")
+    @ResponseBody
+    public CourseDetailsVo modeDate(HttpServletRequest request)  {
+        //id是课程ID
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        //根据课程ID查课程详情
+        CourseDetailsVo course = courseService.selectById(id);
+
+        return course;
+    }
 
 
-    /**
-     * 安排教室
-     */
+
 }

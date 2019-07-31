@@ -7,6 +7,7 @@ import com.cims.entity.Course;
 import com.cims.entity.Course_category;
 import com.cims.entity.Teacher;
 import com.cims.service.CourseService;
+import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -98,6 +99,13 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.updateSurplusById(id);
     }
 
+    @Override
+    public CourseDetailsVo selectById(Integer id) {
+        Course course = courseMapper.selectById(id);
+        CourseDetailsVo courseDetailsVo = assembleCourseDVo(course);
+        return courseDetailsVo;
+    }
+
 
     /**
      * Course转换成CourseVo
@@ -116,5 +124,17 @@ public class CourseServiceImpl implements CourseService {
         Teacher teacher = teacherMapper.selectByPrimaryKey(course.getTeacherId());
         courseVo.setTeacher(teacher);
         return courseVo;
+    }
+
+    private CourseDetailsVo assembleCourseDVo(Course course) {
+        CourseDetailsVo courseDetailsVo = new CourseDetailsVo();
+        BeanUtils.copyProperties(course, courseDetailsVo);
+        //把ccid查出的course_category传给courseVo
+        Course_category course_category = course_categoryMapper.selectByPrimaryKey(course.getCourseCategoryId());
+        courseDetailsVo.setCategoryName(course_category.getcategoryName());
+        //把老师ID查出的老师实体传给courseVo
+        Teacher teacher = teacherMapper.selectByPrimaryKey(course.getTeacherId());
+        courseDetailsVo.setTeacherName(teacher.getName());
+        return courseDetailsVo;
     }
 }

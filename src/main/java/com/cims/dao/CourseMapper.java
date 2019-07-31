@@ -2,6 +2,7 @@ package com.cims.dao;
 
 import com.cims.entity.Course;
 import com.cims.entity.Course_category;
+import com.cims.vo.CourseVo;
 
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface CourseMapper {
     int insertSelective(Course record);
 
     Course selectByPrimaryKey(Integer id);
+
+    Course selectById(Integer id);
 
     int updateByPrimaryKeySelective(Course record);
 

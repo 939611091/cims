@@ -3,6 +3,7 @@ package com.cims.service;
 import com.cims.entity.Course;
 import com.cims.entity.Course_category;
 import com.cims.entity.Teacher;
+import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
 
@@ -33,4 +34,7 @@ public interface CourseService {
     List<Course> selectAll();
     //报名成功后更新剩余名额
     int updateSurplusById(Integer id);
+
+    //根据id查vo
+    CourseDetailsVo selectById(Integer id);
 }

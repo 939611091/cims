@@ -25,9 +25,9 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/main_header.jsp"/>
+        <jsp:include page="../common/student_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/main_siderbar.jsp"/>
+        <jsp:include page="../common/student_siderbar.jsp"/>
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -61,10 +61,11 @@
                                             <tr align="center">
                                                 <td>报名缴费ID</td>
                                                 <td>课程名</td>
-                                                <td>学生名</td>
+                                                <td>学生姓名</td>
                                                 <td>课程金额</td>
-                                                <%--<td>支付时间</td>--%>
-                                                <td>课程课时</td>
+                                                <td>支付金额</td>
+                                                <td>支付时间</td>
+                                                <td>报名时间</td>
                                                 <td>剩余课时</td> 
                                                 <td>操作</td>
                                             </tr>
@@ -74,22 +75,18 @@
                                                 <td>${apply_payVo.course.cName}</td>
                                                 <td>${apply_payVo.payStudent}</td>
                                                 <td>${apply_payVo.course.price}</td>
-                                                <td>${apply_payVo.course.period}</td>
+                                                <td>${apply_payVo.payAmount}</td>
+                                                <td><fmt:formatDate value="${apply_payVo.payTime}"
+                                                                    pattern="yyyy年MM月dd日"/></td>
+                                                <td><fmt:formatDate value="${apply_payVo.createTime}"
+                                                                    pattern="yyyy年MM月dd日"/></td>
                                                 <td>${apply_payVo.surplusHour}</td>
                                                 <td class="mailbox-date">
-                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default">
-                                                          查看课程详情
-                                                        </button>
-                                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false">
-                                                            <span class="caret"></span>
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <%--<li><a>删除</a></li>--%>
-                                                        </ul>
-                                                    </div>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"
+                                                            onclick="query(${apply_payVo.course.id})">
+                                                        <i class="fa fa-fw fa-refresh"></i>查看课程详情
+                                                    </button>
+
                                                 </td>
                                             </tr>
                                             </c:forEach>
@@ -117,6 +114,77 @@
         <!-- Main Footer -->
         <jsp:include page="../common/main_footer.jsp"/>
 
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">课程详情</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- 模态框主体 -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="cName">课程名</label>
+                            <input type="text" class="form-control" id="cName" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cDescription">课程简介信息</label>
+                            <textarea class="form-control" id="cDescription" readonly></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程类别</label>
+                            <input type="text" class="form-control" id="categoryName" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">上课老师</label>
+                            <input type="text" class="form-control" id="teacherName" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程人数</label>
+                            <input type="text" class="form-control" id="number" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程价格</label>
+                            <input type="text" class="form-control" id="price" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程课时</label>
+                            <input type="text" class="form-control" id="period" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程开始时间</label>
+                            <input type="text" class="form-control" id="beginTime" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程结束时间</label>
+                            <input type="text" class="form-control" id="overTime" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程上课时间</label>
+                            <input type="text" class="form-control" id="schoolTime" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">项目创建时间</label>
+                            <input type="text" class="form-control" id="createTime" readonly value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cName">课程后一次修改时间</label>
+                            <input type="text" class="form-control" id="updateTime" readonly value="">
+                        </div>
+                    </div>
+
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
@@ -125,7 +193,45 @@
 
     <%--后台必要的JavaScript库--%>
     <jsp:include page="../common/required_js.jsp"/>
+    <script>
+        //时间戳转时间
+         function timeTool (value) {  //13位时间戳
+            var date = new Date(value);
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            var D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + ' ';
+            // var h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
+            // var m = (date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()) + ':';
+            // var s = (date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds());+h+m+s
+            return (Y+M+D);
+        }
 
+        //模态框详情
+        function query(id) {
+            $.ajax({
+                url: "${contextPath}/student/course/modeDate",
+                async: true,
+                data: {"id": id},
+                type: "POST",
+                success: function (data) {
+                    $("#cName").val(data.cName);
+                    $("#cDescription").val(data.cDescription);
+                    $("#categoryName").val(data.categoryName);
+                    $("#teacherName").val(data.teacherName);
+                    $("#number").val(data.number);
+                    $("#price").val(data.price);
+                    $("#period").val(data.period);
+                    $("#beginTime").val(timeTool(data.beginTime));
+                    $("#overTime").val(timeTool(data.overTime));
+                    $("#schoolTime").val(data.schoolTime);
+                    $("#createTime").val(timeTool(data.createTime));
+                    $("#updateTime").val(timeTool(data.updateTime))
+                }
+            })
+        }
+
+
+    </script>
 </body>
 
 </html>
