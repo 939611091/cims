@@ -14,7 +14,7 @@
                 <img src="${contextPath}/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>${sessionScope.teacher.username}</p>
+                <p>${sessionScope.teacher.name}老师,我的ID：${sessionScope.teacher.teacherId}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
@@ -26,15 +26,15 @@
             <li><a href="${contextPath}/teacher/index"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <li class="treeview">
-                <a href="#"><i class="fa fa-laptop"></i> <span>我的课程信息</span>
+                <a href="#"><i class="fa fa-laptop"></i> <span>课程信息管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>浏览课程相关信息</a>
+                    <li><a href="${contextPath}/teacher/course/list"><i class="fa fa-circle-o"></i>课程信息列表</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>录入课程信息</a>
+                    <li><a href="${contextPath}/teacher/course/addCourse"><i class="fa fa-circle-o"></i>录入课程信息</a>
                     </li>
                 </ul>
             </li>
@@ -45,8 +45,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>我要考勤</a>
-                    </li>
+                    <li><a href="${contextPath}/teacher/course/myList?id=${sessionScope.teacher.teacherId}"><i class="fa fa-circle-o"></i>考勤我的课程</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>考勤信息管理</a>
                     </li>
                 </ul>

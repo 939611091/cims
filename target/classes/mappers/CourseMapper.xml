@@ -229,6 +229,16 @@
     </if>
   </select>
 
+  <select id="selectByMap2" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `course`
+    where 1=1
+    <if test="keyword != null and keyword.trim() != ''">
+      and `teacher_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+    </if>
+  </select>
+
   <select id="selectByCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select <include refid="Base_Column_List" />
         from course
@@ -246,4 +256,11 @@
     SET surplus_number = surplus_number- 1
     WHERE id = #{id,jdbcType=INTEGER};
   </update>
+
+  <select id="selectByTeacherId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from course
+    where teacher_id = #{teacherId,jdbcType=INTEGER} ORDER BY create_time DESC
+  </select>
 </mapper>

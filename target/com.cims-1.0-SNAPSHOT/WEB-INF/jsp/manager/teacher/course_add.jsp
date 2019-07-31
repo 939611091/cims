@@ -37,9 +37,9 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/main_header.jsp"/>
+        <jsp:include page="../common/teacher_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/main_siderbar.jsp"/>
+        <jsp:include page="../common/teacher_siderbar.jsp"/>
 
        <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -57,6 +57,7 @@
         <section class="content ">
             <div class="callout callout-info">
                 <h4>提示！</h4>
+                <p>老师只能为自己添加课程</p>
                 <p>课程名，课程类别，上课老师，课程人数均不能为空</p>
             </div>
             <div class="row">
@@ -68,9 +69,9 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="${contextPath}/admin/course/addCourse.do" method="post" enctype="multipart/form-data" id="add_user" >
+                        <form class="form-horizontal" action="${contextPath}/teacher/course/addCourse.do" method="post" enctype="multipart/form-data" id="add_user" >
                             <div class="box-body">
-                               
+
                                 <div class="form-group" id="cName">
                                     <label class="col-sm-2 control-label">课程名</label>
                                     <div class="col-sm-8">
@@ -94,19 +95,16 @@
                                         <input type="text" class="form-control" placeholder="课时" name="period">
                                     </div>
                                 </div>
-                            
-                                 <div class="form-group" id="realname">
+
+                                <div class="form-group" id="realname">
                                     <label  class="col-sm-2 control-label">老师</label>
                                     <div class="col-sm-3">
-                                            <select class="form-control select2" style="width: 100%;" name="teacherId">
-                                                <option value="-1" selected="selected" disabled>选择老师</option>
-                                                <c:forEach items="${teacherList}" var="teacher">
-                                                <option value="${teacher.teacherId}">${teacher.name},${teacher.tDescription}</option>
-                                                </c:forEach>
-                                            </select>
+                                        <select class="form-control select2" style="width: 100%;" name="teacherId">
+                                                <option value="${teacher.teacherId}">${teacher.name}</option>
+                                        </select>
                                     </div>
-                                     <label class="col-sm-2 control-label">价格</label>
-                                     <div class="col-sm-3">
+                                    <label class="col-sm-2 control-label">价格</label>
+                                    <div class="col-sm-3">
                                         <input type="text"  class="form-control" placeholder="价格" name="price">
                                     </div>
                                 </div>

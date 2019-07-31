@@ -104,7 +104,7 @@
                                                 <option value="${teacher.teacherId}">${teacher.name},${teacher.tDescription}</option>
                                                 </c:forEach>
                                             </select>
-                                        </div>
+                                    </div>
                                      <label class="col-sm-2 control-label">价格</label>
                                      <div class="col-sm-3">
                                         <input type="text"  class="form-control" placeholder="价格" name="price">

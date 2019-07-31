@@ -74,7 +74,7 @@
                         <!-- The user image in the navbar-->
                         <img src="${contextPath}/resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">${sessionScope.admin.username}</span>
+                        <span class="hidden-xs">用户名：${sessionScope.admin.username}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->

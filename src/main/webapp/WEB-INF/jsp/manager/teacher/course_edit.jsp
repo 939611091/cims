@@ -12,19 +12,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>课程信息管理系统</title>
     <%-- 后台必须有的CSS--%>
-    <link rel="stylesheet" href="${contextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="${contextPath}/resources/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="${contextPath}/resources/bower_components/Ionicons/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="${contextPath}/resources/dist/css/AdminLTE.min.css">
-
-    <link rel="stylesheet" href="${contextPath}/resources/dist/css/skins/skin-blue.min.css">
-
-    <link rel="stylesheet" href="${contextPath}/resources/dist/css/alt/AdminLTE-select2.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="${contextPath}/resources/bower_components/select2/dist/css/select2.min.css">
+    <jsp:include page="../common/required_css.jsp"/>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -37,19 +27,19 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/main_header.jsp"/>
+        <jsp:include page="../common/teacher_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/main_siderbar.jsp"/>
+        <jsp:include page="../common/teacher_siderbar.jsp"/>
 
        <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                添加课程信息
+                编辑课程信息
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>课程信息管理</a></li>
-                <li class="active">添加课程信息</li>
+                <li class="active">编辑课程信息</li>
             </ol>
         </section>
 
@@ -63,98 +53,103 @@
                 <div class="col-md-12">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">添加课程信息</h3>&nbsp;&nbsp;&nbsp;
-                            <h3 class="box-title">${msgError}${msg}</h3>
+                            <h3 class="box-title">编辑课程信息</h3>&nbsp&nbsp&nbsp
+                            <h3 class="box-title">${msgError}</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="${contextPath}/admin/course/addCourse.do" method="post" enctype="multipart/form-data" id="add_user" >
+                        <form class="form-horizontal" action="${contextPath}/teacher/course/editCourse.do" method="post" enctype="multipart/form-data" id="add_user" >
                             <div class="box-body">
-                               
+                                <input type="hidden" name="id" value="${course.id }" />
+                                <input type="hidden" name="cPhoto" value="${course.cPhoto }" />
+                                <%--<input type="hidden" name="beginTime" value="${course.beginTime }" />--%>
+                                <%--<input type="hidden" name="overTime" value="${course.overTime }" />--%>
                                 <div class="form-group" id="cName">
                                     <label class="col-sm-2 control-label">课程名</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="课程名" name="cName">
+                                        <input type="text" class="form-control" placeholder="课程名" name="cName" value="${course.cName }">
                                     </div>
-                                   
+
                                 </div>
                                 <div class="form-group" id="course_categoryId">
                                     <label  class="col-sm-2 control-label">课程类别</label>
-                                        <div class="col-sm-3">
-                                            <%--下面这个name要填course实体中的属性--%>
-                                             <select class="form-control select2" style="width: 100%;" name="courseCategoryId">
-                                                 <option value="-1" selected="selected" disabled>选择课程类别</option>
-                                                <c:forEach items="${courseCategoryList}" var="courseCategory">
-                                                    <option value="${courseCategory.id}">${courseCategory.categoryName}</option>
-                                                 </c:forEach>
-                                             </select>
-                                        </div>
-                                     <label class="col-sm-2 control-label">课时</label>
-                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="课时" name="period">
+                                    <div class="col-sm-3">
+                                        <%--下面这个name要填course实体中的属性--%>
+                                        <select class="form-control select2" style="width: 100%;" name="courseCategoryId">
+                                            <option value="-1" selected="selected" disabled>选择课程类别</option>
+                                            <c:forEach items="${courseCategoryList}" var="courseCategory">
+                                                <option value="${courseCategory.id}"  ${courseCategory.id == course.courseCategoryId?"selected":""}>${courseCategory.categoryName}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-2 control-label">课时</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" placeholder="课时" name="period" value="${course.period }">
                                     </div>
                                 </div>
-                            
-                                 <div class="form-group" id="realname">
+
+                                <div class="form-group" id="realname">
                                     <label  class="col-sm-2 control-label">老师</label>
                                     <div class="col-sm-3">
-                                            <select class="form-control select2" style="width: 100%;" name="teacherId">
-                                                <option value="-1" selected="selected" disabled>选择老师</option>
-                                                <c:forEach items="${teacherList}" var="teacher">
-                                                <option value="${teacher.teacherId}">${teacher.name},${teacher.tDescription}</option>
-                                                </c:forEach>
-                                            </select>
+                                        <select class="form-control select2" style="width: 100%;" name="teacherId">
+                                            <option value="${teacher.teacherId}">${teacher.name}</option>
+                                        </select>
                                     </div>
-                                     <label class="col-sm-2 control-label">价格</label>
-                                     <div class="col-sm-3">
-                                        <input type="text"  class="form-control" placeholder="价格" name="price">
+                                    <label class="col-sm-2 control-label">价格</label>
+                                    <div class="col-sm-3">
+                                        <input type="text"  class="form-control" placeholder="价格" name="price" value="${course.price }">
                                     </div>
                                 </div>
                                 <div class="form-group" id="number">
                                     <label class="col-sm-2 control-label">课程人数</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="课程人数" name="number">
+                                        <input type="text" class="form-control" placeholder="课程人数" name="number" value="${course.number }">
                                     </div>
                                     <label class="col-sm-2 control-label">每次上课学时</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="每次上课学时" name="cPeriod">
+                                        <input type="text" class="form-control" placeholder="每次上课学时" name="cPeriod" value="${course.cPeriod }">
                                     </div>
                                 </div>
                                 <div class="form-group" id="cDescription">
                                     <label  class="col-sm-2 control-label">课程简介</label>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control"  name="cDescription" placeholder="课程简介" ></textarea>
+                                        <textarea class="form-control"  name="cDescription" placeholder="课程简介" >${course.cDescription }</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group" id="schoolTime">
                                     <label  class="col-sm-2 control-label">上课时间</label>
                                     <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="上课时间" name="schoolTime">
+                                        <input type="tel" class="form-control"  placeholder="上课时间" name="schoolTime" value="${course.schoolTime }">
                                     </div>
                                 </div>
                                 <div class="form-group" id="beginTime">
                                     <label  class="col-sm-2 control-label">开始时间</label>
                                     <div class="col-sm-8">
-                                        <input type="date" class="form-control"  placeholder="开始时间" name="beginTime">
+                                        <input type="date" class="form-control"  placeholder="开始时间" name="beginTime" value="${b_time}">
                                     </div>
                                 </div>
                                 <div class="form-group" id="overTime">
                                     <label  class="col-sm-2 control-label">结束时间</label>
                                     <div class="col-sm-8">
-                                        <input type="date" class="form-control"  placeholder="结束时间" name="overTime">
+                                        <input type="date" class="form-control"  placeholder="结束时间" name="overTime" value="${o_time}">
                                     </div>
                                 </div>
                                 <div class="form-group" id="name">
                                     <label  class="col-sm-2 control-label">课程图片</label>
-                                   <div class="col-sm-8">
-                                       <input type="file"     name = "fil" /> <br>
-                                   </div>
+                                    <div class="col-sm-8">
+                                        <input type="file"     name = "fil" /> <br>
+                                    </div>
                                 </div>
-                                 
+                                <div class="form-group" id="showPhoto">
+                                    <label  class="col-sm-2 control-label">目前照片</label>
+                                    <div class="col-sm-8">
+                                        <img src="http://localhost:8080/${course.cPhoto}" width="200" height="350" />
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">添加课程</button>
+                                <button type="submit" class="btn btn-info pull-right">保存课程</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -195,7 +190,7 @@
 
 
     <script type="text/javascript">
-    var testEditor;
+        var testEditor;
 
     $(function () {
         $('.select2').select2();

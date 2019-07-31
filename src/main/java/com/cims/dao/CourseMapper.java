@@ -30,10 +30,13 @@ public interface CourseMapper {
      * @return
      */
     List<Course> selectByMap(Map<String, Object> map);
+    List<Course> selectByMap2(Map<String, Object> map);
 
     List<Course> selectByCategoryId(Integer id);
 
     List<Course> selectAll();
 
     int updateSurplusById(Integer id);
+
+    List<Course> selectByTeacherId(Integer id);
 }

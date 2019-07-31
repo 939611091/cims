@@ -14,7 +14,7 @@
                 <img src="${contextPath}/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>${sessionScope.student.username}</p>
+                <p>${sessionScope.student.name}学生,我的ID：${sessionScope.student.studentId}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
