@@ -176,4 +176,11 @@
     from apply_pay
     where course_id = #{courseId,jdbcType=INTEGER} ORDER BY create_time ASC
   </select>
+
+  <update id="updateSurplusHourByCourseId" parameterType="com.cims.entity.Apply_pay">
+    UPDATE apply_pay
+    SET surplus_hour = surplus_hour - #{cPeriod,jdbcType=INTEGER},
+        update_time = NOW()
+    WHERE course_id = #{courseId,jdbcType=INTEGER};
+  </update>
 </mapper>

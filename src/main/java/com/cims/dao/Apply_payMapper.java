@@ -2,6 +2,7 @@ package com.cims.dao;
 
 import com.cims.entity.Apply_pay;
 import com.cims.entity.Course;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -37,4 +38,6 @@ public interface Apply_payMapper {
      */
 
     List<Apply_pay> selectByCourseId(Integer id);
+
+    int updateSurplusHourByCourseId(@Param("courseId")Integer id, @Param("cPeriod") Integer cPeriod);
 }

@@ -26,4 +26,6 @@ public interface ApplyService {
     int updateByPrimaryKey(Apply_pay apply_pay);
     //删除
     int deleteByPrimaryKey(Integer id);
+    //考勤成功后更新apply的剩余课时
+    int updateSurplusHourByCourseId(Integer id,Integer cPeriod);
 }

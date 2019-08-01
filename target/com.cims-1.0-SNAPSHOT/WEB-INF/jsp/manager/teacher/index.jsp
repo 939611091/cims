@@ -84,6 +84,7 @@
                             <%--<p>您有 ${notificationCount} 条<a href="${contextPath}/manager/user/currentuser/message_list">未读通知</a>哦 (๑＞ڡ＜)☆</p>--%>
                         <%--</c:when>--%>
                             <h3>你好，${sessionScope.teacher.name}老师 (๑＞ڡ＜)☆</h3>
+                    <h3>${msgSuccess}</h3>
                     <%--</c:choose>--%>
 
                 </div>

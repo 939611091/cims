@@ -66,6 +66,11 @@ public class ApplyServiceImpl implements ApplyService {
         return apply_payMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public int updateSurplusHourByCourseId(Integer id,Integer cPeriod) {
+        return apply_payMapper.updateSurplusHourByCourseId(id,cPeriod);
+    }
+
 
     private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
         Apply_payVo apply_payVo = new Apply_payVo();

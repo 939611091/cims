@@ -253,7 +253,8 @@
 
   <update id="updateSurplusById" parameterType="com.cims.entity.Course">
     UPDATE course
-    SET surplus_number = surplus_number- 1
+    SET surplus_number = surplus_number- 1,
+        update_time = NOW()
     WHERE id = #{id,jdbcType=INTEGER};
   </update>
 

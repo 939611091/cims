@@ -4,6 +4,7 @@ import com.cims.dao.Attendance_statusMapper;
 import com.cims.entity.Apply_pay;
 import com.cims.entity.Attendance;
 import com.cims.entity.Attendance_status;
+import com.cims.service.ApplyService;
 import com.cims.service.AttendanceService;
 import com.cims.service.TeacherService;
 import com.cims.vo.Apply_payVo;
@@ -35,6 +36,8 @@ public class TAttendanceController {
     private TeacherService teacherService;
     @Autowired
     private Attendance_statusMapper attendance_statusMapper;
+    @Autowired
+    private ApplyService applyService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@RequestParam(required = false, defaultValue = "1") int pageNum,
@@ -64,5 +67,16 @@ public class TAttendanceController {
         return "manager/teacher/attendance_applyList";
     }
 
-
+    /**
+     * 考勤按钮
+     * 传courseId过来，然后更新这个courseId的apply
+     * 剩余课时-课程每次上课的课时
+     * 返回考勤成功
+     */
+    @RequestMapping(value = "/update.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String add(Integer id,Integer cPeriod, Map<String, Object> map, RedirectAttributes redirectAttributes) {
+        applyService.updateSurplusHourByCourseId(id,cPeriod);
+        redirectAttributes.addFlashAttribute("msgSuccess","成功提示：考勤成功");
+        return "redirect:/teacher/index";
+    }
 }
