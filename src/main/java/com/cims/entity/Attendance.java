@@ -1,5 +1,7 @@
 package com.cims.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Attendance {
@@ -8,18 +10,20 @@ public class Attendance {
     private Integer attendanceStatusId;
 
     private Integer applyPayId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date attendanceTime;
 
     private Integer state;
 
-    private Integer TeacherState;
+    private Integer teacherState;
 
     private Date createTime;
 
     private Date updateTime;
 
     private Integer teacherId;
+
+    private Integer studentId;
 
 
 
@@ -28,16 +32,17 @@ public class Attendance {
     }
 
 
-    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, Date attendanceTime, Integer state, Integer teacherState, Date createTime, Date updateTime, Integer teacherId) {
+    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, Date attendanceTime, Integer state, Integer teacherState, Date createTime, Date updateTime, Integer teacherId, Integer studentId) {
         this.id = id;
         this.attendanceStatusId = attendanceStatusId;
         this.applyPayId = applyPayId;
         this.attendanceTime = attendanceTime;
         this.state = state;
-        TeacherState = teacherState;
+        this.teacherState = teacherState;
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.teacherId = teacherId;
+        this.studentId = studentId;
     }
 
     public Integer getId() {
@@ -81,11 +86,11 @@ public class Attendance {
     }
 
     public Integer getTeacherState() {
-        return TeacherState;
+        return teacherState;
     }
 
     public void setTeacherState(Integer teacherState) {
-        TeacherState = teacherState;
+        this.teacherState = teacherState;
     }
 
     public Date getCreateTime() {
@@ -112,6 +117,14 @@ public class Attendance {
         this.teacherId = teacherId;
     }
 
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -123,10 +136,11 @@ public class Attendance {
         sb.append(", applyPayId=").append(applyPayId);
         sb.append(", attendanceTime=").append(attendanceTime);
         sb.append(", state=").append(state);
-        sb.append(", TeacherState=").append(TeacherState);
+        sb.append(", teacherState=").append(teacherState);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", teacherId=").append(teacherId);
+        sb.append(", studentId=").append(studentId);
         sb.append("]");
         return sb.toString();
     }

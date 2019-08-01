@@ -33,11 +33,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                编辑考勤状态
+                编辑请假状态
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>考勤状态管理</a></li>
-                <li class="active">编辑考勤状态</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>请假状态管理</a></li>
+                <li class="active">编辑请假状态</li>
             </ol>
         </section>
 
@@ -47,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">编辑考勤状态</h3>
+                            <h3 class="box-title">编辑请假状态</h3>
                             &nbsp&nbsp&nbsp
                             <h3 class="box-title">${msgError}</h3>
                         </div>

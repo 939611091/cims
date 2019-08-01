@@ -16,7 +16,7 @@ public interface TeacherService {
     List<CourseVo> selectByTeacherId(Integer id);
     /**
      * 通过map查询
-     *
+     * 通过
      * @param map
      * @return
      */
@@ -24,4 +24,6 @@ public interface TeacherService {
 
     //查出这个课程的所有报名单
     List<Apply_payVo> selectByCourseId(Integer id);
+
+
 }

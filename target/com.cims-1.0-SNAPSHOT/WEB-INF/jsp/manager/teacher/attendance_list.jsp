@@ -81,8 +81,8 @@
                                                 <td>学生名</td>
                                                 <td>负责老师</td>
                                                 <td>请假原因</td>
-                                                <td>考勤时间</td>
-                                                <td>最后更新时间</td>
+                                                <td>批准状态</td>
+                                                <td>请假时间</td>
                                                 <td>操作</td>
                                             </tr>
                                             <c:forEach items="${pageResult.list}" var="attendanceVo">
@@ -91,28 +91,29 @@
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
                                                 <td>${attendanceVo.teacher.name}</td>
                                                 <td>${attendanceVo.attendance_status.status}</td>
+                                                <td>
+                                                    <div class="caption">
+                                                        <c:choose>
+                                                            <c:when test="${attendanceVo.teacherState == 0}">
+                                                                <span class="label label-info badge-info">未批准</span>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <span class="label label-danger badge-danger">已批准</span>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </td>
                                                 <td><fmt:formatDate value="${attendanceVo.attendanceTime}"
-                                                                    pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
-                                                <td><fmt:formatDate value="${attendanceVo.updateTime}"
                                                                     pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
                                                 <td class="mailbox-date">
                                                      <div class="btn-group">
                                                          <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/editAttendance?id=${attendanceVo.id}'">
-                                                             <i class="fa fa-fw fa-refresh"></i>编辑
+                                                             <i class="fa fa-fw fa-refresh"></i>批准
                                                          </button>
-                                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false">
-                                                            <span class="caret"></span>
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                       
-                                                        <ul class="dropdown-menu" role="menu">
-                                                             <%--<li><a data-toggle="modal" data-target="#myModal" href="#"--%>
-                                                                    <%--onclick="query(${courseVo.id})">查看课程详细</a></li>--%>
-                                                                 <li><a href="${contextPath}/teacher/attendance/delete.do?id=${attendanceVo.id}" onclick= "return confirm('确认删除？');">删除</a></li>
-                                                        </ul>
-                                                         
                                                     </div>
+                                                    <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/editAttendance?id=${attendanceVo.id}'">
+                                                        <i class="fa fa-fw fa-refresh"></i>不批准
+                                                    </button>
                                                 </td>
                                             </tr>
                                             </c:forEach>

@@ -2,7 +2,9 @@ package com.cims.vo;
 
 import com.cims.entity.Apply_pay;
 import com.cims.entity.Attendance_status;
+import com.cims.entity.Student;
 import com.cims.entity.Teacher;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,18 +14,20 @@ public class AttendanceVo {
     private Attendance_status attendance_status;
 
     private Apply_pay apply_pay;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date attendanceTime;
 
     private Integer state;
 
-    private Integer TeacherState;
+    private Integer teacherState;
 
     private Date createTime;
 
     private Date updateTime;
 
     private Teacher teacher;
+
+    private Student student;
 
     public Integer getId() {
         return id;
@@ -66,11 +70,11 @@ public class AttendanceVo {
     }
 
     public Integer getTeacherState() {
-        return TeacherState;
+        return teacherState;
     }
 
     public void setTeacherState(Integer teacherState) {
-        TeacherState = teacherState;
+        this.teacherState = teacherState;
     }
 
     public Date getCreateTime() {
@@ -97,6 +101,14 @@ public class AttendanceVo {
         this.teacher = teacher;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
         return "AttendanceVo{" +
@@ -105,10 +117,11 @@ public class AttendanceVo {
                 ", apply_pay=" + apply_pay +
                 ", attendanceTime=" + attendanceTime +
                 ", state=" + state +
-                ", TeacherState=" + TeacherState +
+                ", teacherState=" + teacherState +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", teacher=" + teacher +
+                ", student=" + student +
                 '}';
     }
 }

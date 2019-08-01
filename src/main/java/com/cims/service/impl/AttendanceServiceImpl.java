@@ -1,9 +1,6 @@
 package com.cims.service.impl;
 
-import com.cims.dao.Apply_payMapper;
-import com.cims.dao.AttendanceMapper;
-import com.cims.dao.Attendance_statusMapper;
-import com.cims.dao.TeacherMapper;
+import com.cims.dao.*;
 import com.cims.entity.*;
 import com.cims.service.AttendanceService;
 import com.cims.vo.AttendanceVo;
@@ -28,6 +25,8 @@ public class AttendanceServiceImpl implements AttendanceService {
     private TeacherMapper teacherMapper;
     @Autowired
     private Apply_payMapper apply_payMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Override
     public PageInfo<AttendanceVo> selectByMap(Map<String, Object> map, int pageNum, int pageSize) {
@@ -76,7 +75,7 @@ public class AttendanceServiceImpl implements AttendanceService {
     private AttendanceVo assembleAttendanceVo(Attendance attendance) {
         AttendanceVo attendanceVo = new AttendanceVo();
         BeanUtils.copyProperties(attendance, attendanceVo);
-        //把考勤ID查出的考勤传给attendanceVo
+        //把考勤状态ID查出的考勤传给attendanceVo
         Attendance_status attendance_status = attendance_statusMapper.selectByPrimaryKey(attendance.getAttendanceStatusId());
         attendanceVo.setAttendance_status(attendance_status);
         //把老师ID查出的老师实体传给attendanceVo
@@ -85,6 +84,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         //把报名信息传给attendanceVo
         Apply_pay apply_pay = apply_payMapper.selectByPrimaryKey(attendance.getApplyPayId());
         attendanceVo.setApply_pay(apply_pay);
+        //把学生信息传给attendanceVo
+        Student student = studentMapper.selectByPrimaryKey(attendance.getStudentId());
+        attendanceVo.setStudent(student);
         return attendanceVo;
     }
 }

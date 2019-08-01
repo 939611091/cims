@@ -34,11 +34,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    考勤状态管理
+                    请假原因管理
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> 考勤状态管理</a></li>
-                    <li class="active">考勤状态列表</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 请假原因管理</a></li>
+                    <li class="active">请假原因列表</li>
                 </ol>
             </section>
 
@@ -60,7 +60,7 @@
                                         <tbody>
                                             <tr align="center">
                                                 <td>ID</td>
-                                                <td>考勤状态</td>
+                                                <td>请假状态</td>
                                                 <td>创建时间</td>
                                                 <td>更新时间</td>
                                                 <td>操作</td>

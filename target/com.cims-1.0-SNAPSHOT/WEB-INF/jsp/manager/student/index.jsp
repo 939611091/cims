@@ -85,7 +85,7 @@
                         <%--</c:when>--%>
                             <h3>你好，${sessionScope.student.name}学生 (๑＞ڡ＜)☆</h3>
                     <%--</c:choose>--%>
-
+                    <h3>${msgSuccess}${msgError}</h3>
                 </div>
             </div>
             <%--<div class="box box-default">--%>

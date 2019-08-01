@@ -12,11 +12,12 @@
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="teacher_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="student_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     id, attendance_status_id, apply_pay_id, attendance_time, state,teacher_state, create_time, update_time,
-    teacher_id
+    teacher_id,student_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -31,10 +32,10 @@
   <insert id="insert" parameterType="com.cims.entity.Attendance">
     insert into attendance (id, attendance_status_id, apply_pay_id, 
       attendance_time, state,teacher_state, create_time,
-      teacher_id)
+      teacher_id,student_id)
     values (#{id,jdbcType=INTEGER}, #{attendanceStatusId,jdbcType=INTEGER}, #{applyPayId,jdbcType=INTEGER}, 
       #{attendanceTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER},#{teacherState,jdbcType=INTEGER}, NOW(),
-      #{teacherId,jdbcType=INTEGER})
+      #{teacherId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cims.entity.Attendance">
     insert into attendance
@@ -126,7 +127,8 @@
       state = #{state,jdbcType=INTEGER},
       teacher_state = #{teacherState,jdbcType=INTEGER},
       update_time = NOW(),
-      teacher_id = #{teacherId,jdbcType=INTEGER}
+      teacher_id = #{teacherId,jdbcType=INTEGER},
+      student_id = #{studentId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
