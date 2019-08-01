@@ -33,11 +33,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                添加考勤状态
+                添加请假状态
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>考勤状态管理</a></li>
-                <li class="active">添加考勤状态</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>请假状态管理</a></li>
+                <li class="active">添加请假状态</li>
             </ol>
         </section>
 
@@ -47,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">添加考勤状态</h3>
+                            <h3 class="box-title">添加请假状态</h3>
                             &nbsp&nbsp&nbsp
                             <h3 class="box-title">${msgError}</h3>
                         </div>
@@ -56,7 +56,7 @@
                         <form class="form-horizontal" action="${contextPath}/admin/attendanceStatus/add.do" method="post" id="add_user" >
                             <div class="box-body">
                                 <div class="form-group" id="username">
-                                    <label  class="col-sm-2 control-label">考勤状态名</label>
+                                    <label  class="col-sm-2 control-label">请假状态名</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control"  placeholder="状态名" name="status">
                                     </div>

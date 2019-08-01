@@ -9,9 +9,11 @@ public class Attendance {
 
     private Integer applyPayId;
 
-    private String attendanceTime;
+    private Date attendanceTime;
 
-    private String state;
+    private Integer state;
+
+    private Integer TeacherState;
 
     private Date createTime;
 
@@ -19,19 +21,23 @@ public class Attendance {
 
     private Integer teacherId;
 
-    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, String attendanceTime, String state, Date createTime, Date updateTime, Integer teacherId) {
+
+
+    public Attendance() {
+        super();
+    }
+
+
+    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, Date attendanceTime, Integer state, Integer teacherState, Date createTime, Date updateTime, Integer teacherId) {
         this.id = id;
         this.attendanceStatusId = attendanceStatusId;
         this.applyPayId = applyPayId;
         this.attendanceTime = attendanceTime;
         this.state = state;
+        TeacherState = teacherState;
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.teacherId = teacherId;
-    }
-
-    public Attendance() {
-        super();
     }
 
     public Integer getId() {
@@ -58,20 +64,28 @@ public class Attendance {
         this.applyPayId = applyPayId;
     }
 
-    public String getAttendanceTime() {
+    public Date getAttendanceTime() {
         return attendanceTime;
     }
 
-    public void setAttendanceTime(String attendanceTime) {
-        this.attendanceTime = attendanceTime == null ? null : attendanceTime.trim();
+    public void setAttendanceTime(Date attendanceTime) {
+        this.attendanceTime = attendanceTime;
     }
 
-    public String getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public Integer getTeacherState() {
+        return TeacherState;
+    }
+
+    public void setTeacherState(Integer teacherState) {
+        TeacherState = teacherState;
     }
 
     public Date getCreateTime() {
@@ -109,6 +123,7 @@ public class Attendance {
         sb.append(", applyPayId=").append(applyPayId);
         sb.append(", attendanceTime=").append(attendanceTime);
         sb.append(", state=").append(state);
+        sb.append(", TeacherState=").append(TeacherState);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", teacherId=").append(teacherId);

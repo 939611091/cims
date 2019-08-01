@@ -1,13 +1,10 @@
 package com.cims.service.impl;
 
-import com.cims.dao.CourseMapper;
-import com.cims.dao.Course_categoryMapper;
-import com.cims.dao.TeacherMapper;
-import com.cims.entity.Course;
-import com.cims.entity.Course_category;
-import com.cims.entity.Teacher;
+import com.cims.dao.*;
+import com.cims.entity.*;
 import com.cims.service.CourseCategoryService;
 import com.cims.service.TeacherService;
+import com.cims.vo.Apply_payVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +24,10 @@ public class TeacherServiceImpl implements TeacherService {
     private Course_categoryMapper course_categoryMapper;
     @Autowired
     private CourseMapper courseMapper;
+    @Autowired
+    private StudentMapper studentMapper;
+    @Autowired
+    private Apply_payMapper apply_payMapper;
     @Override
     public Teacher login(String username, String password) {
         return teacherMapper.selectLogin(username,password);
@@ -63,6 +64,16 @@ public class TeacherServiceImpl implements TeacherService {
         return pageResult;
     }
 
+    @Override
+    public List<Apply_payVo> selectByCourseId(Integer id) {
+        List<Apply_pay> apply_payList = apply_payMapper.selectByCourseId(id);
+        List<Apply_payVo> apply_payVoList = new LinkedList<>();
+        for (Apply_pay apply_pay : apply_payList) {
+            apply_payVoList.add(assembleApplyVo(apply_pay));
+        }
+        return apply_payVoList;
+    }
+
 //    @Override
 //    public int insert(Course course) {
 //        return courseMapper.insert(course);
@@ -86,5 +97,17 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = teacherMapper.selectByPrimaryKey(course.getTeacherId());
         courseVo.setTeacher(teacher);
         return courseVo;
+    }
+
+    private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
+        Apply_payVo apply_payVo = new Apply_payVo();
+        BeanUtils.copyProperties(apply_pay, apply_payVo);
+        //把courseid查出的course传给apply_payVo
+        Course course = courseMapper.selectByPrimaryKey(apply_pay.getCourseId());
+        apply_payVo.setCourse(course);
+        //把学生ID查出的学生实体传给apply_payVo
+        Student student = studentMapper.selectByPrimaryKey(apply_pay.getStudentId());
+        apply_payVo.setStudent(student);
+        return apply_payVo;
     }
 }

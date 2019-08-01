@@ -25,11 +25,12 @@ public interface CourseMapper {
 
     /**
      * 通过map查询
-     *
+     * 通过课程名查询
      * @param map
      * @return
      */
     List<Course> selectByMap(Map<String, Object> map);
+    //通过老师ID查询
     List<Course> selectByMap2(Map<String, Object> map);
 
     List<Course> selectByCategoryId(Integer id);

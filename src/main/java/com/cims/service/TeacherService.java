@@ -2,6 +2,7 @@ package com.cims.service;
 
 import com.cims.entity.Course;
 import com.cims.entity.Teacher;
+import com.cims.vo.Apply_payVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
 
@@ -21,6 +22,6 @@ public interface TeacherService {
      */
     PageInfo<CourseVo> selectByMap2(Map<String, Object> map, int pageNum, int pageSize);
 
-//    //添加
-//    int insert(Course course);
+    //查出这个课程的所有报名单
+    List<Apply_payVo> selectByCourseId(Integer id);
 }

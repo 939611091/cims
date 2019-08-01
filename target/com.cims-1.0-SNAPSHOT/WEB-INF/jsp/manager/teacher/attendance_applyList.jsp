@@ -11,7 +11,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>课程信息管理系统</title>
-    <%-- 后台必须有的CSS--%>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="../common/required_css.jsp"/>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -25,20 +26,20 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/main_header.jsp"/>
+        <jsp:include page="../common/teacher_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/main_siderbar.jsp"/>
+        <jsp:include page="../common/teacher_siderbar.jsp"/>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    请假原因管理
+                    课程考勤
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> 请假原因管理</a></li>
-                    <li class="active">请假原因列表</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">课程考勤</li>
                 </ol>
             </section>
 
@@ -48,57 +49,56 @@
                     <div class="col-md-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title">考勤状态列表</h3>
-                                <button type="button" class="btn btn-danger"onclick="location.href='${contextPath}/admin/attendanceStatus/add';"><i class="fa fa-fw fa-search"></i>添加考勤状态</button>&nbsp&nbsp&nbsp
-                                <h3 class="box-title">${msgSuccess}${msgError}</h3>
+                                <h3 class="box-title">课程考勤</h3>
+                               
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <!-- /.modal -->
+                                <!-- form start -->
+                                <form class="form-horizontal" action="${contextPath}/teacher/attendance/add.do" method="post"  id="add_user" >
+
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered">
                                         <tbody>
+                                        <tr align="center">
+                                            <td>学生ID</td>
+                                            <td>学生姓名</td>
+                                            <td>考勤状态</td>
+                                        </tr>
+                                        <c:forEach items="${apply_payVoList}" var="apply_payVo">
+                                            <input type="hidden" name="applyPayId" value="${apply_payVo.id}" />
                                             <tr align="center">
-                                                <td>ID</td>
-                                                <td>请假状态</td>
-                                                <td>创建时间</td>
-                                                <td>更新时间</td>
-                                                <td>操作</td>
-                                            </tr>
-                                            <c:forEach items="${attendanceStatusList }" var="status">
-                                            <tr align="center">
-                                                <td>${status.id }</td>
-                                                <td>${status.status }</td>
-                                                <td><fmt:formatDate value="${status.createTime}"
-                                                                    pattern="yyyy年MM月dd日 HH:mm"/></td>
-                                                <td><fmt:formatDate value="${status.updateTime}"
-                                                                    pattern="yyyy年MM月dd日 HH:mm"/></td>
-                                                <td class="mailbox-date">
-                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/attendanceStatus/edit?id=${status.id}'">
-                                                          编辑
-                                                        </button>
-                                                         <button type="button" class="btn btn-default dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false">
-                                                            <span class="caret"></span>
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><a href="${contextPath}/admin/attendanceStatus/delete.do?id=${status.id}" onclick= "return confirm('确认删除？');">删除</a></li>
-                                                        </ul>
+                                                <td>${apply_payVo.student.getstudentId()}</td>
+                                                <td>${apply_payVo.payStudent}</td>
+                                                <td>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control select2" style="width: 100%;" name="attendanceStatusId">
+                                                            <c:forEach items="${attendance_statusList}" var="status">
+                                                                <option value="${status.id}">${status.status}</option>
+                                                            </c:forEach>
+                                                        </select>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            </c:forEach>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                     <!-- /.table -->
 
                                 </div>
                                 <!-- /.mail-box-messages -->
+                                </form>
                             </div>
                             <!-- /.box-body -->
 
+                            <div class="box-footer no-padding">
+                                <div class="mailbox-controls">
+                                    <div class="box-footer clearfix">
+                                       <button type="submit" class="btn btn-info pull-right">提交考勤记录</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /. box -->
 
@@ -122,7 +122,6 @@
 
     <%--后台必要的JavaScript库--%>
     <jsp:include page="../common/required_js.jsp"/>
-
 </body>
 
 </html>

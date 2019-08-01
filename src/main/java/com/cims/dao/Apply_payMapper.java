@@ -28,4 +28,13 @@ public interface Apply_payMapper {
     List<Apply_pay> selectByMap(Map<String, Object> map);
 
     List<Apply_pay> selectByStudentId(Integer id);
+
+    /**
+     * 考勤用的！
+     * 通过课程ID查到所有的报名单
+     * @param id
+     * @return
+     */
+
+    List<Apply_pay> selectByCourseId(Integer id);
 }

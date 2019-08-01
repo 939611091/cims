@@ -6,15 +6,16 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="attendance_status_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="apply_pay_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="attendance_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="state" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="attendance_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teacher_state" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="teacher_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, attendance_status_id, apply_pay_id, attendance_time, state, create_time, update_time, 
+    id, attendance_status_id, apply_pay_id, attendance_time, state,teacher_state, create_time, update_time,
     teacher_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -29,11 +30,11 @@
   </delete>
   <insert id="insert" parameterType="com.cims.entity.Attendance">
     insert into attendance (id, attendance_status_id, apply_pay_id, 
-      attendance_time, state, create_time, 
-      update_time, teacher_id)
+      attendance_time, state,teacher_state, create_time,
+      teacher_id)
     values (#{id,jdbcType=INTEGER}, #{attendanceStatusId,jdbcType=INTEGER}, #{applyPayId,jdbcType=INTEGER}, 
-      #{attendanceTime,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{teacherId,jdbcType=INTEGER})
+      #{attendanceTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER},#{teacherState,jdbcType=INTEGER}, NOW(),
+      #{teacherId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cims.entity.Attendance">
     insert into attendance
@@ -121,11 +122,21 @@
     update attendance
     set attendance_status_id = #{attendanceStatusId,jdbcType=INTEGER},
       apply_pay_id = #{applyPayId,jdbcType=INTEGER},
-      attendance_time = #{attendanceTime,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      attendance_time = #{attendanceTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      teacher_state = #{teacherState,jdbcType=INTEGER},
+      update_time = NOW(),
       teacher_id = #{teacherId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `attendance`
+    where 1=1
+    <if test="keyword != null and keyword.trim() != ''">
+      and `teacher_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+    </if>
+  </select>
 </mapper>

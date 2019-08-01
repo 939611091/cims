@@ -46,7 +46,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="${contextPath}/teacher/course/myList?id=${sessionScope.teacher.teacherId}"><i class="fa fa-circle-o"></i>考勤我的课程</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>考勤信息管理</a>
+                    <li><a href="${contextPath}/teacher/attendance/list"><i class="fa fa-circle-o"></i>考勤信息管理</a>
                     </li>
                 </ul>
             </li>

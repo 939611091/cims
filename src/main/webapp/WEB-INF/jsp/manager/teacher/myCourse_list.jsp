@@ -78,7 +78,7 @@
                                                 <td>${courseVo.number}</td>
                                                 <td class="mailbox-date">
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/course/attendance?id=${courseVo.id}'">
+                                                        <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/applyList?id=${courseVo.id}'">
                                                             <i class="fa fa-fw fa-refresh"></i>课堂考勤
                                                         </button>
                                                         <button type="button" class="btn btn-default dropdown-toggle"
