@@ -1,7 +1,6 @@
 package com.cims.service.impl;
 
 
-import com.cims.common.ServerResponse;
 import com.cims.dao.AdminMapper;
 import com.cims.entity.Admin;
 import com.cims.service.AdminService;
@@ -9,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +18,8 @@ import java.util.Map;
 public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
     @Override
     public List<Admin> getAllAdmin() {
         return adminMapper.selectAll();
@@ -42,6 +44,10 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public int insert(Admin admin) {
+        //对密码进行加密
+//        admin.setPassword(MD5Util.MD5EncodeUtf8(admin.getPassword()));
+//        PasswordEncoder passwordEncoder = new PasswordEncoder();
+//        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         return adminMapper.insert(admin);
     }
 
@@ -72,8 +78,13 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin login(String username, String password) {
+        //密码解密
+//        String md5Password = MD5Util.MD5EncodeUtf8(password);
+
         Admin admin = adminMapper.selectLogin(username,password);
         if (admin != null){
+            //加密
+//            admin.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
             return admin;
         }else {
             return null;

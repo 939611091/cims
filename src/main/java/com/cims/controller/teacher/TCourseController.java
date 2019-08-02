@@ -28,7 +28,7 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/teacher/course")
-public class TeacherController {
+public class TCourseController {
     @Autowired
     private TeacherService teacherService;
     @Autowired
