@@ -89,7 +89,9 @@ public class StudentIndexController {
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/student/login";
         }
-        Student student = aStudentService.selectByPrimaryKey(id);
+        //从session获取学生ID
+        Integer studentId=((Student)session.getAttribute("student")).getstudentId();
+        Student student = aStudentService.selectByPrimaryKey(studentId);
 
         map.put("student",student);
 

@@ -83,7 +83,7 @@ public class SAttendanceController {
      * @date 2019/7/29
      */
     @PostMapping("/add.do")
-    public String addA(Attendance attendance, RedirectAttributes redirectAttributes, HttpServletRequest req) {
+    public String addA(Attendance attendance, RedirectAttributes redirectAttributes) {
 
         //默认为0表示未批准未处理
         attendance.setState(0);
@@ -91,10 +91,10 @@ public class SAttendanceController {
         //存储数据
         if(attendanceService.insert(attendance)>0){
             redirectAttributes.addFlashAttribute("msgSuccess","成功提示：申请成功");
-            return "redirect:/student/index";
+            return "redirect:/student/attendance/list";
         }else {
             redirectAttributes.addFlashAttribute("msgError","失败提示：申请失败");
-            return "redirect:/student/index";
+            return "redirect:/student/attendance/list";
         }
     }
 

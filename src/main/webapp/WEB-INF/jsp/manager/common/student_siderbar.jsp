@@ -32,7 +32,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/student/course/list?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>我的课程信息-剩余学时-请假</a>
+                    <li><a href="${contextPath}/student/course/list"><i class="fa fa-circle-o"></i>我的课程信息-剩余学时-请假</a>
                     </li>
                     <li><a href="${contextPath}/student/attendance/list"><i class="fa fa-circle-o"></i>浏览我的请假记录</a>
                     </li>
@@ -45,7 +45,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/student/edit?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>修改个人信息</a>
+                    <li><a href="${contextPath}/student/edit"><i class="fa fa-circle-o"></i>修改个人信息</a>
                     </li>
                 </ul>
             </li>

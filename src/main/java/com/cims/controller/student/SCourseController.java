@@ -1,6 +1,7 @@
 package com.cims.controller.student;
 
 import com.cims.entity.Course;
+import com.cims.entity.Student;
 import com.cims.service.ApplyService;
 import com.cims.service.CourseService;
 import com.cims.service.StudentService;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/student/course")
-public class StudentController {
+public class SCourseController {
     @Autowired
     private ApplyService applyService;
     @Autowired
@@ -31,12 +32,16 @@ public class StudentController {
     private CourseService courseService;
     //查出这个学生ID对应的报名单列出来
     @RequestMapping("/list")
-    public String index(Integer id,Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String applyList(Model model, RedirectAttributes redirectAttributes, HttpSession session) {
         if (session.getAttribute("student")==null){
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/student/login";
         }
-        List<Apply_payVo> applyVoList = studentService.selectByStudentId(id);
+        //从session获取学生ID
+        Integer studentId=((Student)session.getAttribute("student")).getstudentId();
+
+        //通过学生ID查出报名单
+        List<Apply_payVo> applyVoList = studentService.selectByStudentId(studentId);
         model.addAttribute("applyVoList",applyVoList);
         return "manager/student/apply_list";
     }

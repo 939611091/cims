@@ -38,7 +38,7 @@
                     请假信息管理
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 我的课程信息</a></li>
                     <li class="active">请假信息管理</li>
                 </ol>
             </section>
