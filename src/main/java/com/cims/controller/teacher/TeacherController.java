@@ -39,12 +39,15 @@ public class TeacherController {
     private ATeacherService aTeacherService;
     //查出这个老师ID对应的课程列出来
     @RequestMapping(value = "/myList", method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(Integer id,Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String list(Model model, RedirectAttributes redirectAttributes, HttpSession session) {
         if (session.getAttribute("teacher")==null){
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/teacher/login";
         }
-        List<CourseVo> courseVoList = teacherService.selectByTeacherId(id);
+        //从session获取老师ID
+        Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
+        //查询这个老师的课程
+        List<CourseVo> courseVoList = teacherService.selectByTeacherId(teacherId);
         model.addAttribute("courseVoList",courseVoList);
         return "manager/teacher/myCourse_list";
     }

@@ -45,7 +45,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/teacher/course/myList?id=${sessionScope.teacher.teacherId}"><i class="fa fa-circle-o"></i>查看我的课程</a></li>
+                    <li><a href="${contextPath}/teacher/course/myList"><i class="fa fa-circle-o"></i>查看我的课程</a></li>
                     <li><a href="${contextPath}/teacher/attendance/list"><i class="fa fa-circle-o"></i>请假信息管理</a>
                     </li>
                 </ul>
@@ -57,7 +57,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/teacher/edit?id=${sessionScope.teacher.teacherId}"><i class="fa fa-circle-o"></i>修改个人信息</a>
+                    <li><a href="${contextPath}/teacher/edit"><i class="fa fa-circle-o"></i>修改个人信息</a>
                     </li>
                 </ul>
             </li>

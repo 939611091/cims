@@ -49,19 +49,19 @@ public class TAttendanceController {
         map.put("params", params);
         return "manager/teacher/attendance_list";
     }
-
-    @RequestMapping(value = "/applyList", method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(Integer id, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
-        if (session.getAttribute("teacher")==null){
-            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
-            return "redirect:/teacher/login";
-        }
-        List<Apply_payVo> apply_payVoList = teacherService.selectByCourseId(id);
-        model.addAttribute("apply_payVoList",apply_payVoList);
-        List<Attendance_status> attendance_statusList = attendance_statusMapper.selectAll();
-        model.addAttribute("attendance_statusList",attendance_statusList);
-        return "manager/teacher/attendance_applyList";
-    }
+//
+//    @RequestMapping(value = "/applyList", method = {RequestMethod.GET, RequestMethod.POST})
+//    public String list(Integer id, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+//        if (session.getAttribute("teacher")==null){
+//            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+//            return "redirect:/teacher/login";
+//        }
+//        List<Apply_payVo> apply_payVoList = teacherService.selectByCourseId(id);
+//        model.addAttribute("apply_payVoList",apply_payVoList);
+//        List<Attendance_status> attendance_statusList = attendance_statusMapper.selectAll();
+//        model.addAttribute("attendance_statusList",attendance_statusList);
+//        return "manager/teacher/attendance_applyList";
+//    }
 
     /**
      * 考勤按钮
@@ -73,7 +73,7 @@ public class TAttendanceController {
     public String add(Integer id,Integer cPeriod, Map<String, Object> map, RedirectAttributes redirectAttributes) {
         applyService.updateSurplusHourByCourseId(id,cPeriod);
         redirectAttributes.addFlashAttribute("msgSuccess","成功提示：考勤成功");
-        return "redirect:/teacher/index";
+        return "redirect:/teacher/course/myList";
     }
 
     /**

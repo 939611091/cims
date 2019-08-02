@@ -80,20 +80,21 @@ public class TeacherIndexController {
 
     /**
      * 跳转编辑页面
-     * @param id
      * @param map
      * @param redirectAttributes
      * @param session
      * @return
      */
     @GetMapping("/edit")
-    public String editTeacher(Integer id, Map<String, Object> map, RedirectAttributes redirectAttributes,
+    public String editTeacher(Map<String, Object> map, RedirectAttributes redirectAttributes,
                               HttpSession session) {
         if (session.getAttribute("teacher")==null){
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/teacher/login";
         }
-        Teacher teacher = aTeacherService.selectByPrimaryKey(id);
+        //从session获取老师ID
+        Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
+        Teacher teacher = aTeacherService.selectByPrimaryKey(teacherId);
 
         map.put("teacher",teacher);
 
