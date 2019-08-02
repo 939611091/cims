@@ -3,11 +3,14 @@ package com.cims.controller.student;
 import com.cims.dao.Attendance_statusMapper;
 import com.cims.entity.*;
 import com.cims.service.*;
+import com.cims.vo.AttendanceVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +35,17 @@ public class SAttendanceController {
     @Autowired
     private AStudentService aStudentService;
 
+    @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
+    public String list(Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("student") == null) {
+            redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
+            return "redirect:/student/login";
+        }
+        Integer studentId=((Student)session.getAttribute("student")).getstudentId();
+        List<AttendanceVo> attendanceVoList = attendanceService.selectByStudentId(studentId);
+        model.addAttribute("attendanceVoList",attendanceVoList);
+        return "manager/student/attendance_list";
+    }
     /**
      * 填写对应课程的请假条
      *
@@ -84,4 +98,16 @@ public class SAttendanceController {
         }
     }
 
+
+    /**
+     * 删除
+     * @author vanh
+     * @date 2019/8/20
+     */
+    @GetMapping("/delete.do")
+    public String delete(Integer id, RedirectAttributes redirectAttributes) {
+        attendanceService.deleteByPrimaryKey(id);
+        redirectAttributes.addFlashAttribute("msgError","成功提示：取消成功");
+        return "redirect:/student/attendance/list";
+    }
 }

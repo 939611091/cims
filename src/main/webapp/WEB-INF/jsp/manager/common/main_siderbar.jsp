@@ -103,7 +103,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <%--${--%>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>查看考勤信息列表</a></li>
+                    <li><a href="${contextPath}/admin/attendance/list"><i class="fa fa-circle-o"></i>查看请假信息列表</a></li>
                     </li>
                 </ul>
             </li>

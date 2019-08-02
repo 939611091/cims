@@ -11,12 +11,22 @@ import java.util.Map;
 
 public interface AttendanceService {
     /**
-     * 通过map查询
-     *
+     * 老师端使用
+     * 通过老师ID查询
      * @param map
      * @return
      */
     PageInfo<AttendanceVo> selectByMap(Map<String, Object> map, int pageNum, int pageSize);
+
+    /**
+     * 管理员端
+     * 根据学生ID查
+     * @param map
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<AttendanceVo> selectByMap2(Map<String, Object> map, int pageNum, int pageSize);
     //查询全部
     List<AttendanceVo> selectAll();
     //添加
@@ -27,4 +37,14 @@ public interface AttendanceService {
     int updateByPrimaryKey(Attendance attendance);
     //删除
     int deleteByPrimaryKey(Integer id);
+
+    //已批准设为1
+    int updateTeacherState1ById(Integer id);
+    //不批准设为2
+    int updateTeacherState2ById(Integer id);
+
+    int updateStateById(Integer id);
+
+    //根据学生ID查考勤记录
+    List<AttendanceVo> selectByStudentId(Integer id);
 }

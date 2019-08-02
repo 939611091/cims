@@ -47,6 +47,24 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
     @Override
+    public PageInfo<AttendanceVo> selectByMap2(Map<String, Object> map, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        //查出所有考勤信息
+        List<Attendance> attendanceList = attendanceMapper.selectByMap2(map);
+        //定义考勤VO列表
+        List<AttendanceVo> attendanceVoList = new LinkedList<>();
+        //把课程逐个转成课程VO
+        for (Attendance attendance : attendanceList) {
+            attendanceVoList.add(assembleAttendanceVo(attendance));
+        }
+        //定义返回pageInfo结果集把课程列表传进去
+        PageInfo pageResult = new PageInfo(attendanceList);
+        //把vo传到结果集
+        pageResult.setList(attendanceVoList);
+        return pageResult;
+    }
+
+    @Override
     public List<AttendanceVo> selectAll() {
         return null;
     }
@@ -71,6 +89,32 @@ public class AttendanceServiceImpl implements AttendanceService {
         return attendanceMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public int updateTeacherState1ById(Integer id) {
+        return attendanceMapper.updateTeacherState1ById(id);
+    }
+
+    @Override
+    public int updateTeacherState2ById(Integer id) {
+        return attendanceMapper.updateTeacherState2ById(id);
+    }
+
+    @Override
+    public int updateStateById(Integer id) {
+        return attendanceMapper.updateStateById(id);
+    }
+
+    @Override
+    public List<AttendanceVo> selectByStudentId(Integer id) {
+        List<Attendance> attendanceList = attendanceMapper.selectByStudentId(id);
+        List<AttendanceVo> attendanceVoList = new LinkedList<>();
+        //for (循环变量类型 循环变量名称 : 要被遍历的对象) 循环体
+        for (Attendance attendance : attendanceList) {
+            attendanceVoList.add(assembleAttendanceVo(attendance));
+        }
+        return attendanceVoList;
+    }
+
 
     private AttendanceVo assembleAttendanceVo(Attendance attendance) {
         AttendanceVo attendanceVo = new AttendanceVo();
@@ -89,4 +133,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendanceVo.setStudent(student);
         return attendanceVo;
     }
+
+
+
 }

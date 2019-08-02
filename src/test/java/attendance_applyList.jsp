@@ -13,7 +13,7 @@
     <title>课程信息管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <jsp:include page="../common/required_css.jsp"/>
+    <jsp:include page="../../main/webapp/WEB-INF/jsp/manager/common/required_css.jsp"/>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -26,9 +26,9 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/teacher_header.jsp"/>
+        <jsp:include page="../../main/webapp/WEB-INF/jsp/manager/common/teacher_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/teacher_siderbar.jsp"/>
+        <jsp:include page="../../main/webapp/WEB-INF/jsp/manager/common/teacher_siderbar.jsp"/>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -112,7 +112,7 @@
         <!-- /.content-wrapper -->
 
         <!-- Main Footer -->
-        <jsp:include page="../common/main_footer.jsp"/>
+        <jsp:include page="../../main/webapp/WEB-INF/jsp/manager/common/main_footer.jsp"/>
 
         <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -121,7 +121,7 @@
     <!-- ./wrapper -->
 
     <%--后台必要的JavaScript库--%>
-    <jsp:include page="../common/required_js.jsp"/>
+    <jsp:include page="../../main/webapp/WEB-INF/jsp/manager/common/required_js.jsp"/>
 </body>
 
 </html>

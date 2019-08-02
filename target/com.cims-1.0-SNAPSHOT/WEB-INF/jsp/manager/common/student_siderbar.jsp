@@ -32,9 +32,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/student/course/list?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>浏览课程剩余学时</a>
+                    <li><a href="${contextPath}/student/course/list?id=${sessionScope.student.studentId}"><i class="fa fa-circle-o"></i>我的课程信息-剩余学时-请假</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>浏览我的请假记录</a>
+                    <li><a href="${contextPath}/student/attendance/list"><i class="fa fa-circle-o"></i>浏览我的请假记录</a>
                     </li>
                 </ul>
             </li>

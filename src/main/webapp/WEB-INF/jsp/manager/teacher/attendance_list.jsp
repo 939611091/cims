@@ -97,8 +97,11 @@
                                                             <c:when test="${attendanceVo.teacherState == 0}">
                                                                 <span class="label label-info badge-info">未批准</span>
                                                             </c:when>
+                                                            <c:when test="${attendanceVo.teacherState == 2}">
+                                                                <span class="label label-danger badge-danger">不批准</span>
+                                                            </c:when>
                                                             <c:otherwise>
-                                                                <span class="label label-danger badge-danger">已批准</span>
+                                                                <span class="label label-success badge-success">已批准</span>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </div>
@@ -106,14 +109,24 @@
                                                 <td><fmt:formatDate value="${attendanceVo.attendanceTime}"
                                                                     pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
                                                 <td class="mailbox-date">
-                                                     <div class="btn-group">
-                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/editAttendance?id=${attendanceVo.id}'">
-                                                             <i class="fa fa-fw fa-refresh"></i>批准
-                                                         </button>
-                                                    </div>
-                                                    <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/editAttendance?id=${attendanceVo.id}'">
-                                                        <i class="fa fa-fw fa-refresh"></i>不批准
-                                                    </button>
+                                                    <c:choose>
+                                                        <c:when test="${attendanceVo.teacherState == 0}">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateState1.do?id=${attendanceVo.id}'">
+                                                                    <i class="fa fa-fw fa-refresh"></i>批准
+                                                                </button>
+                                                            </div>
+                                                            <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateState2.do?id=${attendanceVo.id}'">
+                                                                <i class="fa fa-fw fa-refresh"></i>不批准
+                                                            </button>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                已操作
+                                                            </button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+
                                                 </td>
                                             </tr>
                                             </c:forEach>

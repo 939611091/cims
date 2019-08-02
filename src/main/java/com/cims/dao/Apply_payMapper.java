@@ -39,5 +39,11 @@ public interface Apply_payMapper {
 
     List<Apply_pay> selectByCourseId(Integer id);
 
+    /**
+     * 考勤用的，点击剩余学时-每次扣的学时
+     * @param id
+     * @param cPeriod
+     * @return
+     */
     int updateSurplusHourByCourseId(@Param("courseId")Integer id, @Param("cPeriod") Integer cPeriod);
 }

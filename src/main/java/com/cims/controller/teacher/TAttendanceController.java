@@ -1,27 +1,23 @@
 package com.cims.controller.teacher;
 
 import com.cims.dao.Attendance_statusMapper;
-import com.cims.entity.Apply_pay;
 import com.cims.entity.Attendance;
 import com.cims.entity.Attendance_status;
+import com.cims.entity.Teacher;
 import com.cims.service.ApplyService;
 import com.cims.service.AttendanceService;
 import com.cims.service.TeacherService;
 import com.cims.vo.Apply_payVo;
 import com.cims.vo.AttendanceVo;
-import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -78,5 +74,42 @@ public class TAttendanceController {
         applyService.updateSurplusHourByCourseId(id,cPeriod);
         redirectAttributes.addFlashAttribute("msgSuccess","成功提示：考勤成功");
         return "redirect:/teacher/index";
+    }
+
+    /**
+     * 判断你是否有权限
+     * 批准把状态调成1
+     * @param id
+     * @param redirectAttributes
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/updateState1.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String  updateTeacherState(Integer id,RedirectAttributes redirectAttributes, HttpSession session ){
+        Attendance attendance = attendanceService.selectByPrimaryKey(id);
+        //只能编辑自己的课程
+        Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
+        if(attendance.getTeacherId() != teacherId){
+            redirectAttributes.addFlashAttribute("msgSuccess","失败提示：你只能批准你负责的请假信息");
+            return "redirect:/teacher/attendance/list";
+        }
+        attendanceService.updateTeacherState2ById(id);
+        redirectAttributes.addFlashAttribute("msgSuccess","成功提示：已批准");
+        return "redirect:/teacher/attendance/list";
+    }
+
+
+    @RequestMapping(value = "/updateState2.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String  updateTeacherState2(Integer id,RedirectAttributes redirectAttributes, HttpSession session ){
+        Attendance attendance = attendanceService.selectByPrimaryKey(id);
+        //只能编辑自己的课程
+        Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
+        if(attendance.getTeacherId() != teacherId){
+            redirectAttributes.addFlashAttribute("msgSuccess","失败提示：你只能批准你负责的请假信息");
+            return "redirect:/teacher/attendance/list";
+        }
+        attendanceService.updateTeacherState2ById(id);
+        redirectAttributes.addFlashAttribute("msgSuccess","成功提示：不批准");
+        return "redirect:/teacher/attendance/list";
     }
 }

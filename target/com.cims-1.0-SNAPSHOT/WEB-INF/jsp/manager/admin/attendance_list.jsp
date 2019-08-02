@@ -25,9 +25,10 @@
     <div class="wrapper">
 
         <!-- Main Header -->
-        <jsp:include page="../common/teacher_header.jsp"/>
+        <jsp:include page="../common/main_header.jsp"/>
         <!-- Left side column. contains the logo and sidebar -->
-        <jsp:include page="../common/teacher_siderbar.jsp"/>
+        <jsp:include page="../common/main_siderbar.jsp"/>
+
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -45,6 +46,11 @@
 
             <!-- Main content -->
             <section class="content">
+                <div class="callout callout-info">
+                    <h4>提示！</h4>
+                    <p>每个课程最多只能请两次假，三次及三次以上请假不给予退费！</p>
+                    <p>只有批准状态为已批准和处理状态为未处理的情况下才能退费</p>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box box-primary">
@@ -52,15 +58,15 @@
                                 <h3 class="box-title">请假申请信息列表</h3>&nbsp&nbsp&nbsp&nbsp
                                 <h3 class="box-title">${msgSuccess}${msgError}</h3>
                                 <div class="box-tools pull-right">
-                                    <form action="${contextPath}/teacher/attendance/list" method="post" id="search">
+                                    <form action="${contextPath}/admin/attendance/list" method="post" id="search">
                                         <input name="pageNum" value="1" hidden>
                                         <input name="pageSize" value="10" hidden>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="根据老师Id" name="keyword" value="${params.get('keyword')}" >
+                                        <input type="text" class="form-control" placeholder="根据学生Id" name="keyword" value="${params.get('keyword')}" >
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <button type="button" class="btn btn-default"
-                                                onclick="location.href='${contextPath}/teacher/attendance/list';">
+                                                onclick="location.href='${contextPath}/admin/attendance/list';">
                                             <i class="fa fa-fw fa-refresh"></i>查询全部
                                         </button>
                                         <button type="button" class="btn btn-success" onclick="searchArticles({})"><i class="fa fa-fw fa-search"></i>查询
@@ -80,9 +86,11 @@
                                                 <td>请假ID</td>
                                                 <td>学生名</td>
                                                 <td>负责老师</td>
+                                                <td>老师电话</td>
                                                 <td>请假原因</td>
-                                                <td>批准状态</td>
                                                 <td>请假时间</td>
+                                                <td>批准状态</td>
+                                                <td>处理状态</td>
                                                 <td>操作</td>
                                             </tr>
                                             <c:forEach items="${pageResult.list}" var="attendanceVo">
@@ -90,7 +98,10 @@
                                                 <td>${attendanceVo.id}</td>
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
                                                 <td>${attendanceVo.teacher.name}</td>
+                                                <td>${attendanceVo.teacher.phone}</td>
                                                 <td>${attendanceVo.attendance_status.status}</td>
+                                                <td><fmt:formatDate value="${attendanceVo.attendanceTime}"
+                                                                    pattern="yyyy年MM月dd日"/></td>
                                                 <td>
                                                     <div class="caption">
                                                         <c:choose>
@@ -106,23 +117,36 @@
                                                         </c:choose>
                                                     </div>
                                                 </td>
-                                                <td><fmt:formatDate value="${attendanceVo.attendanceTime}"
-                                                                    pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
+                                                <td>
+                                                    <div class="caption">
+                                                        <c:choose>
+                                                            <c:when test="${attendanceVo.state == 0}">
+                                                                <span class="label label-danger badge-danger">未处理</span>
+                                                            </c:when>
+                                                            <c:when test="${attendanceVo.state == 1}">
+                                                                <span class="label label-success badge-success">已退费</span>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </div>
+                                                </td>
+
                                                 <td class="mailbox-date">
                                                     <c:choose>
-                                                        <c:when test="${attendanceVo.teacherState == 0}">
+                                                        <c:when test="${attendanceVo.state == 0 && attendanceVo.teacherState == 1}">
                                                             <div class="btn-group">
-                                                                <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateState1.do?id=${attendanceVo.id}'">
-                                                                    <i class="fa fa-fw fa-refresh"></i>批准
+                                                                <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/attendance/updateState.do?id=${attendanceVo.id}'">
+                                                                    <i class="fa fa-fw fa-refresh"></i>退费
                                                                 </button>
                                                             </div>
-                                                            <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateState2.do?id=${attendanceVo.id}'">
-                                                                <i class="fa fa-fw fa-refresh"></i>不批准
+                                                        </c:when>
+                                                        <c:when test="${attendanceVo.state == 1}">
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                已退费
                                                             </button>
                                                         </c:when>
                                                         <c:otherwise>
                                                             <button type="button" class="btn btn-default"disabled>
-                                                                已操作
+                                                                不满足退费条件
                                                             </button>
                                                         </c:otherwise>
                                                     </c:choose>
@@ -144,7 +168,7 @@
                                         <ul class="pagination pagination-sm no-margin pull-right">
                                             <li ${pageResult.hasPreviousPage? "":"class='disabled'"}>
                                                 <c:if test="${pageResult.hasPreviousPage}">
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${pageResult.prePage}">上一页</a>
+                                                    <a href="${contextPath}/admin/attendance/list?pageNum=${pageResult.prePage}">上一页</a>
                                                 </c:if>
                                                 <c:if test="${!pageResult.hasPreviousPage}">
                                                     <span>上一页</span>
@@ -152,12 +176,12 @@
                                             </li>
                                             <c:forEach items="${pageResult.navigatepageNums}" var="num">
                                                 <li ${pageResult.pageNum == num ? "class='active'":""}>
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${num}">${num}</a>
+                                                    <a href="${contextPath}/admin/attendance/list?pageNum=${num}">${num}</a>
                                                 </li>
                                             </c:forEach>
                                             <li ${pageResult.hasNextPage? "":"class='disabled'"}>
                                                 <c:if test="${pageResult.hasNextPage}">
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${pageResult.nextPage}">下一页</a>
+                                                    <a href="${contextPath}/admin/attendance/list?pageNum=${pageResult.nextPage}">下一页</a>
                                                 </c:if>
                                                 <c:if test="${!pageResult.hasNextPage}">
                                                     <span>下一页</span>
@@ -276,40 +300,7 @@
             $("#search").submit();
         }
 
-        //时间戳转时间
-        function timeTool (value) {  //13位时间戳
-            var date = new Date(value);
-            var Y = date.getFullYear() + '-';
-            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-            var D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + ' ';
-            // var h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
-            // var m = (date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()) + ':';
-            // var s = (date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds());+h+m+s
-            return (Y+M+D);
-        }
-        //模态框详情
-        function query(id) {
-            $.ajax({
-                url: "${contextPath}/teacher/course/modeDate",
-                async: true,
-                data: {"id": id},
-                type: "POST",
-                success: function (data) {
-                    $("#cName").val(data.cName);
-                    $("#cDescription").val(data.cDescription);
-                    $("#categoryName").val(data.categoryName);
-                    $("#teacherName").val(data.teacherName);
-                    $("#number").val(data.number);
-                    $("#price").val(data.price);
-                    $("#period").val(data.period);
-                    $("#beginTime").val(timeTool(data.beginTime));
-                    $("#overTime").val(timeTool(data.overTime));
-                    $("#schoolTime").val(data.schoolTime);
-                    $("#createTime").val(timeTool(data.createTime));
-                    $("#updateTime").val(timeTool(data.updateTime))
-                }
-            })
-        }
+
 
     </script>
 </body>

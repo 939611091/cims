@@ -21,4 +21,17 @@ public interface AttendanceMapper {
     int updateByPrimaryKey(Attendance record);
     //根据老师ID去查考勤记录
     List<Attendance> selectByMap(Map<String, Object> map);
+    //根据学生ID去查考勤记录
+    List<Attendance> selectByMap2(Map<String, Object> map);
+
+    //已批准设为1
+    int updateTeacherState1ById(Integer id);
+    //不批准设为2
+    int updateTeacherState2ById(Integer id);
+
+    //退费设置为1
+    int updateStateById(Integer id);
+
+    //根据学生ID查考勤记录
+    List<Attendance> selectByStudentId(Integer id);
 }
