@@ -3,8 +3,10 @@ package com.cims.controller.admin;
 
 import com.cims.entity.Course_category;
 import com.cims.service.CourseCategoryService;
+import com.cims.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ import java.util.Map;
 public class CourseCategoryController {
     @Autowired
     private CourseCategoryService courseCategoryService;
+    @Autowired
+    private CourseService courseService;
 
     /**
      * 列表界面
@@ -29,12 +33,14 @@ public class CourseCategoryController {
      * @date 2019/7/19
      */
     @GetMapping("/list")
-    public ModelAndView selectAll(){
-        ModelAndView mv = new ModelAndView();
+    public String selectAll(Model model, RedirectAttributes redirectAttributes, HttpSession session){
+        if (session.getAttribute("admin")==null){
+            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+            return "redirect:/admin/login";
+        }
         List<Course_category> list = courseCategoryService.selectAll();
-        mv.addObject("categoryList",list);
-        mv.setViewName("manager/admin/courseCategory_list");
-        return mv;
+        model.addAttribute("categoryList",list);
+        return "manager/admin/courseCategory_list";
     }
 
     /**
@@ -123,7 +129,10 @@ public class CourseCategoryController {
      */
     @GetMapping("/delete.do")
     public String delete(Integer id, RedirectAttributes redirectAttributes) {
+        //删除类别
         courseCategoryService.deleteByPrimaryKey(id);
+        //删除该类别所有课程
+        courseService.deleteByCategoryId(id);
         redirectAttributes.addFlashAttribute("msgError","成功提示：删除成功");
         return "redirect:/admin/courseCategory/list";
     }

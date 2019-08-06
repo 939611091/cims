@@ -109,14 +109,14 @@
             </li>
 
             <li class="treeview">
-                <a href="#"><i class="fa fa-laptop"></i> <span>管理考勤状态</span>
+                <a href="#"><i class="fa fa-laptop"></i> <span>管理请假状态</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <%--${--%>
-                    <li><a href="${contextPath}/admin/attendanceStatus/list"><i class="fa fa-circle-o"></i>查看考勤状态列表</a></li>
+                    <li><a href="${contextPath}/admin/attendanceStatus/list"><i class="fa fa-circle-o"></i>查看请假状态列表</a></li>
                         <li><a href="${contextPath}/admin/attendanceStatus/add"><i class="fa fa-circle-o"></i>添加考勤状态</a></li>
 
                 </ul>

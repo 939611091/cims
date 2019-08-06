@@ -242,7 +242,7 @@
   <select id="selectByCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select <include refid="Base_Column_List" />
         from course
-        where course_category_id = #{id,jdbcType=VARCHAR}
+        where course_category_id = #{id,jdbcType=VARCHAR} ORDER BY id DESC LIMIT 5
     </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
@@ -263,5 +263,16 @@
     <include refid="Base_Column_List" />
     from course
     where teacher_id = #{teacherId,jdbcType=INTEGER} ORDER BY create_time DESC
+  </select>
+
+  <delete id="deleteByCategoryId" parameterType="java.lang.Integer">
+    delete from course
+    where course_category_id = #{courseCategoryId,jdbcType=INTEGER}
+  </delete>
+
+  <select id="selectCourseBySix" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from course
+    ORDER BY id DESC LIMIT 6
   </select>
 </mapper>

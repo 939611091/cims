@@ -4,6 +4,7 @@ import com.cims.entity.Classroom;
 import com.cims.service.ClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +29,14 @@ public class ClassroomController {
      * @date 2019/7/19
      */
     @GetMapping("/list")
-    public ModelAndView getAllClassroom(){
-        ModelAndView mv = new ModelAndView();
+    public String getAllClassroom(Model model, RedirectAttributes redirectAttributes, HttpSession session){
+        if (session.getAttribute("admin")==null){
+            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+            return "redirect:/admin/login";
+        }
         List<Classroom> list = classroomService.getAllClassroom();
-        mv.addObject("classroomList",list);
-        mv.setViewName("manager/admin/classroom_list");
-        return mv;
+        model.addAttribute("classroomList",list);
+        return "manager/admin/classroom_list";
     }
 
     /**

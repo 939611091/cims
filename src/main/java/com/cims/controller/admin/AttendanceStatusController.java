@@ -5,6 +5,7 @@ import com.cims.entity.Course_category;
 import com.cims.service.AttendanceStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +31,14 @@ public class AttendanceStatusController {
      * @date 2019/7/19
      */
     @GetMapping("/list")
-    public ModelAndView selectAll(RedirectAttributes redirectAttributes, HttpSession session){
-
-        ModelAndView mv = new ModelAndView();
+    public String selectAll(Model model, RedirectAttributes redirectAttributes, HttpSession session){
+        if (session.getAttribute("admin")==null){
+            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+            return "redirect:/admin/login";
+        }
         List<Attendance_status> list = attendanceStatusService.selectAll();
-        mv.addObject("attendanceStatusList",list);
-        mv.setViewName("manager/admin/attendanceStatus_list");
-        return mv;
+        model.addAttribute("attendanceStatusList",list);
+        return "manager/admin/attendanceStatus_list";
     }
 
 

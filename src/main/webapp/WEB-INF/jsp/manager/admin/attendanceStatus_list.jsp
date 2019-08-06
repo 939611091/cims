@@ -48,8 +48,8 @@
                     <div class="col-md-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title">考勤状态列表</h3>
-                                <button type="button" class="btn btn-danger"onclick="location.href='${contextPath}/admin/attendanceStatus/add';"><i class="fa fa-fw fa-search"></i>添加考勤状态</button>&nbsp&nbsp&nbsp
+                                <h3 class="box-title">请假原因列表</h3>
+                                <button type="button" class="btn btn-danger"onclick="location.href='${contextPath}/admin/attendanceStatus/add';"><i class="fa fa-fw fa-search"></i>添加请假原因</button>&nbsp&nbsp&nbsp
                                 <h3 class="box-title">${msgSuccess}${msgError}</h3>
                             </div>
                             <!-- /.box-header -->

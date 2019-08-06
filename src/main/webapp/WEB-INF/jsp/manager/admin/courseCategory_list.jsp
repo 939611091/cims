@@ -45,6 +45,11 @@
 
             <!-- Main content -->
             <section class="content">
+                <div class="callout callout-info">
+                    <h4>提示！</h4>
+                    <p>前端显示的课程类别不能删除</p>
+                    <p>删除类别后，对应类别的课程也会被一起删除，请谨慎操作！！！</p>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box box-primary">
@@ -76,19 +81,43 @@
                                                     <td><fmt:formatDate value="${category.updateTime}"
                                                                         pattern="yyyy年MM月dd日 HH:mm"/></td>
                                                     <td class="mailbox-date">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/courseCategory/edit?id=${category.id}'">
-                                                                编辑
-                                                            </button>
-                                                            <button type="button" class="btn btn-default dropdown-toggle"
-                                                                    data-toggle="dropdown" aria-expanded="false">
-                                                                <span class="caret"></span>
-                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                            </button>
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li><a href="${contextPath}/admin/courseCategory/delete.do?id=${category.id}" onclick= "return confirm('确认删除？');">删除</a></li>
-                                                            </ul>
-                                                        </div>
+                                                        <c:choose>
+                                                            <c:when test="${category.id == 1}">
+                                                                <button type="button" class="btn btn-default"disabled>
+                                                                    用于前端显示无法编辑和删除
+                                                                </button>
+                                                            </c:when>
+                                                            <c:when test="${category.id == 2}">
+                                                                <button type="button" class="btn btn-default"disabled>
+                                                                    用于前端显示无法编辑和删除
+                                                                </button>
+                                                            </c:when>
+                                                            <c:when test="${category.id == 3}">
+                                                                <button type="button" class="btn btn-default"disabled>
+                                                                    用于前端显示无法编辑和删除
+                                                                </button>
+                                                            </c:when>
+                                                            <c:when test="${category.id == 4}">
+                                                                <button type="button" class="btn btn-default"disabled>
+                                                                    用于前端显示无法编辑和删除
+                                                                </button>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/courseCategory/edit?id=${category.id}'">
+                                                                        编辑
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                                                            data-toggle="dropdown" aria-expanded="false">
+                                                                        <span class="caret"></span>
+                                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="${contextPath}/admin/courseCategory/delete.do?id=${category.id}" onclick= "return confirm('删除后该类别所有课程也被删除。确认删除？');">删除</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

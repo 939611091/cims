@@ -40,4 +40,10 @@ public interface CourseMapper {
     int updateSurplusById(Integer id);
 
     List<Course> selectByTeacherId(Integer id);
+
+    //删除课程类型时，删除该类型所有的课程
+    int deleteByCategoryId(Integer id);
+
+    //前台课程中心，查出最新的6个课程
+    List<Course> selectCourseBySix();
 }

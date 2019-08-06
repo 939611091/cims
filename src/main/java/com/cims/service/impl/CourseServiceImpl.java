@@ -60,6 +60,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<CourseVo> selectByCategoryId(Integer id) {
+        //用于前端只显示最新的五个
         List<Course> courseList = courseMapper.selectByCategoryId(id);
         List<CourseVo> courseVoList = new LinkedList<>();
         for (Course course : courseList) {
@@ -104,6 +105,22 @@ public class CourseServiceImpl implements CourseService {
         Course course = courseMapper.selectById(id);
         CourseDetailsVo courseDetailsVo = assembleCourseDVo(course);
         return courseDetailsVo;
+    }
+
+    @Override
+    public int deleteByCategoryId(Integer id) {
+        return courseMapper.deleteByCategoryId(id);
+    }
+
+    @Override
+    public List<CourseVo> selectCourseBySix() {
+        List<Course> courseList = courseMapper.selectCourseBySix();
+        List<CourseVo> courseVoList = new LinkedList<>();
+        for (Course course : courseList) {
+            courseVoList.add(assembleCourseVo(course));
+        }
+
+        return courseVoList;
     }
 
 

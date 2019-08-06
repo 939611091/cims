@@ -19,7 +19,7 @@ public interface CourseService {
      * @return
      */
     PageInfo<CourseVo> selectByMap(Map<String, Object> map, int pageNum, int pageSize);
-    //用于前端分类
+    //用于前端分类只显示五个
     List<CourseVo> selectByCategoryId(Integer id);
     //添加
     int insert(Course course);
@@ -37,4 +37,11 @@ public interface CourseService {
 
     //根据id查vo
     CourseDetailsVo selectById(Integer id);
+
+    //删除课程类型时，删除该类型所有的课程
+    int deleteByCategoryId(Integer id);
+
+
+    //前台课程中心，查出最新的6个课程
+    List<CourseVo> selectCourseBySix();
 }

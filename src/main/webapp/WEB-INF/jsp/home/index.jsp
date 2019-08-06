@@ -74,7 +74,7 @@
 
             <!-- Start Header Navigation -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#brand">
+                <a class="navbar-brand" href="${contextPath}/index">
                     <img src="${contextPath}/resources/assets/images/logo2.png" class="logo logo-display m-top-10" alt="">
                     <img src="${contextPath}/resources/assets/images/logo2.png" class="logo logo-scrolled" alt="">
                 </a>
@@ -85,10 +85,20 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                     <li><a href="#classroom">教学环境</a></li>
-                    <li><a href="#dance">舞蹈</a></li>
-                    <li><a href="#music">音乐</a></li>
-                    <li><a href="#pe">体育运动</a></li>
-                    <li><a href="#other">其他兴趣</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我们的课程 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#dance">舞蹈</a></li>
+                            <li><a href="#music">音乐</a></li>
+                            <li><a href="#pe">体育运动</a></li>
+                            <li><a href="#other">其他兴趣</a></li>
+                            <li><a href="${contextPath}/course/index">更多课程</a></li>
+                        </ul>
+                    </li>
+                    <%--<li><a href="#dance">舞蹈</a></li>--%>
+                    <%--<li><a href="#music">音乐</a></li>--%>
+                    <%--<li><a href="#pe">体育运动</a></li>--%>
+                    <li><a href="${contextPath}/course/index">课程中心</a></li>
                     <li><a href="#teacher">师资力量</a></li>
                     <li><a href="#honor">学生荣誉</a></li>
                     <li><a href="#contact">联系我们</a></li>&nbsp;
@@ -238,12 +248,21 @@
                                     <p><em>价格：${courseVo.price}&nbsp;&nbsp;&nbsp;&nbsp; 人数：${courseVo.number}&nbsp;&nbsp;&nbsp;&nbsp;剩余名额：${courseVo.surplusNumber}</em></p>
                                     <p><em>开始时间：<fmt:formatDate value="${courseVo.beginTime}" pattern="yyyy年MM月dd日"/></em></p>
                                     <p><em>结束时间：<fmt:formatDate value="${courseVo.overTime}" pattern="yyyy年MM月dd日"/></em></p>
-                                    <p><em>上课老师：${courseVo.teacher.name}&nbsp&nbsp&nbsp&nbsp 上课时间：${courseVo.schoolTime}</em></p>
+                                    <p><em>上课老师：${courseVo.teacher.name}&nbsp;&nbsp;&nbsp;&nbsp; 上课时间：${courseVo.schoolTime}</em></p>
                                 </div>
                             </div>
                         </div>
                         </c:forEach>
-
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="test.html">查看更多课程</a></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
