@@ -79,7 +79,7 @@
                 </ul>
 
 
-                 <form class="navbar-form navbar-left" role="search">
+
                     <div class="form-group">
                         <form class="navbar-form navbar-left" action="${contextPath}/course/byKeyword" method="get">
                             <div class="input-group">
@@ -90,7 +90,7 @@
                             </div>
                         </form>
                     </div>
-                </form>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -131,9 +131,9 @@
                 <div class="main_blog text-center roomy-100">
                     <div class="col-sm-8 mr-sm-auto ml-sm-auto">
                         <div class="head_title text-center">
-                            <h2>最新课程</h2>
+                            <h2>${course_category.categoryName }</h2>
                             <div class="separator_auto"></div>
-                            <h4>下面是我们的最新推出课程，</h4>
+                            <h4>下面是我们的${course_category.categoryName }的课程，</h4>
                             <h4>喜欢就联系我们吧~</h4>
                         </div>
                     </div>

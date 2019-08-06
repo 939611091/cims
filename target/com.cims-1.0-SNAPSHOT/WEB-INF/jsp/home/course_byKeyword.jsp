@@ -79,18 +79,18 @@
                 </ul>
 
 
-                 <form class="navbar-form navbar-left" role="search">
+
                     <div class="form-group">
-                        <form class="navbar-form navbar-left" action="${contextPath}/course/byKeyword" method="get">
+                        <form class="navbar-form navbar-left" action="${contextPath}/home/course/byKeyword" method="get">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="keyword" placeholder="输入课程名搜索">
+                                <input type="text" class="form-control" value="${keyword}" name="keyword" placeholder="输入课程名搜索">
                                 <span class="input-group-btn">
                                   <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-fw fa-search"></i>&nbsp;搜索</button>
                                 </span>
                             </div>
                         </form>
                     </div>
-                </form>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -131,33 +131,41 @@
                 <div class="main_blog text-center roomy-100">
                     <div class="col-sm-8 mr-sm-auto ml-sm-auto">
                         <div class="head_title text-center">
-                            <h2>最新课程</h2>
+                            <h2>搜索到的课程</h2>
                             <div class="separator_auto"></div>
-                            <h4>下面是我们的最新推出课程，</h4>
+                            <h4>下面是根据你的关键字搜索到的课程，</h4>
                             <h4>喜欢就联系我们吧~</h4>
                         </div>
                     </div>
 
                     <div class="row">
-
-                        <c:forEach items="${courseVoList }" var="courseVo">
-                            <div class="col-md-4">
-                                <div class="blog_item m-top-20">
-                                    <div class="blog_item_img">
-                                        <img src="http://localhost:8080/${courseVo.cPhoto}" width="200" height="350" />
+                        <c:choose>
+                            <c:when test="${courseVoList.list != null && courseVoList.list.size() > 0}">
+                                <c:forEach items="${courseVoList.list }" var="courseVo">
+                                    <div class="col-md-4">
+                                        <div class="blog_item m-top-20">
+                                            <div class="blog_item_img">
+                                                <img src="http://localhost:8080/${courseVo.cPhoto}" width="200" height="350" />
+                                            </div>
+                                            <div class="blog_text roomy-40">
+                                                <h6>课程名：${courseVo.cName }</h6>
+                                                <p><em>课程简介：${courseVo.cDescription }</em></p>
+                                                <p>课程类别：${courseVo.course_category.categoryName}&nbsp;&nbsp;&nbsp;&nbsp; 课程时长：${courseVo.period}</p>
+                                                <p><em>价格：${courseVo.price}&nbsp;&nbsp;&nbsp;&nbsp; 人数：${courseVo.number}&nbsp;&nbsp;&nbsp;&nbsp;剩余名额：${courseVo.surplusNumber}</em></p>
+                                                <p><em>开始时间：<fmt:formatDate value="${courseVo.beginTime}" pattern="yyyy年MM月dd日"/></em></p>
+                                                <p><em>结束时间：<fmt:formatDate value="${courseVo.overTime}" pattern="yyyy年MM月dd日"/></em></p>
+                                                <p><em>上课老师：${courseVo.teacher.name}&nbsp;&nbsp;&nbsp;&nbsp; 上课时间：${courseVo.schoolTime}</em></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="blog_text roomy-40">
-                                        <h6>课程名：${courseVo.cName }</h6>
-                                        <p><em>课程简介：${courseVo.cDescription }</em></p>
-                                        <p>课程类别：${courseVo.course_category.categoryName}&nbsp;&nbsp;&nbsp;&nbsp; 课程时长：${courseVo.period}</p>
-                                        <p><em>价格：${courseVo.price}&nbsp;&nbsp;&nbsp;&nbsp; 人数：${courseVo.number}&nbsp;&nbsp;&nbsp;&nbsp;剩余名额：${courseVo.surplusNumber}</em></p>
-                                        <p><em>开始时间：<fmt:formatDate value="${courseVo.beginTime}" pattern="yyyy年MM月dd日"/></em></p>
-                                        <p><em>结束时间：<fmt:formatDate value="${courseVo.overTime}" pattern="yyyy年MM月dd日"/></em></p>
-                                        <p><em>上课老师：${courseVo.teacher.name}&nbsp;&nbsp;&nbsp;&nbsp; 上课时间：${courseVo.schoolTime}</em></p>
-                                    </div>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="col-md-12">
+                                    <h3>找不到你搜索的相关课程</h3>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>

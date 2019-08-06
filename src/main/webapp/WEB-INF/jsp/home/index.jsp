@@ -259,7 +259,7 @@
                                     <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
                                 </div>
                                 <div class="blog_text roomy-40">
-                                    <h3>点击--><a href="test.html">查看更多课程</a></h3>
+                                    <h3>点击--><a href="${contextPath}/course/index">查看更多课程</a></h3>
                                 </div>
                             </div>
                         </div>
@@ -306,7 +306,16 @@
                                 </div>
                             </div>
                         </c:forEach>
-
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="${contextPath}/course/index">查看更多课程</a></h3>
+                                </div>
+                            </div>
+                        </div>
                         
 
                     </div>
@@ -352,7 +361,16 @@
                                 </div>
                             </div>
                         </c:forEach>
-
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="${contextPath}/course/index">查看更多课程</a></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -396,7 +414,16 @@
                                 </div>
                             </div>
                         </c:forEach>
-
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="${contextPath}/course/index">查看更多课程</a></h3>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

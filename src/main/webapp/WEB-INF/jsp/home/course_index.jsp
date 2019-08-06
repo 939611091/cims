@@ -74,14 +74,14 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                     <c:forEach items="${categoryList }" var="category">
-                    <li><a href="#">${category.categoryName }</a></li>
+                    <li><a href="${contextPath}/course/byCategory?id=${category.id}">${category.categoryName }</a></li>
                     </c:forEach>
                 </ul>
 
 
                  <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <form class="navbar-form navbar-left" action="${contextPath}/search_by_keyword" method="get">
+                        <form class="navbar-form navbar-left" action="${contextPath}/course/byKeyword" method="get">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="keyword" placeholder="输入课程名搜索">
                                 <span class="input-group-btn">
@@ -133,7 +133,8 @@
                         <div class="head_title text-center">
                             <h2>最新课程</h2>
                             <div class="separator_auto"></div>
-                            <p>下面是我们的最新推出的课程，喜欢就联系我们吧</p>
+                            <h4>下面是我们的最新推出课程，</h4>
+                            <h4>喜欢就联系我们吧~</h4>
                         </div>
                     </div>
 
