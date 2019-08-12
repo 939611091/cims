@@ -71,6 +71,11 @@ public class ApplyServiceImpl implements ApplyService {
         return apply_payMapper.updateSurplusHourByCourseId(id,cPeriod);
     }
 
+    @Override
+    public int deleteByCourseId(Integer id) {
+        return apply_payMapper.deleteByCourseId(id);
+    }
+
 
     private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
         Apply_payVo apply_payVo = new Apply_payVo();

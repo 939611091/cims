@@ -28,4 +28,8 @@ public interface ApplyService {
     int deleteByPrimaryKey(Integer id);
     //考勤成功后更新apply的剩余课时
     int updateSurplusHourByCourseId(Integer id,Integer cPeriod);
+    /**
+     * 删除课程时根据课程ID删除对应的报名缴费信息
+     */
+    int deleteByCourseId(Integer id);
 }

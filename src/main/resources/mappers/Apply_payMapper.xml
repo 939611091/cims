@@ -183,4 +183,9 @@
         update_time = NOW()
     WHERE course_id = #{courseId,jdbcType=INTEGER};
   </update>
+
+  <delete id="deleteByCourseId" parameterType="java.lang.Integer">
+    delete from apply_pay
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </delete>
 </mapper>

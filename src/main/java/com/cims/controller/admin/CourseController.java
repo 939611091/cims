@@ -3,9 +3,7 @@ package com.cims.controller.admin;
 import com.cims.entity.Course;
 import com.cims.entity.Course_category;
 import com.cims.entity.Teacher;
-import com.cims.service.ATeacherService;
-import com.cims.service.CourseCategoryService;
-import com.cims.service.CourseService;
+import com.cims.service.*;
 import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
@@ -35,6 +33,10 @@ public class CourseController {
     private CourseCategoryService courseCategoryService;
     @Autowired
     private ATeacherService aTeacherService;
+    @Autowired
+    private PlanService planService;
+    @Autowired
+    private ApplyService applyService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@RequestParam(required = false, defaultValue = "1") int pageNum,
@@ -301,6 +303,10 @@ public class CourseController {
     @GetMapping("/delete.do")
     public String delete(Integer id, RedirectAttributes redirectAttributes) {
         courseService.deleteByPrimaryKey(id);
+        //删除同时把安排教室的记录也删除
+        planService.deleteByPrimaryKey(id);
+//        //把该课程对应的报名缴费信息也删除
+//        applyService.deleteByCourseId(id);
         redirectAttributes.addFlashAttribute("msgError","成功提示：删除成功");
         return "redirect:/admin/course/list";
     }

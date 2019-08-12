@@ -144,7 +144,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="${contextPath}/admin/student/list"><i class="fa fa-circle-o"></i>查看用户列表</a></li>
-                    <li><a href="${contextPath}/admin/student/addStudent"><i class="fa fa-circle-o"></i>添加新用户</a></li>
+                    <li><a href="${contextPath}/admin/student/addStudent"><i class="fa fa-circle-o"></i>添加学生</a></li>
                 </ul>
             </li>
 

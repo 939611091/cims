@@ -46,4 +46,9 @@ public interface Apply_payMapper {
      * @return
      */
     int updateSurplusHourByCourseId(@Param("courseId")Integer id, @Param("cPeriod") Integer cPeriod);
+
+    /**
+     * 删除课程时根据课程ID删除对应的报名缴费信息
+     */
+    int deleteByCourseId(Integer id);
 }

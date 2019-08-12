@@ -82,6 +82,12 @@
                                         <input type="file"     name = "fil" /><br>
                                     </div>
                                 </div>
+                                <div class="form-group" id="showPhoto">
+                                    <label  class="col-sm-2 control-label">目前照片</label>
+                                    <div class="col-sm-8">
+                                        <img src="http://localhost:8080/${honor.hPhoto}" width="200" height="350" />
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
