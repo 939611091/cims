@@ -3,11 +3,13 @@ package com.cims.controller.teacher;
 import com.cims.dao.Attendance_statusMapper;
 import com.cims.entity.Attendance;
 import com.cims.entity.Attendance_status;
+import com.cims.entity.Student;
 import com.cims.entity.Teacher;
 import com.cims.service.ApplyService;
 import com.cims.service.AttendanceService;
 import com.cims.service.TeacherService;
 import com.cims.vo.Apply_payVo;
+import com.cims.vo.AttendanceDetailsVo;
 import com.cims.vo.AttendanceVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,19 +38,32 @@ public class TAttendanceController {
     private ApplyService applyService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(@RequestParam(required = false, defaultValue = "1") int pageNum,
-                       @RequestParam(required = false, defaultValue = "10") int pageSize,
-                       @RequestParam Map<String, Object> params, RedirectAttributes redirectAttributes, HttpSession session,
-                       Map<String, Object> map) {
-        if (session.getAttribute("teacher")==null){
-            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+    public String list(Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("teacher") == null) {
+            redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
             return "redirect:/teacher/login";
         }
-        PageInfo<AttendanceVo> pageResult = attendanceService.selectByMap(params, pageNum, pageSize);
-        map.put("pageResult", pageResult);
-        map.put("params", params);
+        Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
+        List<AttendanceDetailsVo> attendanceDetailsVoList = attendanceService.selectByTeacherId(teacherId);
+        //根据报名ID查到课程信息
+
+        model.addAttribute("attendanceDetailsVoList",attendanceDetailsVoList);
         return "manager/teacher/attendance_list";
     }
+//    @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
+//    public String list(@RequestParam(required = false, defaultValue = "1") int pageNum,
+//                       @RequestParam(required = false, defaultValue = "10") int pageSize,
+//                       @RequestParam Map<String, Object> params, RedirectAttributes redirectAttributes, HttpSession session,
+//                       Map<String, Object> map) {
+//        if (session.getAttribute("teacher")==null){
+//            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+//            return "redirect:/teacher/login";
+//        }
+//        PageInfo<AttendanceVo> pageResult = attendanceService.selectByMap(params, pageNum, pageSize);
+//        map.put("pageResult", pageResult);
+//        map.put("params", params);
+//        return "manager/teacher/attendance_list";
+//    }
 //
 //    @RequestMapping(value = "/applyList", method = {RequestMethod.GET, RequestMethod.POST})
 //    public String list(Integer id, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
@@ -85,7 +100,7 @@ public class TAttendanceController {
      * @return
      */
     @RequestMapping(value = "/updateState1.do", method = {RequestMethod.GET, RequestMethod.POST})
-    public String  updateTeacherState(Integer id,RedirectAttributes redirectAttributes, HttpSession session ){
+    public String  updateTeacherState1(Integer id,RedirectAttributes redirectAttributes, HttpSession session ){
         Attendance attendance = attendanceService.selectByPrimaryKey(id);
         //只能编辑自己的课程
         Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
@@ -93,7 +108,7 @@ public class TAttendanceController {
             redirectAttributes.addFlashAttribute("msgSuccess","失败提示：你只能批准你负责的请假信息");
             return "redirect:/teacher/attendance/list";
         }
-        attendanceService.updateTeacherState2ById(id);
+        attendanceService.updateTeacherState1ById(id);
         redirectAttributes.addFlashAttribute("msgSuccess","成功提示：已批准");
         return "redirect:/teacher/attendance/list";
     }
@@ -110,6 +125,34 @@ public class TAttendanceController {
         }
         attendanceService.updateTeacherState2ById(id);
         redirectAttributes.addFlashAttribute("msgSuccess","成功提示：不批准");
+        return "redirect:/teacher/attendance/list";
+    }
+
+    /**
+     * 更新这个请假单确认学生是否到课
+     * 未到课把状态调成1
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/updateStudentState1.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String  updateStudentState1(Integer id,RedirectAttributes redirectAttributes ){
+        attendanceService.updateStudentState1ById(id);
+        redirectAttributes.addFlashAttribute("msgSuccess","成功提示：已成功操作学生未到课");
+        return "redirect:/teacher/attendance/list";
+    }
+
+    /**
+     * 更新这个请假单确认学生是否到课
+     * 到课把状态调成2
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/updateStudentState2.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String  updateStudentState2(Integer id,RedirectAttributes redirectAttributes ){
+        attendanceService.updateStudentState2ById(id);
+        redirectAttributes.addFlashAttribute("msgSuccess","成功提示：已成功操作学生到课");
         return "redirect:/teacher/attendance/list";
     }
 }

@@ -17,6 +17,8 @@ public class Attendance {
 
     private Integer teacherState;
 
+    private Integer studentState;
+
     private Date createTime;
 
     private Date updateTime;
@@ -31,14 +33,14 @@ public class Attendance {
         super();
     }
 
-
-    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, Date attendanceTime, Integer state, Integer teacherState, Date createTime, Date updateTime, Integer teacherId, Integer studentId) {
+    public Attendance(Integer id, Integer attendanceStatusId, Integer applyPayId, Date attendanceTime, Integer state, Integer teacherState, Integer studentState, Date createTime, Date updateTime, Integer teacherId, Integer studentId) {
         this.id = id;
         this.attendanceStatusId = attendanceStatusId;
         this.applyPayId = applyPayId;
         this.attendanceTime = attendanceTime;
         this.state = state;
         this.teacherState = teacherState;
+        this.studentState = studentState;
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.teacherId = teacherId;
@@ -93,6 +95,14 @@ public class Attendance {
         this.teacherState = teacherState;
     }
 
+    public Integer getStudentState() {
+        return studentState;
+    }
+
+    public void setStudentState(Integer studentState) {
+        this.studentState = studentState;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -137,6 +147,7 @@ public class Attendance {
         sb.append(", attendanceTime=").append(attendanceTime);
         sb.append(", state=").append(state);
         sb.append(", teacherState=").append(teacherState);
+        sb.append(", studentState=").append(studentState);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", teacherId=").append(teacherId);

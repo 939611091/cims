@@ -9,6 +9,7 @@
       <arg column="attendance_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="teacher_state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="student_state" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="teacher_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -16,7 +17,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, attendance_status_id, apply_pay_id, attendance_time, state,teacher_state, create_time, update_time,
+    id, attendance_status_id, apply_pay_id, attendance_time, state,teacher_state, student_state, create_time, update_time,
     teacher_id,student_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,10 +32,10 @@
   </delete>
   <insert id="insert" parameterType="com.cims.entity.Attendance">
     insert into attendance (id, attendance_status_id, apply_pay_id, 
-      attendance_time, state,teacher_state, create_time,
+      attendance_time, state,teacher_state,student_state, create_time,
       teacher_id,student_id)
     values (#{id,jdbcType=INTEGER}, #{attendanceStatusId,jdbcType=INTEGER}, #{applyPayId,jdbcType=INTEGER}, 
-      #{attendanceTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER},#{teacherState,jdbcType=INTEGER}, NOW(),
+      #{attendanceTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER},#{teacherState,jdbcType=INTEGER},#{studentState,jdbcType=INTEGER}, NOW(),
       #{teacherId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cims.entity.Attendance">
@@ -126,6 +127,7 @@
       attendance_time = #{attendanceTime,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=INTEGER},
       teacher_state = #{teacherState,jdbcType=INTEGER},
+      student_state = #{studentState,jdbcType=INTEGER},
       update_time = NOW(),
       teacher_id = #{teacherId,jdbcType=INTEGER},
       student_id = #{studentId,jdbcType=INTEGER}
@@ -140,6 +142,7 @@
     <if test="keyword != null and keyword.trim() != ''">
       and `teacher_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
     </if>
+    ORDER BY create_time DESC
   </select>
 
   <select id="selectByMap2" parameterType="Map" resultMap="BaseResultMap">
@@ -150,6 +153,7 @@
     <if test="keyword != null and keyword.trim() != ''">
       and `student_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
     </if>
+    ORDER BY create_time DESC
   </select>
 
 
@@ -167,6 +171,20 @@
     WHERE id = #{id,jdbcType=INTEGER};
   </update>
 
+  <update id="updateStudentState1ById" parameterType="com.cims.entity.Attendance">
+    UPDATE attendance
+    SET student_state = 1,
+        update_time = NOW()
+    WHERE id = #{id,jdbcType=INTEGER};
+  </update>
+
+  <update id="updateStudentState2ById" parameterType="com.cims.entity.Attendance">
+    UPDATE attendance
+    SET student_state = 2,
+        update_time = NOW()
+    WHERE id = #{id,jdbcType=INTEGER};
+  </update>
+
   <update id="updateStateById" parameterType="com.cims.entity.Attendance">
     UPDATE attendance
     SET state = 1,
@@ -180,4 +198,11 @@
     from attendance
     where student_id = #{studentId,jdbcType=INTEGER} ORDER BY create_time DESC
   </select>
+
+    <select id="selectByTeacherId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from attendance
+        where teacher_id = #{teacherId,jdbcType=INTEGER} ORDER BY create_time DESC
+    </select>
 </mapper>

@@ -91,7 +91,8 @@
                             <li><a href="#dance">舞蹈</a></li>
                             <li><a href="#music">音乐</a></li>
                             <li><a href="#pe">体育运动</a></li>
-                            <li><a href="#other">其他兴趣</a></li>
+                            <li><a href="#other">书法</a></li>
+                            <li><a href="${contextPath}/course/index">更多类别</a></li>
                             <li><a href="${contextPath}/course/index">更多课程</a></li>
                         </ul>
                     </li>
@@ -388,9 +389,9 @@
                 <div class="main_blog text-center roomy-100">
                     <div class="col-sm-8 mr-sm-auto ml-sm-auto">
                         <div class="head_title text-center">
-                            <h2>其他兴趣</h2>
+                            <h2>书法</h2>
                             <div class="separator_auto"></div>
-                            <h4>下面是我们的其他兴趣的课程，</h4>
+                            <h4>下面是我们的书法的课程，</h4>
                             <h4>喜欢就联系我们吧~</h4>
                         </div>
                     </div>

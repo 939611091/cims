@@ -88,6 +88,7 @@ public class SAttendanceController {
         //默认为0表示未批准未处理
         attendance.setState(0);
         attendance.setTeacherState(0);
+        attendance.setStudentState(0);
         //存储数据
         if(attendanceService.insert(attendance)>0){
             redirectAttributes.addFlashAttribute("msgSuccess","成功提示：申请成功");

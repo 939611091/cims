@@ -3,6 +3,7 @@ package com.cims.controller.admin;
 import com.cims.entity.Attendance;
 import com.cims.entity.Teacher;
 import com.cims.service.AttendanceService;
+import com.cims.vo.AttendanceDetailsVo;
 import com.cims.vo.AttendanceVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AttendanceController {
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/admin/login";
         }
-        PageInfo<AttendanceVo> pageResult = attendanceService.selectByMap2(params, pageNum, pageSize);
+        PageInfo<AttendanceDetailsVo> pageResult = attendanceService.selectByMap2(params, pageNum, pageSize);
         map.put("pageResult", pageResult);
         map.put("params", params);
         return "manager/admin/attendance_list";

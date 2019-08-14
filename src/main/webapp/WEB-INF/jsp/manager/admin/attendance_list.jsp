@@ -49,7 +49,7 @@
                 <div class="callout callout-info">
                     <h4>提示！</h4>
                     <p>每个课程最多只能请两次假，三次及三次以上请假不给予退费！</p>
-                    <p>只有批准状态为已批准和处理状态为未处理的情况下才能退费</p>
+                    <p>只有批准状态为已批准和学生状态为未到课和处理状态为未处理的情况下才能退费</p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -83,19 +83,21 @@
                                     <table id="example1" class="table table-bordered">
                                         <tbody>
                                             <tr align="center">
-                                                <td>请假ID</td>
                                                 <td>学生名</td>
+                                                <td>请假课程名</td>
                                                 <td>负责老师</td>
                                                 <td>老师电话</td>
                                                 <td>请假原因</td>
                                                 <td>请假时间</td>
-                                                <td>批准状态</td>
+                                                <td>老师批准状态</td>
+                                                <td>学生到课状态</td>
                                                 <td>处理状态</td>
                                                 <td>操作</td>
                                             </tr>
                                             <c:forEach items="${pageResult.list}" var="attendanceVo">
                                             <tr align="center">
-                                                <td>${attendanceVo.id}</td>
+                                                <td>${attendanceVo.apply_pay.payStudent}</td>
+                                                <td>${attendanceVo.courseName}</td>
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
                                                 <td>${attendanceVo.teacher.name}</td>
                                                 <td>${attendanceVo.teacher.phone}</td>
@@ -108,12 +110,27 @@
                                                             <c:when test="${attendanceVo.teacherState == 0}">
                                                                 <span class="label label-info badge-info">未批准</span>
                                                             </c:when>
+                                                            <c:when test="${attendanceVo.teacherState == 1}">
+                                                                <span class="label label-success badge-success">批准</span>
+                                                            </c:when>
                                                             <c:when test="${attendanceVo.teacherState == 2}">
                                                                 <span class="label label-danger badge-danger">不批准</span>
                                                             </c:when>
-                                                            <c:otherwise>
-                                                                <span class="label label-success badge-success">已批准</span>
-                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="caption">
+                                                        <c:choose>
+                                                            <c:when test="${attendanceVo.studentState == 0}">
+                                                                <span class="label label-info badge-info">未确认</span>
+                                                            </c:when>
+                                                            <c:when test="${attendanceVo.studentState == 1}">
+                                                                <span class="label label-success badge-success">未到课</span>
+                                                            </c:when>
+                                                            <c:when test="${attendanceVo.studentState == 2}">
+                                                                <span class="label label-danger badge-danger">到课</span>
+                                                            </c:when>
                                                         </c:choose>
                                                     </div>
                                                 </td>
@@ -121,10 +138,10 @@
                                                     <div class="caption">
                                                         <c:choose>
                                                             <c:when test="${attendanceVo.state == 0}">
-                                                                <span class="label label-danger badge-danger">未处理</span>
+                                                                <span class="label label-success badge-success">未处理</span>
                                                             </c:when>
                                                             <c:when test="${attendanceVo.state == 1}">
-                                                                <span class="label label-success badge-success">已退费</span>
+                                                                <span class="label label-danger badge-danger">已退费</span>
                                                             </c:when>
                                                         </c:choose>
                                                     </div>
@@ -132,7 +149,7 @@
 
                                                 <td class="mailbox-date">
                                                     <c:choose>
-                                                        <c:when test="${attendanceVo.state == 0 && attendanceVo.teacherState == 1}">
+                                                        <c:when test="${attendanceVo.state == 0 && attendanceVo.teacherState == 1 && attendanceVo.studentState == 1}">
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/attendance/updateState.do?id=${attendanceVo.id}'">
                                                                     <i class="fa fa-fw fa-refresh"></i>退费

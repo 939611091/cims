@@ -8,12 +8,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class AttendanceVo {
+public class AttendanceDetailsVo {
     private Integer id;
 
     private Attendance_status attendance_status;
 
     private Apply_pay apply_pay;
+
+    private String courseName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date attendanceTime;
 
@@ -53,6 +55,14 @@ public class AttendanceVo {
 
     public void setApply_pay(Apply_pay apply_pay) {
         this.apply_pay = apply_pay;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public Date getAttendanceTime() {
@@ -121,10 +131,11 @@ public class AttendanceVo {
 
     @Override
     public String toString() {
-        return "AttendanceVo{" +
+        return "AttendanceDetailsVo{" +
                 "id=" + id +
                 ", attendance_status=" + attendance_status +
                 ", apply_pay=" + apply_pay +
+                ", courseName='" + courseName + '\'' +
                 ", attendanceTime=" + attendanceTime +
                 ", state=" + state +
                 ", teacherState=" + teacherState +

@@ -51,24 +51,7 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">请假申请信息列表</h3>&nbsp&nbsp&nbsp&nbsp
                                 <h3 class="box-title">${msgSuccess}${msgError}</h3>
-                                <div class="box-tools pull-right">
-                                    <form action="${contextPath}/teacher/attendance/list" method="post" id="search">
-                                        <input name="pageNum" value="1" hidden>
-                                        <input name="pageSize" value="10" hidden>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="根据老师Id" name="keyword" value="${params.get('keyword')}" >
-                                    </div>
-                                    <div class="col-md-6 text-right">
-                                        <button type="button" class="btn btn-default"
-                                                onclick="location.href='${contextPath}/teacher/attendance/list';">
-                                            <i class="fa fa-fw fa-refresh"></i>查询全部
-                                        </button>
-                                        <button type="button" class="btn btn-success" onclick="searchArticles({})"><i class="fa fa-fw fa-search"></i>查询
-                                        </button>
-                                    </div>
-                                    </form>
-                                </div>
-                                <!-- /.box-tools -->
+
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
@@ -79,17 +62,20 @@
                                             <tr align="center">
                                                 <td>请假ID</td>
                                                 <td>学生名</td>
-                                                <td>负责老师</td>
+                                                <td>请假课程名</td>
                                                 <td>请假原因</td>
                                                 <td>批准状态</td>
+                                                <td>到课状态</td>
                                                 <td>请假时间</td>
-                                                <td>操作</td>
+                                                <td>申请时间</td>
+                                                <td>批准操作</td>
+                                                <td>确认到课操作</td>
                                             </tr>
-                                            <c:forEach items="${pageResult.list}" var="attendanceVo">
+                                            <c:forEach items="${attendanceDetailsVoList}" var="attendanceVo">
                                             <tr align="center">
                                                 <td>${attendanceVo.id}</td>
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
-                                                <td>${attendanceVo.teacher.name}</td>
+                                                <td>${attendanceVo.courseName}</td>
                                                 <td>${attendanceVo.attendance_status.status}</td>
                                                 <td>
                                                     <div class="caption">
@@ -97,16 +83,33 @@
                                                             <c:when test="${attendanceVo.teacherState == 0}">
                                                                 <span class="label label-info badge-info">未批准</span>
                                                             </c:when>
+                                                            <c:when test="${attendanceVo.teacherState == 1}">
+                                                                <span class="label label-success badge-success">批准</span>
+                                                            </c:when>
                                                             <c:when test="${attendanceVo.teacherState == 2}">
                                                                 <span class="label label-danger badge-danger">不批准</span>
                                                             </c:when>
-                                                            <c:otherwise>
-                                                                <span class="label label-success badge-success">已批准</span>
-                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="caption">
+                                                        <c:choose>
+                                                            <c:when test="${attendanceVo.studentState == 0}">
+                                                                <span class="label label-info badge-info">未确认</span>
+                                                            </c:when>
+                                                            <c:when test="${attendanceVo.studentState == 1}">
+                                                                <span class="label label-success badge-success">未到课</span>
+                                                            </c:when>
+                                                            <c:when test="${attendanceVo.studentState == 2}">
+                                                                <span class="label label-danger badge-danger">到课</span>
+                                                            </c:when>
                                                         </c:choose>
                                                     </div>
                                                 </td>
                                                 <td><fmt:formatDate value="${attendanceVo.attendanceTime}"
+                                                                    pattern="yyyy年MM月dd日"/></td>
+                                                <td><fmt:formatDate value="${attendanceVo.createTime}"
                                                                     pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
                                                 <td class="mailbox-date">
                                                     <c:choose>
@@ -128,6 +131,36 @@
                                                     </c:choose>
 
                                                 </td>
+                                                <td class="mailbox-date">
+                                                    <c:choose>
+                                                        <c:when test="${attendanceVo.studentState == 0 && attendanceVo.teacherState == 1}">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateStudentState1.do?id=${attendanceVo.id}'">
+                                                                    <i class="fa fa-fw fa-refresh"></i>未到课
+                                                                </button>
+                                                            </div>
+                                                            <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/updateStudentState2.do?id=${attendanceVo.id}'">
+                                                                <i class="fa fa-fw fa-refresh"></i>到课
+                                                            </button>
+                                                        </c:when>
+                                                        <c:when test="${attendanceVo.teacherState == 2}">
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                未批准无需确认
+                                                            </button>
+                                                        </c:when>
+                                                        <c:when test="${attendanceVo.teacherState == 0}">
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                未批准无需确认
+                                                            </button>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                已操作
+                                                            </button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+
+                                                </td>
                                             </tr>
                                             </c:forEach>
                                         </tbody>
@@ -138,35 +171,7 @@
                                 <!-- /.mail-box-messages -->
                             </div>
                             <!-- /.box-body -->
-                            <div class="box-footer no-padding">
-                                <div class="mailbox-controls">
-                                    <div class="box-footer clearfix">
-                                        <ul class="pagination pagination-sm no-margin pull-right">
-                                            <li ${pageResult.hasPreviousPage? "":"class='disabled'"}>
-                                                <c:if test="${pageResult.hasPreviousPage}">
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${pageResult.prePage}">上一页</a>
-                                                </c:if>
-                                                <c:if test="${!pageResult.hasPreviousPage}">
-                                                    <span>上一页</span>
-                                                </c:if>
-                                            </li>
-                                            <c:forEach items="${pageResult.navigatepageNums}" var="num">
-                                                <li ${pageResult.pageNum == num ? "class='active'":""}>
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${num}">${num}</a>
-                                                </li>
-                                            </c:forEach>
-                                            <li ${pageResult.hasNextPage? "":"class='disabled'"}>
-                                                <c:if test="${pageResult.hasNextPage}">
-                                                    <a href="${contextPath}/teacher/attendance/list?pageNum=${pageResult.nextPage}">下一页</a>
-                                                </c:if>
-                                                <c:if test="${!pageResult.hasNextPage}">
-                                                    <span>下一页</span>
-                                                </c:if>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <!-- /. box -->
                         <%--<!-- 模态框 -->--%>

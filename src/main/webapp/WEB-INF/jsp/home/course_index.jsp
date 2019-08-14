@@ -79,18 +79,16 @@
                 </ul>
 
 
-                 <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <form class="navbar-form navbar-left" action="${contextPath}/course/byKeyword" method="get">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="keyword" placeholder="输入课程名搜索">
-                                <span class="input-group-btn">
+                <div class="form-group">
+                    <form class="navbar-form navbar-left" action="${contextPath}/home/course/byKeyword" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="${keyword}" name="keyword" placeholder="输入课程名搜索">
+                            <span class="input-group-btn">
                                   <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-fw fa-search"></i>&nbsp;搜索</button>
                                 </span>
-                            </div>
-                        </form>
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
