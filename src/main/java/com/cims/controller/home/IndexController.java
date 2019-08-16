@@ -28,8 +28,8 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(Model model) {
-        //获取老师信息显示到前端
-        List<Teacher> teacherList = aTeacherService.selectAll();
+        //获取五个最新老师信息显示到前端
+        List<Teacher> teacherList = aTeacherService.selectAll5();
         model.addAttribute("teacherList",teacherList);
 
         //获取舞蹈课程到前端
@@ -49,8 +49,8 @@ public class IndexController {
         List<CourseVo> courseVoList4 = courseService.selectByCategoryId(otherId);
         model.addAttribute("courseVoList4",courseVoList4);
 
-        //获取学生荣誉到前端
-        List<HonorVo> honorVoList =honorService.selectAll();
+        //获取5个最新学生荣誉到前端
+        List<HonorVo> honorVoList =honorService.selectAll5();
         model.addAttribute("honorVoList",honorVoList);
         return "home/index";
     }

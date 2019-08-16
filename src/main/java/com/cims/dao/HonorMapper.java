@@ -26,6 +26,9 @@ public interface HonorMapper {
      * @return
      */
     List<Honor> selectByMap(Map<String, Object> map);
-    //用于前端显示
+    //用于学生荣誉中心显示
     List<Honor> selectAll();
+
+    //用于前端首页展示
+    List<Honor> selectAll5();
 }

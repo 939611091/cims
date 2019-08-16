@@ -132,4 +132,10 @@
     <include refid="Base_Column_List" />
     from `honor`
   </select>
+
+  <select id="selectAll5" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `honor` ORDER BY id DESC LIMIT 5
+  </select>
 </mapper>

@@ -169,6 +169,12 @@
     from `teacher`
   </select>
 
+  <select id="selectAll5" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `teacher` ORDER BY teacherId DESC LIMIT 5
+  </select>
+
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List" />

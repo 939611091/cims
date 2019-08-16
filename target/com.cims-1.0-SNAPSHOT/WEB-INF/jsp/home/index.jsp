@@ -463,6 +463,16 @@
                             </div>
                         </div>
                         </c:forEach>
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="${contextPath}/home/teacher/index">查看更多老师</a></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -502,6 +512,17 @@
                                 </div>
                             </div>
                         </c:forEach>
+
+                        <div class="col-md-4">
+                            <div class="blog_item m-top-20">
+                                <div class="blog_item_img">
+                                    <img src="${contextPath}/resources/assets/images/more.jpg" width="200" height="350" />
+                                </div>
+                                <div class="blog_text roomy-40">
+                                    <h3>点击--><a href="${contextPath}/studentHonor/index">查看更多学生荣誉</a></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

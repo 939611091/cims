@@ -22,7 +22,10 @@ public interface TeacherMapper {
 
     int updateByPrimaryKey(Teacher record);
 
-    //用于前端展示
+    //用于前端首页展示
+    List<Teacher> selectAll5();
+
+    //用于前端教师中心展示
     List<Teacher> selectAll();
 
     /**

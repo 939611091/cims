@@ -19,6 +19,8 @@ public interface HonorService {
     PageInfo<HonorVo> selectByMap(Map<String, Object> map, int pageNum, int pageSize);
     //查询全部
     List<HonorVo> selectAll();
+    //用于前端首页展示
+    List<HonorVo> selectAll5();
     //添加
     int insert(Honor honor);
     //根据主键查

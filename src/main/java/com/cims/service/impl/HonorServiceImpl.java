@@ -37,6 +37,16 @@ public class HonorServiceImpl implements HonorService {
     }
 
     @Override
+    public List<HonorVo> selectAll5() {
+        List<Honor> honorList = honorMapper.selectAll5();
+        List<HonorVo> honorVoList = new LinkedList<>();
+        for (Honor honor : honorList) {
+            honorVoList.add(assembleHonorVo(honor));
+        }
+        return honorVoList;
+    }
+
+    @Override
     public int insert(Honor honor) {
         return honorMapper.insert(honor);
     }

@@ -67,4 +67,9 @@ public class ATeacherServiceImpl implements ATeacherService {
     public List<Teacher> selectAll() {
         return teacherMapper.selectAll();
     }
+
+    @Override
+    public List<Teacher> selectAll5() {
+        return teacherMapper.selectAll5();
+    }
 }

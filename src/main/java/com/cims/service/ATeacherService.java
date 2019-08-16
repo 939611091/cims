@@ -34,4 +34,7 @@ public interface ATeacherService {
     String selectPasswordById(Integer teacherId);
     //查询所有--用于前端显示
     List<Teacher> selectAll();
+    //用于前端首页展示
+    List<Teacher> selectAll5();
+
 }
