@@ -82,11 +82,21 @@
                                                                     pattern="yyyy年MM月dd日"/></td>
                                                 <td>${apply_payVo.surplusHour}</td>
                                                 <td class="mailbox-date">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/student/attendance/add?id=${apply_payVo.id}'">
-                                                            <i class="fa fa-fw fa-refresh"></i>我要请假
-                                                        </button>
-                                                    </div>
+                                                    <c:choose>
+                                                        <c:when test="${apply_payVo.surplusHour > 0}">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/student/attendance/add?id=${apply_payVo.id}'">
+                                                                <i class="fa fa-fw fa-refresh"></i>我要请假
+                                                            </button>
+                                                        </div>
+                                                        </c:when>
+                                                        <c:when test="${apply_payVo.surplusHour == 0}">
+                                                            <button type="button" class="btn btn-default"disabled>
+                                                                课程已结束
+                                                            </button>
+                                                        </c:when>
+                                                    </c:choose>
+
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"
                                                             onclick="query(${apply_payVo.course.id})">
                                                         <i class="fa fa-fw fa-refresh"></i>查看课程详情
