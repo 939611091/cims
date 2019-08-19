@@ -32,4 +32,7 @@ public interface ApplyService {
      * 删除课程时根据课程ID删除对应的报名缴费信息
      */
     int deleteByCourseId(Integer id);
+
+    //根据主键查
+    Apply_payVo selectById(Integer id);
 }

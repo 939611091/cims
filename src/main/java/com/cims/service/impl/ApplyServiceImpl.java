@@ -76,6 +76,13 @@ public class ApplyServiceImpl implements ApplyService {
         return apply_payMapper.deleteByCourseId(id);
     }
 
+    @Override
+    public Apply_payVo selectById(Integer id) {
+        Apply_pay apply_pay = apply_payMapper.selectByPrimaryKey(id);
+        Apply_payVo  apply_payVo = assembleApplyVo(apply_pay);
+        return apply_payVo;
+    }
+
 
     private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
         Apply_payVo apply_payVo = new Apply_payVo();

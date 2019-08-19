@@ -181,4 +181,30 @@ public class ApplyController {
             return "redirect:/admin/apply/list";
         }
     }
+
+    /**
+     * 跳转打印页面
+     * @param id
+     * @param map
+     * @param redirectAttributes
+     * @param session
+     * @return
+     */
+    @GetMapping("/printApply")
+    public String printApply(Integer id, Map<String, Object> map,RedirectAttributes redirectAttributes,
+                             HttpSession session) {
+        if (session.getAttribute("admin") == null) {
+            redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
+            return "redirect:/admin/login";
+        }
+        Apply_payVo apply_payVo = applyService.selectById(id);
+        map.put("apply_payVo",apply_payVo);
+        // 修改时间格式
+        if(apply_payVo.getPayTime() != null){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String pay_time = sdf.format(apply_payVo.getPayTime());
+            map.put("pay_time",pay_time);
+        }
+        return "manager/admin/apply_print";
+    }
 }

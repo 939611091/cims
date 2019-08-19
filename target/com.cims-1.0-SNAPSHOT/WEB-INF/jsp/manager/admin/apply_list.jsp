@@ -75,9 +75,9 @@
                                         <tbody>
                                             <tr align="center">
                                                 <td>报名缴费ID</td>
-                                                <td>学生ID</td>
+                                                <td>所属学生</td>
                                                 <td>课程名</td>
-                                                <td>学生名</td>
+                                                <td>付款学生</td>
                                                 <td>课程金额</td>
                                                 <td>实付金额</td>
                                                 <td>支付时间</td>
@@ -88,7 +88,7 @@
                                             <c:forEach items="${pageResult.list}" var="apply_payVo">
                                             <tr align="center">
                                                 <td>${apply_payVo.id}</td>
-                                                <td>${apply_payVo.student.studentId}</td>
+                                                <td>${apply_payVo.student.name}</td>
                                                 <td>${apply_payVo.course.cName}</td>
                                                 <td>${apply_payVo.payStudent}</td>
                                                 <td>${apply_payVo.course.price}</td>
@@ -103,6 +103,9 @@
                                                          <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/apply/editApply?id=${apply_payVo.id}'">
                                                              <i class="fa fa-fw fa-refresh"></i>编辑
                                                          </button>
+                                                         <a role="button" href="${contextPath}/admin/apply/printApply?id=${apply_payVo.id}" class="btn btn-outline-info" target="_blank" >
+                                                             <span class="btn-label"><i class="fa fa-print"></i></span>打印
+                                                         </a>
                                                         <%--<button type="button" class="btn btn-default dropdown-toggle"
                                                                 data-toggle="dropdown" aria-expanded="false">
                                                             <span class="caret"></span>
