@@ -19,6 +19,9 @@ public interface StudentMapper {
 
     int updateByPrimaryKey(Student record);
 
+    //用于查询学生ID
+    List<Student> selectAll();
+
     /**
      * 通过map查询
      *

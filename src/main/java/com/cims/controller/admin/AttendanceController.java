@@ -1,7 +1,9 @@
 package com.cims.controller.admin;
 
 import com.cims.entity.Attendance;
+import com.cims.entity.Student;
 import com.cims.entity.Teacher;
+import com.cims.service.AStudentService;
 import com.cims.service.AttendanceService;
 import com.cims.vo.AttendanceDetailsVo;
 import com.cims.vo.AttendanceVo;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,6 +24,8 @@ import java.util.Map;
 public class AttendanceController {
     @Autowired
     private AttendanceService attendanceService;
+    @Autowired
+    private AStudentService aStudentService;
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@RequestParam(required = false, defaultValue = "1") int pageNum,
                        @RequestParam(required = false, defaultValue = "10") int pageSize,
@@ -30,6 +35,9 @@ public class AttendanceController {
             redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
             return "redirect:/admin/login";
         }
+        //用于查询学生ID
+        List<Student> studentList = aStudentService.selectAll();
+        map.put("studentList", studentList);
         PageInfo<AttendanceDetailsVo> pageResult = attendanceService.selectByMap2(params, pageNum, pageSize);
         map.put("pageResult", pageResult);
         map.put("params", params);

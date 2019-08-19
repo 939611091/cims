@@ -26,6 +26,11 @@ public class AStudentServiceImpl implements AStudentService {
     }
 
     @Override
+    public List<Student> selectAll() {
+        return studentMapper.selectAll();
+    }
+
+    @Override
     public int selectByUsername(String username) {
         return studentMapper.selectByUsername(username);
     }

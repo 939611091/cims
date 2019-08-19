@@ -7,7 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8697b1db-d21c-4e72-9d12-c64833f3fb91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cims/dao/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cims/dao/StudentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cims/service/AStudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cims/service/AStudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cims/service/impl/AStudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cims/service/impl/AStudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/StudentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,7 +85,7 @@
     <session id="-1797936740">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="32" />
+          <entry key="project.closed" value="33" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.107" value="1" />
@@ -86,7 +93,7 @@
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.2" value="5" />
+          <entry key="project.open.time.2" value="6" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.22" value="1" />
@@ -117,29 +124,29 @@
           <entry key="project.open.time.69" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.70" value="1" />
-          <entry key="project.opened" value="62" />
+          <entry key="project.opened" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="1" />
           <entry key="dummy" value="51" />
-          <entry key="java" value="10887" />
-          <entry key="jsp" value="5881" />
+          <entry key="java" value="10940" />
+          <entry key="jsp" value="5961" />
           <entry key="properties" value="21" />
           <entry key="txt" value="7" />
-          <entry key="xml" value="1025" />
+          <entry key="xml" value="1027" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10887" />
-          <entry key="JSP" value="5881" />
+          <entry key="JAVA" value="10940" />
+          <entry key="JSP" value="5961" />
           <entry key="PLAIN_TEXT" value="58" />
           <entry key="Properties" value="21" />
           <entry key="SQL" value="26" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="999" />
+          <entry key="XML" value="1001" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -151,15 +158,15 @@
           <entry key="gif" value="1" />
           <entry key="html" value="8" />
           <entry key="iml" value="1" />
-          <entry key="java" value="1045" />
+          <entry key="java" value="1056" />
           <entry key="jpg" value="10" />
           <entry key="js" value="3" />
-          <entry key="jsp" value="605" />
+          <entry key="jsp" value="611" />
           <entry key="png" value="9" />
           <entry key="properties" value="22" />
           <entry key="sql" value="2" />
           <entry key="tld" value="2" />
-          <entry key="xml" value="231" />
+          <entry key="xml" value="233" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -169,12 +176,12 @@
           <entry key="HTML" value="8" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="20" />
-          <entry key="JAVA" value="1045" />
-          <entry key="JSP" value="605" />
+          <entry key="JAVA" value="1056" />
+          <entry key="JSP" value="611" />
           <entry key="JavaScript" value="3" />
           <entry key="Properties" value="22" />
           <entry key="Scratch" value="3" />
-          <entry key="XML" value="233" />
+          <entry key="XML" value="235" />
         </counts>
       </usages-collector>
     </session>
@@ -182,28 +189,68 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/student/SAttendanceController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/course_add.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="68" column="66" lean-forward="true" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="92" column="103" selection-start-line="92" selection-start-column="103" selection-end-line="92" selection-end-column="103" />
+            <state relative-caret-position="252">
+              <caret line="26" column="109" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="26" selection-end-column="109" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/attendance_list.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="130" column="63" lean-forward="true" selection-start-line="124" selection-start-column="56" selection-end-line="130" selection-end-column="63" />
+            <state relative-caret-position="88">
+              <caret line="66" column="56" lean-forward="true" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="119" column="114" selection-start-line="119" selection-start-column="114" selection-end-line="119" selection-end-column="114" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/AStudentService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/AStudentServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+              <folding>
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/dao/TeacherMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -211,8 +258,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/CourseController.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="70" column="44" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="70" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/apply_list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="83" column="8" selection-start-line="83" selection-start-column="8" selection-end-line="87" selection-end-column="9" />
+              <caret line="46" column="64" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="46" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -275,10 +331,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cims/service/impl/AdminServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/courseCategory_list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/CourseCategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/ClassroomController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceStatusController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendanceStatus_list.jsp" />
@@ -293,7 +345,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/mappers/Apply_payMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/honor_edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/CourseController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/CourseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/dao/CourseMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/myCourse_list.jsp" />
@@ -305,9 +356,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/mappers/AttendanceMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/service/AttendanceService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/attendance_list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/service/impl/AttendanceServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home/course_index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home/course_byCategory.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/dao/TeacherMapper.java" />
@@ -326,6 +375,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home/teacher_index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/student/SAttendanceController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cims/dao/StudentMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/StudentMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cims/service/AStudentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cims/service/impl/AStudentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp" />
       </list>
     </option>
   </component>
@@ -383,10 +439,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="y" value="60" />
-    <option name="width" value="1550" />
-    <option name="height" value="975" />
+    <option name="x" value="-9" />
+    <option name="y" value="47" />
+    <option name="width" value="1240" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -414,6 +470,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -636,7 +693,7 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="student" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cims" type="b2602c69:ProjectViewProjectNode" />
@@ -647,7 +704,7 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cims" type="b2602c69:ProjectViewProjectNode" />
@@ -660,17 +717,16 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565960041123" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566209964877" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="XML" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="F:/Github/pdms/source/pdms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -865,18 +921,19 @@
       <workItem from="1565652502800" duration="1763000" />
       <workItem from="1565660877188" duration="1079000" />
       <workItem from="1565778479783" duration="16157000" />
-      <workItem from="1565951548838" duration="6403000" />
+      <workItem from="1565951548838" duration="7178000" />
+      <workItem from="1566208263885" duration="1670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="437914000" />
+    <option name="totallyTimeSpent" value="440359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32104558" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31233245" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -887,7 +944,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32892805" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.27272728" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49865952" visible="true" weight="0.31864905" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49865952" visible="true" weight="0.30396476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -988,79 +1045,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/TeacherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/attendance_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="80" column="93" lean-forward="true" selection-start-line="80" selection-start-column="93" selection-end-line="80" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/attendance_add.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/dao/StudentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/student/SCourseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/CourseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/vo/CourseDetailsVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/CourseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="143" column="5" lean-forward="true" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/entity/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/myCourse_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="85" column="65" lean-forward="true" selection-start-line="85" selection-start-column="65" selection-end-line="85" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://53594117-4e5c-4a02-a6b6-8a84d7fc425f/schema/db_cims/table/attendance">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/entity/Attendance.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1255,24 +1239,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="98" column="88" selection-start-line="98" selection-start-column="88" selection-end-line="98" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/AttendanceServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1116">
           <caret line="76" column="52" lean-forward="true" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1350,13 +1320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/dao/TeacherMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="25" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/CourseMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -1388,13 +1351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/TeacherMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="174" column="50" lean-forward="true" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7906">
@@ -1409,13 +1365,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/home/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
@@ -1457,10 +1406,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/CourseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/attendance_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="83" column="8" selection-start-line="83" selection-start-column="8" selection-end-line="87" selection-end-column="9" />
+        <state relative-caret-position="313">
+          <caret line="130" column="63" lean-forward="true" selection-start-line="124" selection-start-column="56" selection-end-line="130" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="92" column="103" selection-start-line="92" selection-start-column="103" selection-end-line="92" selection-end-column="103" />
         </state>
       </provider>
     </entry>
@@ -1471,17 +1427,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/attendance_list.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/course_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="130" column="63" lean-forward="true" selection-start-line="124" selection-start-column="56" selection-end-line="130" selection-end-column="63" />
+        <state relative-caret-position="-54" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/teacher/myCourse_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/student/apply_list.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/course_add.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="92" column="103" selection-start-line="92" selection-start-column="103" selection-end-line="92" selection-end-column="103" />
+        <state relative-caret-position="252">
+          <caret line="26" column="109" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="26" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/apply_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="46" column="64" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="46" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/home/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/CourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="70" column="44" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="70" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/StudentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/dao/TeacherMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/TeacherMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="165" column="2" lean-forward="true" selection-start-line="165" selection-start-column="2" selection-end-line="169" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/StudentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="175" column="18" lean-forward="true" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/dao/StudentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/StudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/AStudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/service/impl/AStudentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding>
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cims/controller/admin/AttendanceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/admin/attendance_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="66" column="56" lean-forward="true" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/common/main_siderbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="119" column="114" selection-start-line="119" selection-start-column="114" selection-end-line="119" selection-end-column="114" />
         </state>
       </provider>
     </entry>

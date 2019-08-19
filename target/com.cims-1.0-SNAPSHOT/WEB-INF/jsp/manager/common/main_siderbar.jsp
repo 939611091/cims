@@ -117,7 +117,7 @@
                 <ul class="treeview-menu">
                     <%--${--%>
                     <li><a href="${contextPath}/admin/attendanceStatus/list"><i class="fa fa-circle-o"></i>查看请假状态列表</a></li>
-                        <li><a href="${contextPath}/admin/attendanceStatus/add"><i class="fa fa-circle-o"></i>添加考勤状态</a></li>
+                        <li><a href="${contextPath}/admin/attendanceStatus/add"><i class="fa fa-circle-o"></i>添加请假状态</a></li>
 
                 </ul>
             </li>

@@ -13,6 +13,8 @@
     <title>课程信息管理系统</title>
     <%-- 后台必须有的CSS--%>
     <jsp:include page="../common/required_css.jsp"/>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="${contextPath}/resources/bower_components/select2/dist/css/select2.min.css">
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -53,6 +55,21 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">查询学生ID</h3>
+                                <div class="form-group" id="realname">
+                                    <div>
+                                        <select class="form-control select2" style="width: 100%;" name="teacherId">
+                                            <option value="-1" selected="selected" disabled>根据姓名查询</option>
+                                            <c:forEach items="${studentList}" var="student">
+                                                <option value="${student.studentId}">学生ID:${student.studentId},学生姓名:${student.name},家长姓名:${student.pName}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3 class="box-title">请假申请信息列表</h3>&nbsp&nbsp&nbsp&nbsp
@@ -301,8 +318,163 @@
 
     <%--后台必要的JavaScript库--%>
     <jsp:include page="../common/required_js.jsp"/>
+    <!-- Select2 -->
+    <script src="${contextPath}/resources/bower_components/select2/dist/js/select2.full.min.js"></script>
 
-    <script>
+    <script src="${contextPath}/resources/dist/js/demo.js"></script>
+
+
+    <script type="text/javascript">
+        var testEditor;
+
+        $(function () {
+            $('.select2').select2();
+            testEditor = editormd("content-editormd", {
+                width: "100%",
+                height: 640,
+                syncScrolling: "single",
+                saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+                path: "bower_components/editor.md/lib/",
+                toolbarIcons : function() {
+                    return [
+                        "undo", "redo", "|",
+                        "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                        "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                        "list-ul", "list-ol", "hr", "|",
+                        "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                        "goto-line", "watch", "preview", "fullscreen", "clear", "search"
+                    ]
+                }
+
+            });
+            // 修复下滑位移
+            testEditor.__proto__.setToolbarAutoFixed = function(fixed) {
+
+                var state    = this.state;
+                var editor   = this.editor;
+                var toolbar  = this.toolbar;
+                var settings = this.settings;
+
+                if (typeof fixed !== "undefined")
+                {
+                    settings.toolbarAutoFixed = fixed;
+                }
+
+                var autoFixedHandle = function(){
+                    var $window = $(window);
+                    var top     = $window.scrollTop();
+                    var main_sidebar = $(".main-sidebar")[0];
+                    if (!settings.toolbarAutoFixed)
+                    {
+                        return false;
+                    }
+
+                    if (top - editor.offset().top > 10 && top < editor.height())
+                    {
+                        toolbar.css({
+                            position : "fixed",
+                            width    : editor.width() + "px",
+                            left     : ($window.width() - editor.width()) / 2 + (($window.width() > 767)?(main_sidebar.clientWidth / 2): 0) + "px"
+                        });
+                    }
+                    else
+                    {
+                        toolbar.css({
+                            position : "absolute",
+                            width    : "100%",
+                            left     : 0
+                        });
+                    }
+                };
+
+                if (!state.fullscreen && !state.preview && settings.toolbar && settings.toolbarAutoFixed)
+                {
+                    $(window).bind("scroll", autoFixedHandle);
+                }
+
+                return this;
+            };
+            // 修复全屏功能
+            testEditor.__proto__.fullscreen = function() {
+
+                var _this            = this;
+                var state            = this.state;
+                var editor           = this.editor;
+                var preview          = this.preview;
+                var toolbar          = this.toolbar;
+                var settings         = this.settings;
+                var fullscreenClass  = this.classPrefix + "fullscreen";
+
+                if (toolbar) {
+                    toolbar.find(".fa[name=fullscreen]").parent().toggleClass("active");
+                }
+
+                var escHandle = function(event) {
+                    if (!event.shiftKey && event.keyCode === 27)
+                    {
+                        if (state.fullscreen)
+                        {
+                            _this.fullscreenExit();
+                        }
+                    }
+                };
+
+                if (!editor.hasClass(fullscreenClass))
+                {
+                    state.fullscreen = true;
+
+                    // $("html,body").css("overflow", "hidden");
+                    $("html,body").css("visibility", "hidden");
+                    editor.css({
+                        width    : $(window).width(),
+                        height   : $(window).height()
+                    }).addClass(fullscreenClass);
+
+                    this.resize();
+
+                    $.proxy(settings.onfullscreen, this)();
+
+                    $(window).bind("keyup", escHandle);
+                }
+                else
+                {
+                    $(window).unbind("keyup", escHandle);
+                    this.fullscreenExit();
+                }
+
+                return this;
+            };
+            // 修复退出全屏功能
+            testEditor.__proto__.fullscreenExit = function() {
+
+                var editor            = this.editor;
+                var settings          = this.settings;
+                var toolbar           = this.toolbar;
+                var fullscreenClass   = this.classPrefix + "fullscreen";
+
+                this.state.fullscreen = false;
+
+                if (toolbar) {
+                    toolbar.find(".fa[name=fullscreen]").parent().removeClass("active");
+                }
+
+                // $("html,body").css("overflow", "");
+                $("html,body").css("visibility", "visible");
+
+                editor.css({
+                    width    : editor.data("oldWidth"),
+                    height   : editor.data("oldHeight")
+                }).removeClass(fullscreenClass);
+
+                this.resize();
+
+                $.proxy(settings.onfullscreenExit, this)();
+
+                return this;
+            };
+
+        });
+
 
         //分页
         function searchArticles(condition){
@@ -316,10 +488,8 @@
             }
             $("#search").submit();
         }
-
-
-
     </script>
+
 </body>
 
 </html>

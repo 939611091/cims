@@ -4,6 +4,7 @@ package com.cims.service;
 import com.cims.entity.Student;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
 import java.util.Map;
 
 public interface AStudentService {
@@ -17,6 +18,9 @@ public interface AStudentService {
      *
      */
     PageInfo<Student> selectByMap(Map<String, Object> map, int pageNum, int pageSize);
+
+    //用于查询学生ID
+    List<Student> selectAll();
 
     //根据ID查用户名
     int selectByUsername(String username);
