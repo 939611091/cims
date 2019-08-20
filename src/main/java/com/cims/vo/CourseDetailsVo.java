@@ -13,6 +13,8 @@ public class CourseDetailsVo {
 
     private String teacherName;
 
+    private String classroom;
+
     private String cName;
 
     private String cDescription;
@@ -61,6 +63,14 @@ public class CourseDetailsVo {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
     }
 
     public String getcName() {
@@ -173,6 +183,7 @@ public class CourseDetailsVo {
                 "id=" + id +
                 ", categoryName='" + categoryName + '\'' +
                 ", teacherName='" + teacherName + '\'' +
+                ", classroom='" + classroom + '\'' +
                 ", cName='" + cName + '\'' +
                 ", cDescription='" + cDescription + '\'' +
                 ", cPhoto='" + cPhoto + '\'' +

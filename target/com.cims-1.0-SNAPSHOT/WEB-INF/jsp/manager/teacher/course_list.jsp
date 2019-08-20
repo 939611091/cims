@@ -179,6 +179,10 @@
                                             <input type="text" class="form-control" id="cName" readonly value="">
                                         </div>
                                         <div class="form-group">
+                                            <label for="cName">上课教室</label>
+                                            <input type="text" class="form-control" id="classroom" readonly value="">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="cDescription">课程简介信息</label>
                                             <textarea class="form-control" id="cDescription" readonly></textarea>
                                         </div>
@@ -213,14 +217,6 @@
                                         <div class="form-group">
                                             <label for="cName">课程上课时间</label>
                                             <input type="text" class="form-control" id="schoolTime" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cName">项目创建时间</label>
-                                            <input type="text" class="form-control" id="createTime" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cName">课程后一次修改时间</label>
-                                            <input type="text" class="form-control" id="updateTime" readonly value="">
                                         </div>
                                     </div>
 
@@ -268,6 +264,7 @@
             $("#search").submit();
         }
 
+
         //时间戳转时间
         function timeTool (value) {  //13位时间戳
             var date = new Date(value);
@@ -279,6 +276,7 @@
             // var s = (date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds());+h+m+s
             return (Y+M+D);
         }
+
         //模态框详情
         function query(id) {
             $.ajax({
@@ -291,6 +289,7 @@
                     $("#cDescription").val(data.cDescription);
                     $("#categoryName").val(data.categoryName);
                     $("#teacherName").val(data.teacherName);
+                    $("#classroom").val(data.classroom);
                     $("#number").val(data.number);
                     $("#price").val(data.price);
                     $("#period").val(data.period);
@@ -302,6 +301,7 @@
                 }
             })
         }
+
 
     </script>
 </body>

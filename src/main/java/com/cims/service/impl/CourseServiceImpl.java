@@ -1,14 +1,11 @@
 package com.cims.service.impl;
 
-import com.cims.dao.CourseMapper;
-import com.cims.dao.Course_categoryMapper;
-import com.cims.dao.TeacherMapper;
-import com.cims.entity.Course;
-import com.cims.entity.Course_category;
-import com.cims.entity.Teacher;
+import com.cims.dao.*;
+import com.cims.entity.*;
 import com.cims.service.CourseService;
 import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
+import com.cims.vo.Course_classroomVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -31,6 +28,11 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     private TeacherMapper teacherMapper;
 
+    @Autowired
+    private Course_classroomMapper course_classroomMapper;
+
+    @Autowired
+    private ClassroomMapper classroomMapper;
 
     /**
      * 列表服务
@@ -143,15 +145,29 @@ public class CourseServiceImpl implements CourseService {
         return courseVo;
     }
 
+
+
     private CourseDetailsVo assembleCourseDVo(Course course) {
         CourseDetailsVo courseDetailsVo = new CourseDetailsVo();
         BeanUtils.copyProperties(course, courseDetailsVo);
-        //把ccid查出的course_category传给courseVo
+        //把ccid查出的course_category传给courseDVo
         Course_category course_category = course_categoryMapper.selectByPrimaryKey(course.getCourseCategoryId());
         courseDetailsVo.setCategoryName(course_category.getcategoryName());
-        //把老师ID查出的老师实体传给courseVo
+        //把老师ID查出的老师实体传给courseDVo
         Teacher teacher = teacherMapper.selectByPrimaryKey(course.getTeacherId());
         courseDetailsVo.setTeacherName(teacher.getName());
+        //把课程的教室传给courseDVo
+        //根据课程ID查出安排教室的记录在这判断是否查得出来
+        //根据教室ID查出教室名
+        Course_classroom course_classroom = course_classroomMapper.selectByPrimaryKey(course.getId());
+        if (course_classroom != null){
+            Classroom classroom = classroomMapper.selectByPrimaryKey(course_classroom.getClassroomId());
+            courseDetailsVo.setClassroom(classroom.getClassroomName());
+        }else {
+            courseDetailsVo.setClassroom("该课程暂未安排教室！");
+        }
+
+
         return courseDetailsVo;
     }
 }

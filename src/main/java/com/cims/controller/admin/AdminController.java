@@ -119,8 +119,23 @@ public class AdminController {
             return "redirect:/admin/login";
         }
         Admin admin = adminService.selectByPrimaryKey(id);
+        Integer adminId=((Admin)session.getAttribute("admin")).getAdminId();
+        //ID为1的可以编辑所有管理员
+        if(adminId == 1){
+            map.put("admin",admin);
+        }else {
+            //其他管理员只能编辑自己的信息
+            if(admin.getAdminId() == adminId){
+                map.put("admin",admin);
+            }else{
+                redirectAttributes.addFlashAttribute("msgSuccess","失败提示：你只能编辑自己的信息");
+                return "redirect:/admin/admin/list";
+            }
+        }
 
-        map.put("admin",admin);
+
+
+
 
         return "manager/admin/admin_edit";
     }

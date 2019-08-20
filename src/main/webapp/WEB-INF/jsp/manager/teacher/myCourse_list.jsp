@@ -84,16 +84,20 @@
                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/update.do?id=${courseVo.id}&cPeriod=${courseVo.cPeriod}'">
                                                             <i class="fa fa-fw fa-refresh"></i>课堂考勤
                                                         </button>
-                                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false">
-                                                            <span class="caret"></span>
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><a data-toggle="modal" data-target="#myModal" href="#"
-                                                                   onclick="query(${courseVo.id})">查看课程详细</a></li>
-                                                        </ul>
+                                                        <%--<button type="button" class="btn btn-default dropdown-toggle"--%>
+                                                                <%--data-toggle="dropdown" aria-expanded="false">--%>
+                                                            <%--<span class="caret"></span>--%>
+                                                            <%--<span class="sr-only">Toggle Dropdown</span>--%>
+                                                        <%--</button>--%>
+                                                        <%--<ul class="dropdown-menu" role="menu">--%>
+                                                            <%--<li><a data-toggle="modal" data-target="#myModal" href="#"--%>
+                                                                   <%--onclick="query(${courseVo.id})">查看课程详细</a></li>--%>
+                                                        <%--</ul>--%>
                                                     </div>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"
+                                                            onclick="query(${courseVo.id})">
+                                                        <i class="fa fa-fw fa-refresh"></i>查看课程详情
+                                                    </button>
                                                 </td>
                                             </tr>
                                             </c:forEach>
@@ -133,6 +137,10 @@
                             <input type="text" class="form-control" id="cName" readonly value="">
                         </div>
                         <div class="form-group">
+                            <label for="cName">上课教室</label>
+                            <input type="text" class="form-control" id="classroom" readonly value="">
+                        </div>
+                        <div class="form-group">
                             <label for="cDescription">课程简介信息</label>
                             <textarea class="form-control" id="cDescription" readonly></textarea>
                         </div>
@@ -167,14 +175,6 @@
                         <div class="form-group">
                             <label for="cName">课程上课时间</label>
                             <input type="text" class="form-control" id="schoolTime" readonly value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cName">项目创建时间</label>
-                            <input type="text" class="form-control" id="createTime" readonly value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cName">课程后一次修改时间</label>
-                            <input type="text" class="form-control" id="updateTime" readonly value="">
                         </div>
                     </div>
 
@@ -223,6 +223,7 @@
                     $("#cDescription").val(data.cDescription);
                     $("#categoryName").val(data.categoryName);
                     $("#teacherName").val(data.teacherName);
+                    $("#classroom").val(data.classroom);
                     $("#number").val(data.number);
                     $("#price").val(data.price);
                     $("#period").val(data.period);

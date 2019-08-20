@@ -96,11 +96,11 @@
                                                 <td><fmt:formatDate value="${admin.updateTime}"
                                                                     pattern="yyyy年MM月dd日 HH:mm"/></td>
                                                 <td class="mailbox-date">
-                                                     <div class="btn-group">
-                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/admin/editAdmin?id=${admin.adminId}'">
-                                                             <i class="fa fa-fw fa-refresh"></i>编辑
-                                                         </button>
-                                                    </div>
+                                                        <div class="btn-group">
+                                                             <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/admin/admin/editAdmin?id=${admin.adminId}'">
+                                                                 <i class="fa fa-fw fa-refresh"></i>编辑
+                                                             </button>
+                                                        </div>
                                                 </td>
                                             </tr>
                                             </c:forEach>

@@ -146,6 +146,10 @@
                             <input type="text" class="form-control" id="cName" readonly value="">
                         </div>
                         <div class="form-group">
+                            <label for="cName">上课教室</label>
+                            <input type="text" class="form-control" id="classroom" readonly value="">
+                        </div>
+                        <div class="form-group">
                             <label for="cDescription">课程简介信息</label>
                             <textarea class="form-control" id="cDescription" readonly></textarea>
                         </div>
@@ -180,14 +184,6 @@
                         <div class="form-group">
                             <label for="cName">课程上课时间</label>
                             <input type="text" class="form-control" id="schoolTime" readonly value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cName">项目创建时间</label>
-                            <input type="text" class="form-control" id="createTime" readonly value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cName">课程后一次修改时间</label>
-                            <input type="text" class="form-control" id="updateTime" readonly value="">
                         </div>
                     </div>
 
@@ -229,6 +225,7 @@
                 type: "POST",
                 success: function (data) {
                     $("#cName").val(data.cName);
+                    $("#classroom").val(data.classroom);
                     $("#cDescription").val(data.cDescription);
                     $("#categoryName").val(data.categoryName);
                     $("#teacherName").val(data.teacherName);
