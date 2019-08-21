@@ -84,15 +84,15 @@
                                                         <button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/update.do?id=${courseVo.id}&cPeriod=${courseVo.cPeriod}'">
                                                             <i class="fa fa-fw fa-refresh"></i>课堂考勤
                                                         </button>
-                                                        <%--<button type="button" class="btn btn-default dropdown-toggle"--%>
-                                                                <%--data-toggle="dropdown" aria-expanded="false">--%>
-                                                            <%--<span class="caret"></span>--%>
-                                                            <%--<span class="sr-only">Toggle Dropdown</span>--%>
-                                                        <%--</button>--%>
-                                                        <%--<ul class="dropdown-menu" role="menu">--%>
-                                                            <%--<li><a data-toggle="modal" data-target="#myModal" href="#"--%>
-                                                                   <%--onclick="query(${courseVo.id})">查看课程详细</a></li>--%>
-                                                        <%--</ul>--%>
+                                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                                data-toggle="dropdown" aria-expanded="false">
+                                                            <span class="caret"></span>
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><a href="${contextPath}/teacher/course/studentList?id=${courseVo.id}">查看课程学生名单</a></li>
+                                                            <li><a href="${contextPath}/teacher/course/printStudentList?id=${courseVo.id}">打印课程考勤表</a></li>
+                                                        </ul>
                                                     </div>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"
                                                             onclick="query(${courseVo.id})">

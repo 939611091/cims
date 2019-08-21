@@ -36,16 +36,16 @@
                     </li>
                     <li><a href="${contextPath}/teacher/course/addCourse"><i class="fa fa-circle-o"></i>录入课程信息</a>
                     </li>
+                    <li><a href="${contextPath}/teacher/course/myList"><i class="fa fa-circle-o"></i>我的课程-考勤</a></li>
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-laptop"></i> <span>考勤管理</span>
+                <a href="#"><i class="fa fa-laptop"></i> <span>请假管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${contextPath}/teacher/course/myList"><i class="fa fa-circle-o"></i>查看我的课程</a></li>
                     <li><a href="${contextPath}/teacher/attendance/list"><i class="fa fa-circle-o"></i>请假信息管理</a>
                     </li>
                 </ul>

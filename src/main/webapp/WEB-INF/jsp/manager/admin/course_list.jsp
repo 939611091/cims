@@ -116,6 +116,8 @@
                                                              <li><a data-toggle="modal" data-target="#myModal" href="#"
                                                                     onclick="query(${courseVo.id})">查看课程详细</a></li>
                                                             <li><a href="${contextPath}/admin/plan/addPlan?id=${courseVo.id}">安排教室</a></li>
+                                                            <li><a href="${contextPath}/admin/course/studentList?id=${courseVo.id}">查看课程学生名单</a></li>
+                                                            <li><a href="${contextPath}/admin/course/printStudentList?id=${courseVo.id}">打印课程考勤表</a></li>
                                                             <li><a href="${contextPath}/admin/course/delete.do?id=${courseVo.id}" onclick= "return confirm('课程删除后，对应的报名缴费信息和，教室安排会被一起删除，确认删除？');">删除</a></li>
                                                         </ul>
                                                          

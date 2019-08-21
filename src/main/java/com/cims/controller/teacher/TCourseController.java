@@ -7,6 +7,7 @@ import com.cims.service.ATeacherService;
 import com.cims.service.CourseCategoryService;
 import com.cims.service.CourseService;
 import com.cims.service.TeacherService;
+import com.cims.vo.Apply_payVo;
 import com.cims.vo.CourseDetailsVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
@@ -338,5 +339,51 @@ public class TCourseController {
 
             return "redirect:/teacher/course/list";
         }
+    }
+
+    /**
+     * 查出这个课程的学生
+     * @param id
+     * @param model
+     * @param redirectAttributes
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/studentList", method = {RequestMethod.GET, RequestMethod.POST})
+    public String list(Integer id, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("teacher")==null){
+            redirectAttributes.addFlashAttribute("msg","未登录,请先登录");
+            return "redirect:/teacher/login";
+        }
+        Course course = courseService.selectByPrimaryKey(id);
+        model.addAttribute("course",course);
+        List<Apply_payVo> apply_payVoList = teacherService.selectByCourseId(id);
+        model.addAttribute("apply_payVoList",apply_payVoList);
+
+        return "manager/teacher/course_studentList";
+    }
+    /**
+     * 跳转打印页面
+     * @param id
+     * @param model
+     * @param redirectAttributes
+     * @param session
+     * @return
+     */
+    @GetMapping("/printStudentList")
+    public String printStudentList(Integer id, Model model,RedirectAttributes redirectAttributes,
+                                   HttpSession session) {
+        if (session.getAttribute("teacher") == null) {
+            redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
+            return "redirect:/teacher/login";
+        }
+        Course course = courseService.selectByPrimaryKey(id);
+        model.addAttribute("course",course);
+        Teacher teacher = aTeacherService.selectByPrimaryKey(course.getTeacherId());
+        model.addAttribute("teacher",teacher);
+        List<Apply_payVo> apply_payVoList = teacherService.selectByCourseId(id);
+        model.addAttribute("apply_payVoList",apply_payVoList);
+
+        return "manager/teacher/studentList_print";
     }
 }
