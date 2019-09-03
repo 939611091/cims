@@ -79,7 +79,7 @@ public class AdminIndexController {
             session.removeAttribute("admin");
 
         }
-        return "redirect:/admin/login";
+        return "redirect:/index";
     }
 
     @RequestMapping("/index")

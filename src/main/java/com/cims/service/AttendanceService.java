@@ -53,6 +53,6 @@ public interface AttendanceService {
 
     int updateStateById(Integer id);
 
-    //根据学生ID查考勤记录
-    List<AttendanceVo> selectByStudentId(Integer id);
+    //根据学生ID查请假记录
+    List<AttendanceDetailsVo> selectByStudentId(Integer id);
 }

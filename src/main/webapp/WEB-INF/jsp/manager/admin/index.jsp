@@ -88,36 +88,98 @@
 
                 </div>
             </div>
-            <%--<div class="box box-default">--%>
-                <%--<div class="box-header with-border">--%>
-                    <%--<h3 class="box-title">使用流程图</h3>--%>
-                <%--</div>--%>
-                <%--<!-- /.box-header -->--%>
-                <%--<div class="box-body" id="dashboard">--%>
-                    <%--<div class="panel-body scrollbar-hover">--%>
-                        <%--<div class="row row-0">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="管理员">管理员</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="文章管理">文章管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="项目管理">项目管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="审核申报项目">审核申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-4"><div title="用户管理">用户管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-5"><div title="系统管理">系统管理</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-1">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="教师">教师</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看可申报项目">查看可申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="申报项目">申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="申请修改项目">申请修改项目</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-2">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="专家">专家</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看待申报项目">查看待申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="查看项目附件">查看项目附件</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="评分">评分</div></div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">管理员使用导航图</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" id="dashboard">
+                    <div class="panel-body scrollbar-hover">
+                        <div class="row row-0">
+                            <div class="flow-item flow-item-0"><div title="教室管理">教室管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看教室列表">查看教室列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑教室">编辑教室</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除教室">删除教室</div></div>
+                            <div class="flow-item flow-item-4"><div title="添加教室">添加教室</div></div>
+                        </div>
+                        <div class="row row-1">
+                            <div class="flow-item flow-item-0"><div title="课程类别管理">课程类别管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看课程类别列表">查看课程类别列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑课程类别">编辑课程类别</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除课程类别">删除课程类别</div></div>
+                            <div class="flow-item flow-item-4"><div title="添加课程类别">添加课程类别</div></div>
+                        </div>
+                        <div class="row row-2">
+                            <div class="flow-item flow-item-0"><div title="课程信息管理">课程信息管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看课程列表">查看课程列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="发布课程">发布课程</div></div>
+                            <div class="flow-item flow-item-3"><div title="查看课程详细">查看课程详细</div></div>
+                            <div class="flow-item flow-item-4"><div title="安排教室">安排教室</div></div>
+                            <div class="flow-item flow-item-5"><div title="查看课程学生名单">查看课程学生名单</div></div>
+                            <div class="flow-item flow-item-6"><div title="打印课程考勤表">打印课程考勤表</div></div>
+                        </div>
+                        <div class="row row-3">
+                            <div class="flow-item flow-item-0"><div title="课程安排上课教室">课程安排上课教室</div></div>
+                            <div class="flow-item flow-item-1"><div title="课程教室安排情况">课程教室安排情况</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑安排">编辑安排</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除安排">删除安排</div></div>
+                            <div class="flow-item flow-item-4"><div title="安排教室">安排教室</div></div>
+                        </div>
+                        <div class="row row-4">
+                            <div class="flow-item flow-item-0"><div title="报名缴费管理">报名缴费管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看报名缴费信息">查看报名缴费信息</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑报名缴费信息">编辑报名缴费信息</div></div>
+                            <div class="flow-item flow-item-3"><div title="打印报名缴费信息">打印报名缴费信息</div></div>
+                            <div class="flow-item flow-item-4"><div title="填写报名缴费信息">填写报名缴费信息</div></div>
+                        </div>
+                        <div class="row row-5">
+                            <div class="flow-item flow-item-0"><div title="处理请假售后">处理请假售后</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看请假信息列表">查看请假信息列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="退费处理">退费处理</div></div>
+                        </div>
+                        <div class="row row-6">
+                            <div class="flow-item flow-item-0"><div title="请假状态管理">请假状态管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看请假状态列表">查看请假状态列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑请假状态">编辑请假状态</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除请假状态">删除请假状态</div></div>
+                            <div class="flow-item flow-item-4"><div title="添加请假状态">添加请假状态</div></div>
+                        </div>
+                        <div class="row row-7">
+                            <div class="flow-item flow-item-0"><div title="请假状态管理">请假状态管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看请假状态列表">查看请假状态列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑请假状态">编辑请假状态</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除请假状态">删除请假状态</div></div>
+                            <div class="flow-item flow-item-4"><div title="添加请假状态">添加请假状态</div></div>
+                        </div>
+                        <div class="row row-8">
+                            <div class="flow-item flow-item-0"><div title="学生荣誉管理">学生荣誉管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看学生荣誉列表">查看学生荣誉列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑学生荣誉">编辑学生荣誉</div></div>
+                            <div class="flow-item flow-item-3"><div title="添加学生荣誉">添加学生荣誉</div></div>
+                        </div>
+                        <div class="row row-9">
+                            <div class="flow-item flow-item-0"><div title="学生管理">学生管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看学生列表">查看学生列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑学生信息">编辑学生信息</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除学生信息">删除学生信息</div></div>
+                            <div class="flow-item flow-item-4"><div title="录入学生信息">录入学生信息</div></div>
+                        </div>
+                        <div class="row row-10">
+                            <div class="flow-item flow-item-0"><div title="学生管理">老师管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="查看老师列表">查看老师列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑老师信息">编辑老师信息</div></div>
+                            <div class="flow-item flow-item-3"><div title="删除老师信息">删除老师信息</div></div>
+                            <div class="flow-item flow-item-4"><div title="录入老师信息">录入老师信息</div></div>
+                        </div>
+                        <div class="row row-11">
+                            <div class="flow-item flow-item-0"><div title="管理员管理">管理员管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="编辑管理员信息">查看管理员列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑管理员信息">编辑管理员信息</div></div>
+                            <div class="flow-item flow-item-3"><div title="录入管理员信息">录入管理员信息</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </section>

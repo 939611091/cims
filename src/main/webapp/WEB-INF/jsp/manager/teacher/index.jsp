@@ -89,36 +89,34 @@
 
                 </div>
             </div>
-            <%--<div class="box box-default">--%>
-                <%--<div class="box-header with-border">--%>
-                    <%--<h3 class="box-title">使用流程图</h3>--%>
-                <%--</div>--%>
-                <%--<!-- /.box-header -->--%>
-                <%--<div class="box-body" id="dashboard">--%>
-                    <%--<div class="panel-body scrollbar-hover">--%>
-                        <%--<div class="row row-0">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="管理员">管理员</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="文章管理">文章管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="项目管理">项目管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="审核申报项目">审核申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-4"><div title="用户管理">用户管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-5"><div title="系统管理">系统管理</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-1">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="教师">教师</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看可申报项目">查看可申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="申报项目">申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="申请修改项目">申请修改项目</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-2">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="专家">专家</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看待申报项目">查看待申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="查看项目附件">查看项目附件</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="评分">评分</div></div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">教师使用导航图</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" id="dashboard">
+                    <div class="panel-body scrollbar-hover">
+                        <div class="row row-0">
+                            <div class="flow-item flow-item-0"><div title="课程信息管理">课程信息管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="课程信息列表">课程信息列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="编辑课程">编辑课程</div></div>
+                            <div class="flow-item flow-item-3"><div title="发布课程">发布课程</div></div>
+                            <div class="flow-item flow-item-4"><div title="课程考勤">课程考勤</div></div>
+                            <div class="flow-item flow-item-5"><div title="打印课程考勤表">打印课程考勤表</div></div>
+                        </div>
+                        <div class="row row-1">
+                            <div class="flow-item flow-item-0"><div title="请假管理">请假管理</div></div>
+                            <div class="flow-item flow-item-1"><div title="请假信息列表">请假信息列表</div></div>
+                            <div class="flow-item flow-item-2"><div title="批准请假">批准请假</div></div>
+                            <div class="flow-item flow-item-3"><div title="确认学生是否到课">确认学生到课</div></div>
+                        </div>
+                        <div class="row row-2">
+                            <div class="flow-item flow-item-0"><div title="个人中心">个人中心</div></div>
+                            <div class="flow-item flow-item-1"><div title="修改个人信息">修改个人信息</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </section>

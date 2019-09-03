@@ -62,7 +62,7 @@ public class StudentIndexController {
             session.removeAttribute("student");
 
         }
-        return "redirect:/student/login";
+        return "redirect:/index";
     }
 
     @RequestMapping("/index")

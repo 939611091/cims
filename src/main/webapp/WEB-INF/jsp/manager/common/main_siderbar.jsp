@@ -109,7 +109,7 @@
             </li>
 
             <li class="treeview">
-                <a href="#"><i class="fa fa-laptop"></i> <span>管理请假状态</span>
+                <a href="#"><i class="fa fa-laptop"></i> <span>请假状态管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

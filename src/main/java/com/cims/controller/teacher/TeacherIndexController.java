@@ -66,7 +66,7 @@ public class TeacherIndexController {
             session.removeAttribute("teacher");
 
         }
-        return "redirect:/teacher/login";
+        return "redirect:/index";
     }
 
     @RequestMapping("/index")

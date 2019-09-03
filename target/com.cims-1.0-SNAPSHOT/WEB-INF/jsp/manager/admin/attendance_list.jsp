@@ -115,7 +115,6 @@
                                             <tr align="center">
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
                                                 <td>${attendanceVo.courseName}</td>
-                                                <td>${attendanceVo.apply_pay.payStudent}</td>
                                                 <td>${attendanceVo.teacher.name}</td>
                                                 <td>${attendanceVo.teacher.phone}</td>
                                                 <td>${attendanceVo.attendance_status.status}</td>

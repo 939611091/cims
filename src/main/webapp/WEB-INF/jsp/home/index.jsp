@@ -86,7 +86,7 @@
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                     <li><a href="#classroom">教学环境</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我们的课程 <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热门课程类别 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#dance">舞蹈</a></li>
                             <li><a href="#music">音乐</a></li>
@@ -546,7 +546,7 @@
                             <p>培养兴趣爱好。从小抓起！ 赶紧报名参加吧！</p>
                             <p>地址：南宁市西乡塘区青少年兴趣培训机构 </p>   
                             <p>报名热线：0771-5985666</p>
-                            <p>QQ，微信，线下都可报名</p>
+                            <p>QQ，微信，电话，线下都可报名</p>
                             <div class="widget_socail m-top-30">
                                 <ul class="list-inline-item">
                                     <li class="tooltip-options"><a href="#" data-toggle="tooltip" title="QQ:939611091"><i class="fa fa-qq"></i></a></li>

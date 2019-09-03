@@ -60,22 +60,22 @@
                                     <table id="example1" class="table table-bordered">
                                         <tbody>
                                             <tr align="center">
+                                                <td>课程ID</td>
                                                 <td>课程名</td>
                                                 <td>开始时间</td>
                                                 <td>结束时间</td>
                                                 <td>上课时间</td>
-                                                <td>课程人数</td>
                                                <td>操作</td>
                                             </tr>
                                             <c:forEach items="${courseVoList}" var="courseVo">
                                             <tr align="center">
+                                                <td>${courseVo.id}</td>
                                                 <td>${courseVo.cName}</td>
                                                 <td><fmt:formatDate value="${courseVo.beginTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
                                                 <td><fmt:formatDate value="${courseVo.overTime}"
                                                                     pattern="yyyy年MM月dd日 "/></td>
                                                 <td>${courseVo.schoolTime}</td>
-                                                <td>${courseVo.number}</td>
                                                 <td class="mailbox-date">
                                                     <div class="btn-group">
                                                         <%--<button type="button" class="btn btn-default" onclick="window.location='${contextPath}/teacher/attendance/applyList?id=${courseVo.id}'">--%>

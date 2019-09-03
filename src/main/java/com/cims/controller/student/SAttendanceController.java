@@ -3,6 +3,7 @@ package com.cims.controller.student;
 import com.cims.dao.Attendance_statusMapper;
 import com.cims.entity.*;
 import com.cims.service.*;
+import com.cims.vo.AttendanceDetailsVo;
 import com.cims.vo.AttendanceVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,7 @@ public class SAttendanceController {
             return "redirect:/student/login";
         }
         Integer studentId=((Student)session.getAttribute("student")).getstudentId();
-        List<AttendanceVo> attendanceVoList = attendanceService.selectByStudentId(studentId);
+        List<AttendanceDetailsVo> attendanceVoList = attendanceService.selectByStudentId(studentId);
         model.addAttribute("attendanceVoList",attendanceVoList);
         return "manager/student/attendance_list";
     }

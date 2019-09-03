@@ -88,36 +88,26 @@
                     <h3>${msgSuccess}${msgError}</h3>
                 </div>
             </div>
-            <%--<div class="box box-default">--%>
-                <%--<div class="box-header with-border">--%>
-                    <%--<h3 class="box-title">使用流程图</h3>--%>
-                <%--</div>--%>
-                <%--<!-- /.box-header -->--%>
-                <%--<div class="box-body" id="dashboard">--%>
-                    <%--<div class="panel-body scrollbar-hover">--%>
-                        <%--<div class="row row-0">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="管理员">管理员</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="文章管理">文章管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="项目管理">项目管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="审核申报项目">审核申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-4"><div title="用户管理">用户管理</div></div>--%>
-                            <%--<div class="flow-item flow-item-5"><div title="系统管理">系统管理</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-1">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="教师">教师</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看可申报项目">查看可申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="申报项目">申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="申请修改项目">申请修改项目</div></div>--%>
-                        <%--</div>--%>
-                        <%--<div class="row row-2">--%>
-                            <%--<div class="flow-item flow-item-0"><div title="专家">专家</div></div>--%>
-                            <%--<div class="flow-item flow-item-1"><div title="查看待申报项目">查看待申报项目</div></div>--%>
-                            <%--<div class="flow-item flow-item-2"><div title="查看项目附件">查看项目附件</div></div>--%>
-                            <%--<div class="flow-item flow-item-3"><div title="评分">评分</div></div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">学生使用导航图</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" id="dashboard">
+                    <div class="panel-body scrollbar-hover">
+                        <div class="row row-0">
+                            <div class="flow-item flow-item-0"><div title="我的课程信息">我的课程信息</div></div>
+                            <div class="flow-item flow-item-1"><div title="浏览我的课程信息">浏览我的课程信息</div></div>
+                            <div class="flow-item flow-item-2"><div title="浏览剩余学时">浏览剩余学时</div></div>
+                            <div class="flow-item flow-item-3"><div title="课程请假">课程请假</div></div>
+                        </div>
+                        <div class="row row-1">
+                            <div class="flow-item flow-item-0"><div title="个人中心">个人中心</div></div>
+                            <div class="flow-item flow-item-1"><div title="修改个人信息">修改个人信息</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </section>

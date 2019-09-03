@@ -129,12 +129,12 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
     @Override
-    public List<AttendanceVo> selectByStudentId(Integer id) {
+    public List<AttendanceDetailsVo> selectByStudentId(Integer id) {
         List<Attendance> attendanceList = attendanceMapper.selectByStudentId(id);
-        List<AttendanceVo> attendanceVoList = new LinkedList<>();
+        List<AttendanceDetailsVo> attendanceVoList = new LinkedList<>();
         //for (循环变量类型 循环变量名称 : 要被遍历的对象) 循环体
         for (Attendance attendance : attendanceList) {
-            attendanceVoList.add(assembleAttendanceVo(attendance));
+            attendanceVoList.add(assembleAttendanceDVo(attendance));
         }
         return attendanceVoList;
     }

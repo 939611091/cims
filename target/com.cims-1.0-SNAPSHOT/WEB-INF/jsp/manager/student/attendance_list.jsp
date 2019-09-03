@@ -67,6 +67,7 @@
                                             <tr align="center">
                                                 <td>请假ID</td>
                                                 <td>学生名</td>
+                                                <td>请假课程</td>
                                                 <td>负责老师</td>
                                                 <td>老师电话</td>
                                                 <td>请假原因</td>
@@ -79,6 +80,7 @@
                                             <tr align="center">
                                                 <td>${attendanceVo.id}</td>
                                                 <td>${attendanceVo.apply_pay.payStudent}</td>
+                                                <td>${attendanceVo.courseName}</td>
                                                 <td>${attendanceVo.teacher.name}</td>
                                                 <td>${attendanceVo.teacher.phone}</td>
                                                 <td>${attendanceVo.attendance_status.status}</td>
