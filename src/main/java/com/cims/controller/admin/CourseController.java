@@ -105,6 +105,19 @@ public class CourseController {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：课程人数不能为空！");
             return "redirect:/admin/course/addCourse";
         }
+        //检查课时和每次上课课时只能为int型
+        String str1 = course.getPeriod().toString();
+        String str2 = course.getcPeriod().toString();
+        str1=str1.replaceAll("[0-9]","");
+        str2=str2.replaceAll("[0-9]","");
+        if(str1.length()!=0){
+            redirectAttributes.addFlashAttribute("msgError", "错误提示：课程学时只能输入数字");
+            return "redirect:/admin/course/addCourse";
+        }
+        if(str2.length()!=0){
+            redirectAttributes.addFlashAttribute("msgError", "错误提示：每次上课学时只能输入数字");
+            return "redirect:/admin/course/addCourse";
+        }
 
 
         //判断fil是否为空，为空则直接更新用户

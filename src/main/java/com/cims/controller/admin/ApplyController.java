@@ -197,6 +197,7 @@ public class ApplyController {
             redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
             return "redirect:/admin/login";
         }
+        //获取选择打印的报名缴费单ID
         Apply_payVo apply_payVo = applyService.selectById(id);
         map.put("apply_payVo",apply_payVo);
         // 修改时间格式

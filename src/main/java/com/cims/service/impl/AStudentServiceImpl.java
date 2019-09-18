@@ -3,6 +3,7 @@ package com.cims.service.impl;
 import com.cims.dao.StudentMapper;
 import com.cims.entity.Student;
 import com.cims.service.AStudentService;
+import com.cims.util.MD5Util;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class AStudentServiceImpl implements AStudentService {
 
     @Override
     public int insert(Student student) {
+        //对密码进行加密
+        student.setPassword(MD5Util.MD5EncodeUtf8(student.getPassword()));
         return studentMapper.insert(student);
     }
 
@@ -47,6 +50,8 @@ public class AStudentServiceImpl implements AStudentService {
 
     @Override
     public int updateByPrimaryKey(Student student) {
+        //对密码进行加密
+        student.setPassword(MD5Util.MD5EncodeUtf8(student.getPassword()));
         return studentMapper.updateByPrimaryKey(student);
     }
 

@@ -4,6 +4,7 @@ import com.cims.dao.*;
 import com.cims.entity.*;
 import com.cims.service.CourseCategoryService;
 import com.cims.service.TeacherService;
+import com.cims.util.MD5Util;
 import com.cims.vo.Apply_payVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageHelper;
@@ -30,7 +31,18 @@ public class TeacherServiceImpl implements TeacherService {
     private Apply_payMapper apply_payMapper;
     @Override
     public Teacher login(String username, String password) {
-        return teacherMapper.selectLogin(username,password);
+        //对输入的密码进行加密然后和数据库比对
+        String md5Password = MD5Util.MD5EncodeUtf8(password);
+
+        Teacher teacher = teacherMapper.selectLogin(username,md5Password);
+        if (teacher != null){
+            //把密码设为空，防止别人获取
+            teacher.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+            return teacher;
+        }else {
+            return null;
+        }
+
     }
 
     @Override

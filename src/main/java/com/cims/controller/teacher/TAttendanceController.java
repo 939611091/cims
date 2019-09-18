@@ -43,10 +43,9 @@ public class TAttendanceController {
             redirectAttributes.addFlashAttribute("msg", "未登录,请先登录");
             return "redirect:/teacher/login";
         }
+        //根据老师登录后的session信息获取老师ID，只查看自己负责的请假信息
         Integer teacherId=((Teacher)session.getAttribute("teacher")).getteacherId();
         List<AttendanceDetailsVo> attendanceDetailsVoList = attendanceService.selectByTeacherId(teacherId);
-        //根据报名ID查到课程信息
-
         model.addAttribute("attendanceDetailsVoList",attendanceDetailsVoList);
         return "manager/teacher/attendance_list";
     }

@@ -4,6 +4,7 @@ import com.cims.dao.TeacherMapper;
 import com.cims.entity.Student;
 import com.cims.entity.Teacher;
 import com.cims.service.ATeacherService;
+import com.cims.util.MD5Util;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class ATeacherServiceImpl implements ATeacherService {
 
     @Override
     public int insert(Teacher teacher) {
+        //对密码进行加密
+        teacher.setPassword(MD5Util.MD5EncodeUtf8(teacher.getPassword()));
         return teacherMapper.insert(teacher);
     }
 
@@ -50,6 +53,8 @@ public class ATeacherServiceImpl implements ATeacherService {
 
     @Override
     public int updateByPrimaryKey(Teacher teacher) {
+        //对密码进行加密
+        teacher.setPassword(MD5Util.MD5EncodeUtf8(teacher.getPassword()));
         return teacherMapper.updateByPrimaryKey(teacher);
     }
 

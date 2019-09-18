@@ -4,6 +4,7 @@ package com.cims.service.impl;
 import com.cims.dao.AdminMapper;
 import com.cims.entity.Admin;
 import com.cims.service.AdminService;
+import com.cims.util.MD5Util;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -45,9 +46,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int insert(Admin admin) {
         //对密码进行加密
-//        admin.setPassword(MD5Util.MD5EncodeUtf8(admin.getPassword()));
-//        PasswordEncoder passwordEncoder = new PasswordEncoder();
-//        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        admin.setPassword(MD5Util.MD5EncodeUtf8(admin.getPassword()));
         return adminMapper.insert(admin);
     }
 
@@ -58,6 +57,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public int updateByPrimaryKey(Admin admin) {
+        //对密码进行加密
+        admin.setPassword(MD5Util.MD5EncodeUtf8(admin.getPassword()));
         return adminMapper.updateByPrimaryKey(admin);
     }
 
@@ -78,17 +79,18 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin login(String username, String password) {
-        //密码解密
-//        String md5Password = MD5Util.MD5EncodeUtf8(password);
+        //对输入的密码进行加密然后和数据库比对
+        String md5Password = MD5Util.MD5EncodeUtf8(password);
 
-        Admin admin = adminMapper.selectLogin(username,password);
+        Admin admin = adminMapper.selectLogin(username,md5Password);
         if (admin != null){
-            //加密
-//            admin.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+            //把密码设为空，防止别人获取
+            admin.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
             return admin;
         }else {
             return null;
         }
+
     }
 
 

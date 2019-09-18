@@ -7,6 +7,7 @@ import com.cims.entity.Apply_pay;
 import com.cims.entity.Course;
 import com.cims.entity.Student;
 import com.cims.service.StudentService;
+import com.cims.util.MD5Util;
 import com.cims.vo.Apply_payVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,18 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
     @Override
     public Student login(String username, String password) {
-        return studentMapper.selectLogin(username,password);
+        //对输入的密码进行加密然后和数据库比对
+        String md5Password = MD5Util.MD5EncodeUtf8(password);
+
+        Student student = studentMapper.selectLogin(username,md5Password);
+        if (student != null){
+            //把密码设为空，防止别人获取
+            student.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+            return student;
+        }else {
+            return null;
+        }
+
     }
 
     @Override

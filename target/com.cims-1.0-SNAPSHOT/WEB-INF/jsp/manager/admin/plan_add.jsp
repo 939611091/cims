@@ -46,11 +46,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                录入报名缴费信息
+                安排教室
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>报名缴费信息管理</a></li>
-                <li class="active">录入报名缴费信息</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>安排教室管理</a></li>
+                <li class="active">安排教室</li>
             </ol>
         </section>
 
