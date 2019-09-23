@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/teacher")
@@ -122,7 +123,15 @@ public class TeacherIndexController {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：真实姓名不能为空！");
             return "redirect:/teacher/edit";
         }
-
+        //验证手机号码的合理性
+        if (!teacher.getPhone().equals("")){
+            Pattern pattern = Pattern.compile("^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$");
+            Boolean result = pattern.matcher(teacher.getPhone()).matches();
+            if(!result){
+                redirectAttributes.addFlashAttribute("msgError","错误提示：手机号码格式有误请检查确认");
+                return "redirect:/teacher/edit";
+            }
+        }
 
         //判断fil是否为空，为空则直接更新用户
         if (fil.getSize() == 0){

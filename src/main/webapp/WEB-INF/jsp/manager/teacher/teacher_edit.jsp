@@ -72,7 +72,7 @@
                                 <div class="form-group" id="name">
                                     <label  class="col-sm-2 control-label">姓名</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control"  placeholder="真实姓名"  name="name" value="${teacher.name }">
+                                        <input type="text" class="form-control"  placeholder="真实姓名"  name="name" value="${teacher.name }" readonly="readonly">
                                     </div>
                                 </div>
                                  

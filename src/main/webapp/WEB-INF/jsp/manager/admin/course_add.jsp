@@ -58,6 +58,7 @@
             <div class="callout callout-info">
                 <h4>提示！</h4>
                 <p>课程名，课程类别，上课老师，课程人数均不能为空</p>
+                <p>总课时，课程人数，每次上课学时只用输入对应数字即可</p>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -89,7 +90,7 @@
                                                  </c:forEach>
                                              </select>
                                         </div>
-                                     <label class="col-sm-2 control-label">课时</label>
+                                     <label class="col-sm-2 control-label">总课时</label>
                                      <div class="col-sm-3">
                                         <input type="text" class="form-control" placeholder="课时" name="period">
                                     </div>

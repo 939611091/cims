@@ -79,9 +79,9 @@
 
                                 </div>
                                 <div class="form-group" id="payAmount">
-                                    <label  class="col-sm-2 control-label">缴费金额</label>
+                                    <label  class="col-sm-2 control-label">实付金额</label>
                                     <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="缴费金额" name="payAmount" value="${apply_pay.payAmount }">
+                                        <input type="tel" class="form-control"  placeholder="实付金额" name="payAmount" value="${apply_pay.payAmount }">
                                     </div>
                                 </div>
                                 <div class="form-group" id="payTime">

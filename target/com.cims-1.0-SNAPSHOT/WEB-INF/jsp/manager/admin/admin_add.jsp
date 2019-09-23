@@ -76,6 +76,7 @@
                                     <label  class="col-sm-2 control-label">电话</label>
                                     <div class="col-sm-8">
                                         <input type="tel" class="form-control"  placeholder="电话" name="aPhone">
+                                        <span class="aPhoneSpan"></span>
                                     </div>
                                 </div>
                             </div>

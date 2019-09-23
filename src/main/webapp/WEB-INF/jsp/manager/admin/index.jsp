@@ -115,8 +115,7 @@
                             <div class="flow-item flow-item-2"><div title="发布课程">发布课程</div></div>
                             <div class="flow-item flow-item-3"><div title="查看课程详细">查看课程详细</div></div>
                             <div class="flow-item flow-item-4"><div title="安排教室">安排教室</div></div>
-                            <div class="flow-item flow-item-5"><div title="查看课程学生名单">查看课程学生名单</div></div>
-                            <div class="flow-item flow-item-6"><div title="打印课程考勤表">打印课程考勤表</div></div>
+                            <div class="flow-item flow-item-5"><div title="打印课程考勤表">打印课程考勤表</div></div>
                         </div>
                         <div class="row row-3">
                             <div class="flow-item flow-item-0"><div title="课程安排上课教室">课程安排上课教室</div></div>

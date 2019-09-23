@@ -69,13 +69,13 @@
                                 <div class="form-group" id="realname">
                                     <label  class="col-sm-2 control-label">姓名</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control"  placeholder="姓名" name="name" value="${student.name }">
+                                        <input type="text" class="form-control"  placeholder="姓名" name="name" value="${student.name }" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="form-group" id="pName">
                                     <label  class="col-sm-2 control-label">家长姓名</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control"   name="pName" value="${student.pName }">
+                                        <input type="text" class="form-control"   name="pName" value="${student.pName }" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="form-group" id="pPhone">

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/admin/student")
@@ -77,6 +78,15 @@ public class AStudentController {
         if (aStudentService.selectByUsername(student.getUsername()) > 0){
             redirectAttributes.addFlashAttribute("msgError","错误提示：用户名已存在，请重试。");
             return "redirect:/admin/student/addStudent";
+        }
+        //验证手机号码的合理性
+        if (!student.getpPhone().equals("")){
+            Pattern pattern = Pattern.compile("^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$");
+            Boolean result = pattern.matcher(student.getpPhone()).matches();
+            if(!result){
+                redirectAttributes.addFlashAttribute("msgError","错误提示：手机号码格式有误请检查确认");
+                return "redirect:/admin/student/addStudent";
+            }
         }
         //存储数据
         aStudentService.insert(student);
