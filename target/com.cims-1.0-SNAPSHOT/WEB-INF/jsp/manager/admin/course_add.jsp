@@ -90,9 +90,9 @@
                                                  </c:forEach>
                                              </select>
                                         </div>
-                                     <label class="col-sm-2 control-label">总课时</label>
+                                     <label class="col-sm-2 control-label">课时</label>
                                      <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="课时" name="period">
+                                        <input type="number" class="form-control" placeholder="课时" name="period">
                                     </div>
                                 </div>
                             
@@ -108,17 +108,17 @@
                                     </div>
                                      <label class="col-sm-2 control-label">价格</label>
                                      <div class="col-sm-3">
-                                        <input type="text"  class="form-control" placeholder="价格" name="price">
+                                        <input type="number"  class="form-control" placeholder="价格" name="price">
                                     </div>
                                 </div>
                                 <div class="form-group" id="number">
                                     <label class="col-sm-2 control-label">课程人数</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="课程人数" name="number">
+                                        <input type="number" class="form-control" placeholder="课程人数" name="number">
                                     </div>
                                     <label class="col-sm-2 control-label">每次上课学时</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="每次上课学时" name="cPeriod">
+                                        <input type="number" class="form-control" placeholder="每次上课学时" name="cPeriod">
                                     </div>
                                 </div>
                                 <div class="form-group" id="cDescription">

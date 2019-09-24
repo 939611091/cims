@@ -62,7 +62,7 @@
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">查询学生ID</h3>&nbsp;&nbsp;&nbsp;
-                            <h3 class="box-title">${msgError}${msg}</h3>
+                            <h3 class="box-title"></h3>
                             <div class="box-tools pull-right">
                                 <form action="${contextPath}/admin/apply/addApply" method="post" id="search">
                                         <input name="pageNum" value="1" hidden>
@@ -110,6 +110,7 @@
                     <div class="callout callout-info">
                         <h4>提示！</h4>
                         <p>学生ID，报名课程，报名学生均不能为空</p>
+                        <p>学生不可重复报名</p>
                     </div>
                         <!-- /.box-header -->
                         <div class="box box-info">
@@ -124,13 +125,13 @@
                                  <div class="form-group" id="studentId">
                                     <label  class="col-sm-2 control-label">学生ID</label>
                                     <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="学生ID" name="studentId">
+                                        <input type="number" class="form-control"  placeholder="学生ID" name="studentId">
                                     </div>
                                 </div>
                                 <div class="form-group" id="payStudent">
                                     <label  class="col-sm-2 control-label">缴费学生</label>
                                     <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="缴费学生" name="payStudent">
+                                        <input type="text" class="form-control"  placeholder="缴费学生" name="payStudent">
                                     </div>
                                 </div>
                                 <div class="form-group" id="course">
@@ -148,7 +149,7 @@
                                 <div class="form-group" id="payAmount">
                                     <label  class="col-sm-2 control-label">实付金额</label>
                                     <div class="col-sm-8">
-                                        <input type="tel" class="form-control"  placeholder="实付金额" name="payAmount">
+                                        <input type="text" class="form-control"  placeholder="实付金额" name="payAmount">
                                     </div>
                                 </div>
                                 <div class="form-group" id="payTime">

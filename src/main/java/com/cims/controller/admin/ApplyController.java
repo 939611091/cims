@@ -105,6 +105,12 @@ public class ApplyController {
 //            return "redirect:/admin/apply/addApply";
 //        }
 
+        //判断该学生ID是否存在，不存在则提示确认或者添加
+        if (applyService.selectCountByStudentId(apply_pay.getStudentId()) == 0){
+            redirectAttributes.addFlashAttribute("msgError","错误提示：报名失败，该学生ID不存在或者错误！");
+            return "redirect:/admin/apply/addApply";
+        }
+
         //判断课程剩余人数是否>0，大于则可以报名，否则则报名失败
         //获取报名的课程ID查到他的剩余学时
         Course course = courseService.selectByPrimaryKey(apply_pay.getCourseId());

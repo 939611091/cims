@@ -88,6 +88,11 @@ public class ApplyServiceImpl implements ApplyService {
         return apply_payMapper.selectBySidAndCid(sid,cid);
     }
 
+    @Override
+    public int selectCountByStudentId(Integer sid) {
+        return studentMapper.selectCountByStudentId(sid);
+    }
+
 
     private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
         Apply_payVo apply_payVo = new Apply_payVo();

@@ -38,4 +38,7 @@ public interface ApplyService {
     Apply_payVo selectById(Integer id);
     //根据学生ID和课程ID查询是否已经报名
     int selectBySidAndCid(@Param("studentId") Integer sid,@Param("courseId")Integer cid);
+
+    //根据学生ID判断该学生是否存在
+    int selectCountByStudentId(@Param("studentId") Integer sid);
 }

@@ -36,7 +36,7 @@ public interface AdminMapper {
     String selectPasswordById(Integer adminId);
     //查重名
     Admin selectByUsername(String username);
-    //根据ID查用户名
+    //查重名
     int selectByUsername2(String username);
     //登录
     Admin selectLogin(@Param("username") String username, @Param("password") String password);

@@ -176,4 +176,10 @@
     <include refid="Base_Column_List" />
     from `student`
   </select>
+
+  <select id="selectCountByStudentId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      SELECT COUNT(studentId)
+      FROM `student`
+      WHERE studentId = #{studentId,jdbcType=INTEGER};
+  </select>
 </mapper>

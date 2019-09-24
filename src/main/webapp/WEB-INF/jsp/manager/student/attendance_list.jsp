@@ -124,7 +124,7 @@
                                                         </c:when>
                                                         <c:otherwise>
                                                             <button type="button" class="btn btn-default"disabled>
-                                                                已处理
+                                                                老师已处理
                                                             </button>
                                                         </c:otherwise>
                                                     </c:choose>

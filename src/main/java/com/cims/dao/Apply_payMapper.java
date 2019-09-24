@@ -23,6 +23,7 @@ public interface Apply_payMapper {
     //根据学生ID和课程ID查询是否已经报名
     int selectBySidAndCid(@Param("studentId") Integer sid,@Param("courseId")Integer cid);
 
+
     /**
      * 通过map查询
      *

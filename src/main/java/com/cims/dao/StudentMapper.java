@@ -19,6 +19,10 @@ public interface StudentMapper {
 
     int updateByPrimaryKey(Student record);
 
+    //根据ID判断该学生是否存在
+    //用于报名缴费用
+    int selectCountByStudentId(@Param("studentId") Integer sid);
+
     //用于查询学生ID
     List<Student> selectAll();
 
