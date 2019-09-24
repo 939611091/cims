@@ -5,6 +5,7 @@ import com.cims.entity.Course;
 import com.cims.vo.Apply_payVo;
 import com.cims.vo.CourseVo;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -35,4 +36,6 @@ public interface ApplyService {
 
     //根据主键查
     Apply_payVo selectById(Integer id);
+    //根据学生ID和课程ID查询是否已经报名
+    int selectBySidAndCid(@Param("studentId") Integer sid,@Param("courseId")Integer cid);
 }

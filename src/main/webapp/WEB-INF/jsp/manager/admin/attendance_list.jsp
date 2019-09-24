@@ -38,11 +38,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    课程信息管理
+                    处理请假售后
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">课程信息管理</li>
+                    <li class="active">查看请假信息列表</li>
                 </ol>
             </section>
 

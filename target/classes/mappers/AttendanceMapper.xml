@@ -151,7 +151,7 @@
     from `attendance`
     where 1=1
     <if test="keyword != null and keyword.trim() != ''">
-      and `student_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+      and `student_id` = #{keyword}
     </if>
     ORDER BY create_time DESC
   </select>

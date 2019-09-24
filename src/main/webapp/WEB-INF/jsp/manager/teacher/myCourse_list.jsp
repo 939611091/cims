@@ -38,8 +38,8 @@
                     我的课程
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> 我的课程信息</a></li>
-                    <li class="active">我的课程</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 课程信息管理</a></li>
+                    <li class="active">我的课程-考勤</li>
                 </ol>
             </section>
 

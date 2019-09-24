@@ -156,9 +156,9 @@
     from `apply_pay`
     where 1=1
     <if test="keyword != null and keyword.trim() != ''">
-      and `student_id` LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+      and `student_id` = #{keyword}
     </if>
-    ORDER BY create_time DESC
+    ORDER BY id DESC
   </select>
 
   <select id="selectByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -187,4 +187,10 @@
     delete from apply_pay
     where course_id = #{courseId,jdbcType=INTEGER}
   </delete>
+
+  <select id="selectBySidAndCid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      SELECT COUNT(id)
+      FROM `apply_pay`
+      WHERE student_id = #{studentId,jdbcType=INTEGER} AND course_id = #{courseId,jdbcType=INTEGER};
+  </select>
 </mapper>

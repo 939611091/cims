@@ -93,6 +93,12 @@ public class ApplyController {
             redirectAttributes.addFlashAttribute("msgError", "错误提示：课程ID不能为空！");
             return "redirect:/admin/apply/addApply";
         }
+        //检查是否已经报名
+        //根据报名输入的ID还有课程ID一起查询看是否有记录
+        if (applyService.selectBySidAndCid(apply_pay.getStudentId(),apply_pay.getCourseId()) > 0){
+            redirectAttributes.addFlashAttribute("msgError","错误提示：报名失败，该学生已报名！");
+            return "redirect:/admin/apply/addApply";
+        }
 //        //检查报名课时不能为空
 //        if (apply_pay.getHour() == null) {
 //            redirectAttributes.addFlashAttribute("msgError", "错误提示：报名课时不能为空！");

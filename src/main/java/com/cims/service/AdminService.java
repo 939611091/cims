@@ -30,9 +30,9 @@ public interface AdminService {
     int updateByPrimaryKey(Admin admin);
     //根据ID查密码
     String selectPasswordById(Integer adminId);
-    //根据ID查用户名
+    //根据用户名查询
     Admin selectByUsername(String username);
-    //根据ID查用户名
+    //查用户名是否重复
     int selectByUsername2(String username);
     //登录
     Admin login(String username, String password);

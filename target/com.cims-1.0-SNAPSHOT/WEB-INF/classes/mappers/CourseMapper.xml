@@ -214,7 +214,6 @@
       begin_time = #{beginTime,jdbcType=TIMESTAMP},
       over_time = #{overTime,jdbcType=TIMESTAMP},
       school_time = #{schoolTime,jdbcType=VARCHAR},
-      surplus_number = #{number,jdbcType=INTEGER},
       update_time = NOW()
     where id = #{id,jdbcType=INTEGER}
   </update>

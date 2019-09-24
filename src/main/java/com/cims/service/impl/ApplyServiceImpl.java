@@ -83,6 +83,11 @@ public class ApplyServiceImpl implements ApplyService {
         return apply_payVo;
     }
 
+    @Override
+    public int selectBySidAndCid(Integer sid, Integer cid) {
+        return apply_payMapper.selectBySidAndCid(sid,cid);
+    }
+
 
     private Apply_payVo assembleApplyVo(Apply_pay apply_pay) {
         Apply_payVo apply_payVo = new Apply_payVo();
